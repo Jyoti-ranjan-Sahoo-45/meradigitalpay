@@ -1,62 +1,69 @@
 import React, { useState } from 'react';
 import PartnersSection from '../components/PartnersSection';
+import harvardImg from '../assets/award-harvard-casestudy.jpeg';
+import diagramEcoImg from '../assets/diagram-ecosystem-services.jpeg';
+import shgDualAuthImg from '../assets/media-shg-dual-auth.jpeg';
+import digitalNaariGujaratImg from '../assets/media-digital-naari-gujarat.jpeg';
+import goldLoanImg from '../assets/media-gold-loan-550cr.jpeg';
+import campaignRetailerImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
 
 const caseStudiesList = [
   {
     id: 1,
     num: '01',
-    title: 'Swiggy Case Study',
-    desc: 'Faced by severe cash management issues leading to losses and increased cash handling risk by their delivery executive, Swiggy implemented cash deposit service.',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/12/swiggy_listing.png',
-    industry: 'Food Delivery & Logistics',
-    stat: 'Over 50% Reduction in Cash Transit Loss'
+    title: 'Harvard Business School: Mera Digital Pay Case Study',
+    desc: 'Harvard Business School published a comprehensive case study on Mera Digital Pay’s scalable branchless banking ecosystem and last-mile financial inclusion model.',
+    img: harvardImg,
+    industry: 'Academic Research & FinTech Case Study',
+    stat: 'Global Recognition for DaaS Architecture'
   },
   {
     id: 2,
     num: '02',
-    title: 'Svatantra Microfin',
-    desc: "By enabling Mera Digital Pay's cash collection points Svatantra has gained deep in-roots to areas which were not serviced earlier.",
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/12/savatantra_listing.png',
-    industry: 'Microfinance & Rural Banking',
-    stat: 'Deep Reach into 10,000+ Unbanked Villages'
+    title: 'Women Entrepreneur Lakhpati Didi Empowerment',
+    desc: "By enabling women-led assisted digital financial service networks across Gujarat and Maharashtra, thousands of rural women have built sustainable businesses.",
+    img: digitalNaariGujaratImg,
+    industry: 'Women Micro-Entrepreneurship & Banking',
+    stat: 'Over 1 Lakh Women Targeted by FY28'
   },
   {
     id: 3,
     num: '03',
-    title: 'Hero FinCorp Pvt Ltd',
-    desc: 'Hero Fin Corp reduced cash collection TAT from T+5 days to T+1 day. Thereby increasing efficiency in cash collection process and expanding their geographical reach.',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/12/Hero-FinCrop_listing.png',
-    industry: 'NBFC & Vehicle Loans',
-    stat: 'Collection TAT Reduced from T+5 to T+1 Day'
+    title: 'Self-Help Group (SHG) Dual Authentication Cash Flow',
+    desc: 'First fintech to digitise SHG cash withdrawals and deposits with dual biometric authentication, resolving bank branch bottlenecks.',
+    img: shgDualAuthImg,
+    industry: 'SHG & Rural Micro-Banking',
+    stat: 'Impacts 1+ Crore SHG Members'
   },
   {
     id: 4,
     num: '04',
-    title: 'Centrum Microfinance',
-    desc: 'Centrum has witnessed 37% Increase in team productivity by enabling Mera Digital Pay cash collection points across rural areas.',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/12/Centrum-listing-1.png',
-    industry: 'Microfinance Institution',
-    stat: '37% Increase in Team Field Productivity'
+    title: 'Formal Gold Loan & Credit Disbursal at Last Mile',
+    desc: 'Facilitating over ₹550 crore in gold loan disbursements via neighborhood kirana stores, unlocking timely formal credit for semi-urban Bharat.',
+    img: goldLoanImg,
+    industry: 'Secured Lending & NBFC Partnership',
+    stat: '₹550+ Crore Disbursed Across Bharat'
   },
   {
     id: 5,
     num: '05',
-    title: 'Sub-K Digital Finance',
-    desc: "By implementing Mera Digital Pay's cash collection module for their collection team and customers, Sub-K has reduced losses due to delayed cash collection.",
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/12/sub-k_listing.png',
-    industry: 'FinTech & Branchless Banking',
-    stat: 'Zero Delays in EMI Reconciliation'
+    title: 'Unified Last-Mile Cash Collection & Commerce',
+    desc: "Connecting order digitization, payment disbursal, and cash collections into a single integrated platform for 40+ corporate partners.",
+    img: diagramEcoImg,
+    industry: 'Corporate Cash Logistics & FMCG',
+    stat: '50% Optimization in Collection TAT'
   },
   {
     id: 6,
     num: '06',
-    title: 'Bajaj Finance Limited',
-    desc: 'Agent cash deposit module implemented at BFL has helped improve team productivity by 35%.',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/11/bajaj-listing.png',
-    industry: 'Consumer Lending & NBFC',
-    stat: '35% Team Productivity Improvement'
+    title: 'Retailer Digital Transformation & Income Doubling',
+    desc: 'Empowering local store owners with branchless banking tools, DMT, AePS, and bill payment services to build thriving community Fintech Marts.',
+    img: campaignRetailerImg,
+    industry: 'Retailer Empowerment & Inclusion',
+    stat: '2X Store Footfall & Steady Commission'
   }
 ];
+
 
 export default function CaseStudiesPage() {
   const [selectedCase, setSelectedCase] = useState(null);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import corporatehero from "./../../assets/corporatehero.mp4"
+import corporatehero from "./../../assets/video-api-services-hub.mp4";
+
 export default function CorporateHero({ onOpenContact }) {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);

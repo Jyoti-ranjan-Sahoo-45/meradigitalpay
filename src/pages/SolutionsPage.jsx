@@ -1,29 +1,33 @@
 import React, { useState } from 'react';
 import PartnersSection from '../components/PartnersSection';
+import diagramEcoImg from '../assets/diagram-ecosystem-services.jpeg';
+import campaignWomanImg from '../assets/campaign-dil-se-desi-woman.jpeg';
+import campaignRetailerImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
 
 const allSolutionsList = [
   {
     id: 'digitize-cash-collection',
     title: 'Digitize cash collection',
     desc: 'Enable customers and collection agents to deposit cash at Mera Digital Pay’s extensive last mile network and optimize collection cost by upto 50%',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/11/digitize-cash-collection.png',
+    img: diagramEcoImg,
     industries: ['ecommerce', 'food-delivery', 'insurance', 'payments-finance']
   },
   {
     id: 'increase-market-penetration-at-the-last-mile',
     title: 'Increase market penetration at the last mile',
     desc: 'Distribute sachetize content through Mera Digital Pay’s last mile network and enable digitization of micro cash exchange to digically reach 400 million+ last mile audience',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/11/increase-market-penetration.png',
+    img: campaignWomanImg,
     industries: ['ecommerce', 'network-marketing', 'ott']
   },
   {
     id: 'digitize-order-placement-and-payment',
     title: 'Digitize order placement and payment',
     desc: 'Enable 3X more efficiency in order processing and cash flow by digitizing order placement and payment across the retail value chain',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/11/digitize-order-placement.png',
+    img: campaignRetailerImg,
     industries: ['chemical-fertiliser', 'fmcg-pharma']
   }
 ];
+
 
 export default function SolutionsPage({ onOpenContact }) {
   const [selectedIndustry, setSelectedIndustry] = useState('');

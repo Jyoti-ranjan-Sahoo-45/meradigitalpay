@@ -6,63 +6,99 @@ import insuranceImage from '../assets/insurance.png';
 import travelImage from '../assets/travel.png';
 import offerImage from '../assets/offer.png';
 import neoImage from '../assets/neo.png';
-import app from "./../assets/app.png"
+import retailerImage from '../assets/retailer.png';
+import app from "./../assets/app.png";
+
 const serviceList = [
   {
     id: 0,
-    category: 'Digital Payments',
-    iconClass: 'pn pn-cr-digital-suite',
-    title: 'Accept digital payments at your shop with simple digital tools',
-    desc: 'Go digital. From prepaid cards, UPI QR to Aadhaar Pay, let us equip you with the latest digital payment tools. Use our digital ledger, Customer Khata to manage your customer credits better.',
-    img: digitalImage
+    tabName: 'Banking services',
+    category: 'DIGITAL BANKING SERVICES',
+    iconClass: 'pn pn-cr-banking-services',
+    title: 'Expand Your Digital Banking Business with Mera Digital Pay',
+    desc: 'Offer convenient digital banking services from your shop, including AEPS, UPI Cash Withdrawal, Balance Enquiry, Mini Statement, Money Transfer and more. Serve your customers with ease and grow your business with Mera Digital Pay.',
+    img: bankingImage,
+    btnText: 'Become a Partner'
   },
   {
     id: 1,
-    category: 'Banking Services',
-    iconClass: 'pn pn-cr-banking-services',
-    title: 'Become the most trusted Banker of your area',
-    desc: 'Offer assisted banking services such as cash withdrawal, cash deposit, money transfer and partner-enabled account opening services from your shop',
-    img: bankingImage
+    tabName: 'DIGITAL payments',
+    category: 'MERA DIGITAL PAY',
+    iconClass: 'pn pn-cr-digital-suite',
+    title: 'Empower Your Business with Smart Digital Payments',
+    desc: 'Simplify your daily business with Mera Digital Pay. Access AEPS, BBPS, Money Transfer, Payout, Mobile Recharge, Bill Payments and more — all through one powerful digital platform.',
+    img: digitalImage,
+    btnText: 'Become a Partner'
   },
   {
     id: 2,
-    category: 'Utility Payment Center',
+    tabName: 'Utility bills Center',
+    category: 'UTILITY PAYMENT CENTER',
     iconClass: 'pn pn-cr-utility-payment-centre',
     title: 'Ensure recurring monthly income by becoming a Utility Payment Point',
     desc: 'Build recurring monthly transactions. Help customers pay utility bills, recharges, loan repayments and other supported recurring payments through Bharat Connect-enabled services, formerly known as BBPS',
-    img: utilityPaymentImage
+    img: utilityPaymentImage,
+    btnText: 'Book Demo'
   },
   {
     id: 3,
-    category: 'Insurance',
+    tabName: 'insurance',
+    category: 'INSURANCE SERVICES',
     iconClass: 'pn pn-cr-insurance',
     title: 'Offer affordable protection plans and become the Suraksha Pradhan of your area',
     desc: 'Less than 3% of Bharat has an insurance. Retailers can offer group policies and also become a Point of Sale agent to facilitate vehicle insurance through our insurance partner.\n\nHelp protect India. Earn respect and money while you are at it.',
-    img: insuranceImage
+    img: insuranceImage,
+    btnText: 'Become a Partner'
   },
   {
     id: 4,
-    category: 'Travel',
+    tabName: 'Travel Center',
+    category: 'TRAVEL BOOKING SERVICES',
     iconClass: 'pn pn-cr-travel',
-    title: 'Open a travel agency from your shop',
-    desc: 'Offer a range of affordable travel solutions from your shop: rail, flight, hotels, and more. Flight booking is available through the Travel section powered by Nearby Neodigital Services Private Limited, an IATA-approved solution provider.\n\nOffer travel bookings from your shop. Earn More.',
-    img: travelImage
+    title: 'Open a complete travel agency from your shop',
+    desc: 'Offer a range of affordable travel solutions from your shop: IRCTC rail tickets, domestic and international flight bookings, buses, and hotel reservations. High commissions and instant booking confirmations.',
+    img: travelImage,
+    btnText: 'Become a Partner'
   },
   {
     id: 5,
-    category: 'E-goverance',
+    tabName: 'pan card Center',
+    category: 'PAN CARD & E-GOVERNANCE',
     iconClass: 'pn pn-cr-online-shop',
-    title: 'Offer essential services to customers & earn more',
-    desc: 'Issue paperless PAN for customers from your shop. Make essential documentation services available and bring them into the formal financial fold',
-    img: offerImage
+    title: 'Fast & Paperless PAN Card issuance from your shop',
+    desc: 'Issue new paperless PAN cards, update existing PAN details, and provide essential government document services directly from your shop with fast approval and zero paperwork.',
+    img: offerImage,
+    btnText: 'Become a Partner'
   },
   {
     id: 6,
-    category: 'Neo Banking',
-    iconClass: 'pn pn-credited-icon',
+    tabName: 'account open',
+    category: 'BANK ACCOUNT OPENING',
+    iconClass: 'pn pn-cr-banking-services',
+    title: 'Open instant bank accounts for customers in your locality',
+    desc: 'Offer zero-balance and regular savings and current bank account opening services in partnership with leading banks (ICICI, Axis, NSDL, Fino, Kotak, Airtel Payments Bank) using biometric e-KYC.',
+    img: bankingImage,
+    btnText: 'Become a Partner'
+  },
+  {
+    id: 7,
+    tabName: 'Flipkart seller',
+    category: 'E-COMMERCE & SELLER HUB',
+    iconClass: 'pn pn-cr-online-shop',
+    title: 'Onboard local shops and sellers on Flipkart & ONDC',
+    desc: 'Enable local retailers, wholesalers, and manufacturers in your town to sell online on Flipkart and ONDC marketplace. Earn handsome onboarding commissions and boost local commerce.',
+    img: retailerImage,
+    btnText: 'Become a Partner'
+  },
+  {
+    id: 8,
+    tabName: 'Loan Center',
+    category: 'LOAN & CREDIT SERVICES',
+    iconClass: 'pn pn-cr-neo-banking',
     title: 'Easy loans to help you and your customers grow',
-    desc: 'Easy, hassle-free loans with minimum documentation available to you and your customers from our trusted banks and financial partners. Our endevour is to bring everyone in Bharat into the formal credit fold. Be the popular banking agent in your area. Avail the varied loan offerings to meet all credit needs.',
-    img: neoImage
+    desc: 'Easy, hassle-free business loans, personal loans, and gold loans with minimum documentation available to you and your customers from our trusted banks and NBFC partners. Bring your customers into the formal credit fold.',
+    img: neoImage,
+    btnText: 'Become a Partner'
   }
 ];
 
@@ -87,7 +123,7 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
           <div className="services-exact-top-flex">
             <div className="services-exact-phone-wrapper">
               <img 
-                src={app}
+                src={app} 
                 alt="One App multiple services" 
               />
             </div>
@@ -115,7 +151,7 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
                 className={idx === activeTab ? 'active-service-tab' : ''}
                 onClick={() => setActiveTab(idx)}
               >
-                {item.category}
+                {item.tabName}
               </li>
             ))}
           </ul>
@@ -131,17 +167,20 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
 
               <div className="card-content">
                 <i className={currentItem.iconClass} data-path="16"></i>
-                <h6>{currentItem.category}</h6>
+                <h6 style={{ letterSpacing: '1px', textTransform: 'uppercase' }}>{currentItem.category}</h6>
                 <h4>{currentItem.title}</h4>
                 <p className="body-content" style={{ whiteSpace: 'pre-line' }}>{currentItem.desc}</p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-                  <a 
-                    href="#join-paynearby" 
+                  <button 
+                    type="button"
                     className="btn green"
-                    onClick={(e) => { e.preventDefault(); onOpenJoin(); }}
+                    onClick={(e) => { 
+                      e.preventDefault(); 
+                      if (typeof onOpenJoin === 'function') onOpenJoin(); 
+                    }}
                   >
-                    Join Mera Digital Pay
-                  </a>
+                    {currentItem.btnText || 'Become a Partner'}
+                  </button>
                   <div className="slider-btns-custom">
                     <button onClick={handlePrev} className="slider-nav-btn" aria-label="Previous">←</button>
                     <button onClick={handleNext} className="slider-nav-btn" aria-label="Next">→</button>

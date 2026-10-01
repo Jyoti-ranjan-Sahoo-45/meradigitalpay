@@ -3,7 +3,6 @@ import CorporateHero from '../components/corporate/CorporateHero';
 import CorporateSolutions from '../components/corporate/CorporateSolutions';
 import CorporateWhy from '../components/corporate/CorporateWhy';
 import CorporateTestimonial from '../components/corporate/CorporateTestimonial';
-import CorporateIndustryTool from '../components/corporate/CorporateIndustryTool';
 import PartnersSection from '../components/PartnersSection';
 
 export default function CorporatePage({ onOpenContact }) {
@@ -21,10 +20,7 @@ export default function CorporatePage({ onOpenContact }) {
       {/* 4. Bajaj Finance Enterprise Testimonial */}
       <CorporateTestimonial />
 
-      {/* 5. Interactive Industry Solution Tool */}
-      <CorporateIndustryTool onOpenContact={onOpenContact} />
-
-      {/* 6. Partner Marquee */}
+      {/* 5. Banking & Enterprise Partners Marquee */}
       <PartnersSection />
     </main>
   );

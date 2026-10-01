@@ -38,9 +38,14 @@ footer.pn-footer-v2 * {
     padding: 0;
 }
 footer.pn-footer-v2 {
-    background-color: #2358a0 !important;
+    background: #081a34 !important;
+    background: linear-gradient(135deg, #07172c 0%, #0b2c4d 35%, #073a46 70%, #092032 100%) !important;
     font-family: 'Cera Pro', 'Segoe UI', Arial, sans-serif !important;
     padding: 0 !important;
+    position: relative !important;
+    border-top: 3px solid transparent !important;
+    border-image: linear-gradient(90deg, rgba(107, 197, 232, 1) 0%, rgba(187, 240, 210, 1) 50%, rgba(237, 221, 83, 1) 100%) 1 !important;
+    box-shadow: 0 -8px 25px rgba(11, 44, 77, 0.15) !important;
 }
 
 /* ── container ── */
@@ -246,22 +251,23 @@ footer.pn-footer-v2 {
     margin: 0 !important;
     box-sizing: border-box !important;
 }
-.pn-footer-v2 .pnf-app-list li a:hover { opacity: 0.8 !important; background: transparent !important; }
-/* Auto-cycling border colors — cyan, red, green (repeats) */
-.pn-footer-v2 .pnf-app-list li.pill-0 a { border-color: #00c2cb !important; color: #ffffff !important; }
-.pn-footer-v2 .pnf-app-list li.pill-1 a { border-color: #e84040 !important; color: #ffffff !important; }
-.pn-footer-v2 .pnf-app-list li.pill-2 a { border-color: #2ecc71 !important; color: #ffffff !important; }
-/* Force text visibility — override any theme reset */
-footer.pn-footer-v2 .pnf-app-list li a,
-footer.pn-footer-v2 .pnf-app-list li.pill-0 a,
-footer.pn-footer-v2 .pnf-app-list li.pill-1 a,
-footer.pn-footer-v2 .pnf-app-list li.pill-2 a {
-    color: #000000 !important;
+.pn-footer-v2 .pnf-app-list li a:hover { opacity: 0.9 !important; transform: translateY(-1px) !important; }
+.pn-footer-v2 .pnf-app-list li.pill-0 a { border-color: #00c2cb !important; }
+.pn-footer-v2 .pnf-app-list li.pill-1 a { border-color: #f97316 !important; }
+.pn-footer-v2 .pnf-app-list li.pill-2 a { border-color: #2ecc71 !important; }
+.pn-footer-v2 .pnf-app-list li.pill-3 a { border-color: #eab308 !important; }
+.pn-footer-v2 .pnf-app-list li.pill-4 a { border-color: #38bdf8 !important; }
+
+footer.pn-footer-v2 .pnf-app-list li a {
+    color: #0c4696 !important;
     font-size: 13px !important;
-    padding: 10px 24px !important;
+    font-weight: 700 !important;
+    padding: 8px 18px !important;
     opacity: 1 !important;
     visibility: visible !important;
-    background: #ffff !important;
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* Company strip items */

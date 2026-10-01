@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import PartnersSection from '../components/PartnersSection';
+import campaignWomanImg from '../assets/campaign-dil-se-desi-woman.jpeg';
+import campaignRetailerImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
+import goldLoanImg from '../assets/media-gold-loan-550cr.jpeg';
+import digitalNaariGujaratImg from '../assets/media-digital-naari-gujarat.jpeg';
+import shgDualAuthImg from '../assets/media-shg-dual-auth.jpeg';
+import mitReviewImg from '../assets/award-mit-review.jpeg';
+import gptwImg from '../assets/award-gptw-workplace.jpeg';
+import harvardImg from '../assets/award-harvard-casestudy.jpeg';
+import diagramEcoImg from '../assets/diagram-ecosystem-services.jpeg';
 
 const initialArticles = [
   {
@@ -8,7 +17,7 @@ const initialArticles = [
     category: 'Mera Digital Pay',
     author: 'By Corporate Communications',
     date: 'June 4, 2026',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/7.-Saathi.png',
+    img: campaignWomanImg,
     excerpt: 'The campaign captures simple moments from everyday life, a mobile recharge at home, an urgent funds transfer or a small step towards savings. Each story shows how Saathi can help customers complete essential tasks with ease, while building confidence to use digital services more independently.',
     fullContent: `Mera Digital Pay, India's leading branchless banking and digital services network, has unveiled its new Saathi campaign themed ‘Dil Se Desi. Life Digital.’ The initiative highlights the critical role played by local retail champions in accelerating digital adoption across rural and semi-urban Bharat.
 
@@ -20,48 +29,28 @@ Through real-life narratives, the campaign captures everyday moments—from rech
     category: 'Mera Digital Pay',
     author: 'By Corporate Communications',
     date: 'May 7, 2026',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/6.-Gold-Loan.png',
+    img: goldLoanImg,
     excerpt: 'Mera Digital Pay continues to partner with banks and NBFCs to expand gold loan access across Bharat. By leveraging its distribution network, the platform enables lenders to reach customers at scale through a simple, plug-and-play model, while making credit more accessible, fast and reliable at the last mile.',
     fullContent: `Mera Digital Pay announced that it has successfully facilitated over ₹550 crore in gold loan disbursements across Bharat during FY26. Partnering with top financial institutions and NBFCs, local kirana store owners act as customer service points, providing quick doorstep evaluation and transparent formal credit options to underserved borrowers.`
   },
   {
-    id: 'upi-cash-point',
-    title: 'Mera Digital Pay launches UPI Cash Point for cardless cash withdrawals at local retail stores across semi-urban and rural India',
+    id: 'mit-review-feature',
+    title: 'Mera Digital Pay gets featured in MIT Technology Review for last-mile digital fintech infrastructure',
     category: 'Mera Digital Pay',
     author: 'By Corporate Communications',
-    date: 'March 30, 2026',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/5.-UPI-Cash-Point.png',
-    excerpt: 'With this launch, customers can use their smartphone to scan UPI QR code at the local retail store, enter the amount, authenticate the transaction, and receive cash instantly.',
-    fullContent: `In an effort to expand cash-out convenience beyond traditional ATMs, Mera Digital Pay has introduced 'UPI Cash Point'. Now, customers need only scan the dynamic QR code generated at their neighborhood retailer, authenticate via their preferred UPI app, and receive instant cash dispensing without requiring a physical debit card.`
-  },
-  {
-    id: 'lakhpati-didi-maharashtra',
-    title: 'Digital Naari Strengthens Lakhpati Didi Momentum in Maharashtra, Deepens Last-Mile Access',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'March 10, 2026',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/4.-Maharashtra.png',
-    excerpt: 'As Maharashtra advances the Lakhpati Didi mission, the focus is moving toward enabling consistent income at the last mile. Women agents are delivering essential services that households need regularly, which creates repeat transactions and commission-based earnings.',
-    fullContent: `Mera Digital Pay’s 'Digital Naari' initiative has mobilized thousands of rural women across Maharashtra to become independent financial service providers. By offering AePS, DMT, utility bill payments, and insurance at their village doorsteps, these women entrepreneurs are achieving financial freedom while propelling the government's Lakhpati Didi initiative.`
-  },
-  {
-    id: 'pwfi-2026-report',
-    title: '38% Women Use UPI Weekly for Daily Essentials: PWFI 2026',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'March 5, 2026',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/3.-PWFI-2026.png',
-    excerpt: 'Mera Digital Pay Women Financial Index 2026, a comprehensive analysis of women’s financial and digital consumption across Bharat in 2026. The survey finds that there is also growing awareness among women for investment and asset-linked products through assisted guidance.',
-    fullContent: `The 5th edition of the Mera Digital Pay Women Financial Index (PWFI) report indicates a sharp surge in digital transactions among rural women, with 38% utilizing UPI every week for routine groceries and essential household purchases. The findings also reveal an upward trend in micro-savings, gold accumulation, and crop insurance adoption.`
+    date: 'April 18, 2026',
+    img: mitReviewImg,
+    excerpt: 'MIT Technology Review recognized Mera Digital Pay for its relentless effort to ensure seamless delivery of financial and digital services across India.',
+    fullContent: `In an exclusive feature, MIT Technology Review highlighted the groundbreaking work being done by Mera Digital Pay in transforming neighborhood kirana stores into digital fintech hubs, enabling assisted digital banking for millions of citizens.`
   },
   {
     id: 'lakhpati-didi-gujarat',
-    title: 'Digital Naari Expands Government’s Lakhpati Didi Footprints in Gujarat, Aims for 1 Lakh Women by FY28',
+    title: 'Women Entrepreneur Banking Network Expands Lakhpati Didi Footprints in Gujarat',
     category: 'Mera Digital Pay',
     author: 'By Corporate Communications',
     date: 'February 26, 2026',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/2.-Lakhpati-Didi-Gujarat-1.png',
-    excerpt: 'The Digital Naari model is designed to generate steady and repeat income at the last mile. Women deliver essential, everyday services that households need year-round, which ensures consistent transactions and commission earnings.',
+    img: digitalNaariGujaratImg,
+    excerpt: 'The Women Banking Mitra model is designed to generate steady and repeat income at the last mile. Women deliver essential, everyday services that households need year-round, which ensures consistent transactions and commission earnings.',
     fullContent: `Mera Digital Pay announced an aggressive roadmap to onboard and empower over 1,00,000 women micro-entrepreneurs across Gujarat by FY28. Providing comprehensive digital literacy, POS devices, and continuous mentorship, the platform turns local women into sustainable business leaders.`
   },
   {
@@ -70,31 +59,52 @@ Through real-life narratives, the campaign captures everyday moments—from rech
     category: 'Mera Digital Pay',
     author: 'By Corporate Communications',
     date: 'January 7, 2026',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/1.-SHG-Cash-Withdrawals-1.png',
-    excerpt: 'This innovation addresses a critical operational bottleneck in SHG-bank linkage by enabling compliant, transparent access to group funds without requiring repeated physical visits to bank branches',
+    img: shgDualAuthImg,
+    excerpt: 'This innovation addresses a critical operational bottleneck in SHG-bank linkage by enabling compliant, transparent access to group funds without requiring repeated physical visits to bank branches.',
     fullContent: `In a groundbreaking development for Self-Help Groups (SHGs), Mera Digital Pay has launched dual biometric authentication for SHG bank accounts. Both designated group signatories can now securely authenticate and transact at any local Mera Digital Pay store, eliminating long journeys and wait times at distant bank branches.`
   },
   {
-    id: 'tpap-license-npci',
-    title: 'Mera Digital Pay secures TPAP license from NPCI; set to expand UPI access to Bharat',
+    id: 'gptw-best-workplaces',
+    title: 'Great Place To Work® India features Mera Digital Pay among Top 25 Best Workplaces™ in BFSI',
     category: 'Mera Digital Pay',
     author: 'By Corporate Communications',
-    date: 'December 22, 2025',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/10.-Saathi.jpg',
-    excerpt: 'Introducing Mera Digital Saathi – an innovative platform that will seamlessly ensure onboarding of citizens on UPI in an assisted mode through Mera Digital Pay’s retail network.',
-    fullContent: `The National Payments Corporation of India (NPCI) has granted Mera Digital Pay a Third Party Application Provider (TPAP) license. This milestone enables Mera Digital Pay to roll out assisted UPI services across its 15+ lakh retail touchpoints, unlocking hassle-free digital payments for millions of new-to-digital citizens.`
+    date: 'January 15, 2026',
+    img: gptwImg,
+    excerpt: 'Great Place To Work® India recognizes Mera Digital Pay’s high-trust, high-performance culture empowering individuals to build fintech solutions for Bharat.',
+    fullContent: `Mera Digital Pay was celebrated among the top workplaces in India in the BFSI sector, reflecting its progressive work culture, equal opportunity employment, and impactful purpose-driven mission.`
   },
   {
-    id: 'dil-ki-baat-radio',
-    title: 'Digital Naari launches “Dil Ki Baat” radio campaign on the eve of PM Modi’s birthday, celebrating women’s voices and empowerment across Bharat',
+    id: 'harvard-case-study-feature',
+    title: 'Harvard Business School publishes comprehensive Case Study on Mera Digital Pay',
     category: 'Mera Digital Pay',
     author: 'By Corporate Communications',
-    date: 'September 17, 2025',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/8.-Dil-Ki-Baat.png',
-    excerpt: 'The campaign is an ode to the determination of grassroots women, giving their aspirations and dreams a voice that can reach the nation and its leaders. Inspired by the Prime Minister’s vision of Lakhpati Didi, these women have embraced financial and digital inclusion to transform their lives and communities, and through this initiative, they take the opportunity to express their gratitude.',
-    fullContent: `On the occasion of Prime Minister Narendra Modi's birthday, Mera Digital Pay launched 'Dil Ki Baat' across nationwide radio channels. The broadcast features heartfelt stories from rural women retailers who have built successful financial enterprises and transformed their communities through Digital Naari.`
+    date: 'November 12, 2025',
+    img: harvardImg,
+    excerpt: 'A proud milestone as Harvard Business School studies the scalable branchless banking model built by Mera Digital Pay to digitize cash at the grassroots level.',
+    fullContent: `Harvard Business School has published an in-depth case study analyzing Mera Digital Pay’s unique distribution-as-a-service (DaaS) model, highlighting how local kirana merchants are digitally empowered to serve as neighborhood banking outposts.`
+  },
+  {
+    id: 'retailer-empowerment-campaign',
+    title: 'Mera Digital Pay Retailer Campaign: Empowering Local Kirana Champions Across Semi-Urban India',
+    category: 'Mera Digital Pay',
+    author: 'By Corporate Communications',
+    date: 'October 28, 2025',
+    img: campaignRetailerImg,
+    excerpt: 'Local kirana store owners are transforming their businesses into complete digital financial centers with the Mera Digital Pay platform.',
+    fullContent: `From cash withdrawals and domestic money transfers to bill payments and insurance, Mera Digital Pay enables local store owners to double their income while delivering vital services to their community.`
+  },
+  {
+    id: 'ecosystem-services-expansion',
+    title: 'Mera Digital Pay expands Integrated Commerce & Cash Collection Ecosystem across 20,000+ PIN Codes',
+    category: 'Mera Digital Pay',
+    author: 'By Corporate Communications',
+    date: 'September 10, 2025',
+    img: diagramEcoImg,
+    excerpt: 'Connecting order digitization, payment disbursal, product sampling, market expansion, and cash collection in one unified platform.',
+    fullContent: `Mera Digital Pay continues to extend its comprehensive suite of services, uniting enterprises, merchants, and rural citizens under one high-tech, reliable platform.`
   }
 ];
+
 
 export default function MediaListingPage() {
   const [articles, setArticles] = useState(initialArticles);

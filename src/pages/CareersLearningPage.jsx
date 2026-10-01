@@ -1,5 +1,9 @@
 import React from 'react';
 import PartnersSection from '../components/PartnersSection';
+import gptwImg from '../assets/award-gptw-workplace.jpeg';
+import campaignWomanImg from '../assets/campaign-dil-se-desi-woman.jpeg';
+import campaignRetailerImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
+import harvardImg from '../assets/award-harvard-casestudy.jpeg';
 
 const cultureValues = [
   'Empower',
@@ -13,11 +17,12 @@ const cultureValues = [
 ];
 
 const culturePhotos = [
-  'https://paynearby.in/wp-content/uploads-efs/2026/06/1A.jpg',
-  'https://paynearby.in/wp-content/uploads-efs/2026/06/19.jpg',
-  'https://paynearby.in/wp-content/uploads-efs/2026/06/7.jpg',
-  'https://paynearby.in/wp-content/uploads-efs/2026/06/1.jpg'
+  gptwImg,
+  campaignWomanImg,
+  campaignRetailerImg,
+  harvardImg
 ];
+
 
 const whyChooseCards = [
   {
@@ -33,7 +38,7 @@ const whyChooseCards = [
   {
     title: 'Ownership',
     icon: '🎯',
-    desc: 'Ownership is at the heart of how we work. Every NBTian is encouraged to take responsibility, stay committed to shared goals and create impact with purpose.'
+    desc: 'Ownership is at the heart of how we work. Every team member at Mera Digital Pay is encouraged to take responsibility, stay committed to shared goals and create impact with purpose.'
   }
 ];
 
@@ -75,11 +80,12 @@ export default function CareersLearningPage() {
             </div>
             <div className="top-interactive" style={{ textAlign: 'center' }}>
               <img
-                src="https://paynearby.in/wp-content/uploads-efs/2024/04/careers.png"
+                src={gptwImg}
                 alt="Careers at Mera Digital Pay"
-                style={{ maxWidth: '100%', height: 'auto' }}
+                style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '20px', boxShadow: '0 12px 36px rgba(12, 70, 150, 0.12)', objectFit: 'cover' }}
               />
             </div>
+
           </div>
         </div>
       </section>
@@ -104,13 +110,10 @@ export default function CareersLearningPage() {
                   fontSize: '32px',
                   fontWeight: 800,
                   color: '#0c4696',
-                  marginBottom: '20px',
-                  position: 'relative',
-                  paddingBottom: '14px'
+                  marginBottom: '20px'
                 }}
               >
                 Our Work Culture
-                <div style={{ position: 'absolute', bottom: 0, left: 0, width: '50px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
               </h2>
               <p style={{ fontSize: '15.5px', lineHeight: 1.7, color: '#4a5568', marginBottom: '16px' }}>
                 At Mera Digital Pay, every role contributes to a larger mission of making digital and financial services more accessible across Bharat. Our teams work together to solve real challenges, support local entrepreneurs and create solutions that reach millions of customers.
@@ -143,13 +146,10 @@ export default function CareersLearningPage() {
                   fontSize: '32px',
                   fontWeight: 800,
                   color: '#0c4696',
-                  marginBottom: '36px',
-                  position: 'relative',
-                  paddingBottom: '14px'
+                  marginBottom: '36px'
                 }}
               >
                 Why You Should Choose Us
-                <div style={{ position: 'absolute', bottom: 0, left: 0, width: '50px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
               </h2>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -171,11 +171,12 @@ export default function CareersLearningPage() {
 
             <div style={{ textAlign: 'center' }}>
               <img
-                src="https://paynearby.in/wp-content/uploads-efs/2026/06/Careers_Revised.jpg"
+                src={campaignWomanImg}
                 alt="Why Mera Digital Pay"
-                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 36px rgba(12, 70, 150, 0.1)' }}
+                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 36px rgba(12, 70, 150, 0.1)', objectFit: 'cover', maxHeight: '420px' }}
               />
             </div>
+
           </div>
         </div>
       </section>
@@ -190,7 +191,7 @@ export default function CareersLearningPage() {
             If you want to work on meaningful challenges, contribute to Bharat’s digital transformation and grow with a purpose-led organisation, Mera Digital Pay is the place for you.
           </p>
           <a
-            href="https://www.linkedin.com/company/paynearby/jobs/"
+            href="https://www.linkedin.com/in/mera-digital-aps-daudega-to-mera-desh-daudega-070b9424a"
             target="_blank"
             rel="noopener noreferrer"
             style={{

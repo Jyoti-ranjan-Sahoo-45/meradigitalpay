@@ -1,76 +1,66 @@
 import React, { useState } from 'react';
 import PartnersSection from '../components/PartnersSection';
-import abouthero from "./../assets/abouthero.png"
+import abouthero from "./../assets/abouthero.png";
+import harvardImg from '../assets/award-harvard-casestudy.jpeg';
+import gptwImg from '../assets/award-gptw-workplace.jpeg';
+import mitImg from '../assets/award-mit-review.jpeg';
+import shgDualAuthImg from '../assets/media-shg-dual-auth.jpeg';
+import digitalNaariGujaratImg from '../assets/media-digital-naari-gujarat.jpeg';
+import goldLoanImg from '../assets/media-gold-loan-550cr.jpeg';
+import campaignWomanImg from '../assets/campaign-dil-se-desi-woman.jpeg';
+import campaignRetailerImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
+import diagramEcoImg from '../assets/diagram-ecosystem-services.jpeg';
+import directorImg from '../assets/director-rohitash.png';
+import { Quote } from 'lucide-react';
+
 const awardsList = [
   {
-    show: 'Global Fintech Fest',
-    category: 'Best Corporate Business Correspondent',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/GFF_1-scaled.jpg'
-  },
-  {
-    show: 'DigiDhan Mission FinTech Award',
-    category: 'Innovation in Digital Payments Acceptance Infrastructure in Rural India',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/Innovation-in-Digital-Payments-Acceptance_Square-scaled.jpg'
-  },
-  {
-    show: 'Digital Responsibility Award by IAMAI',
-    category: 'Financial Accessibility',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/TUS03033-scaled.jpg'
-  },
-  {
-    show: 'India Finance Inclusive Awards',
-    category: 'Fintech Innovation in Financial Inclusion',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/Fintech-Innovation-in-Financial-Inclusion-Award-by-The-India-Finance-Inclusive-Award-scaled.jpg'
+    show: 'Integrated FinTech Ecosystem',
+    category: 'Full-Stack Last-Mile Distribution Architecture',
+    img: diagramEcoImg
   },
   {
     show: 'Harvard Business Publishing',
-    category: "Building India's 2.0: Mera Digital Pay",
-    img: 'https://paynearby.in/wp-content/uploads-efs/2023/06/HBR_Website-Cover-Image.jpg'
+    category: "Building India's 2.0: Mera Digital Pay Case Study",
+    img: harvardImg
+  },
+
+  {
+    show: 'Great Place To Work® India',
+    category: 'Top 25 India’s Best Workplaces™ in BFSI',
+    img: gptwImg
   },
   {
-    show: 'The Economic Times Best BFSI Brands',
-    category: 'Best BFSI Brands',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/Mera Digital Pay-recognized-as-one-of-the-Best-BFSI-Brands-2023-by-The-Economic-Times-1-scaled.jpg'
+    show: 'MIT Technology Review',
+    category: 'Featured for Last-Mile Financial Delivery',
+    img: mitImg
   },
   {
-    show: 'ICAI Awards',
-    category: 'CA Innovator Award',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/CA-Innovator.jpg'
+    show: 'FinTech Innovation in SHG Banking',
+    category: 'Dual Authentication Cash In/Out for 1 Crore SHG Members',
+    img: shgDualAuthImg
   },
   {
-    show: 'FICCI & IBA',
-    category: 'Best Financial Inclusion Provider',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2026/06/Best-Financial-Inclusion-Provider-scaled.jpg'
+    show: 'Lakhpati Didi Footprint Expansion',
+    category: 'Women Empowerment Network Across Gujarat & Maharashtra',
+    img: digitalNaariGujaratImg
+  },
+  {
+    show: 'Formal Credit Access Milestone',
+    category: '₹550+ Crore Gold Loans Disbursed at Last Mile',
+    img: goldLoanImg
+  },
+  {
+    show: 'Digital Inclusion Champion',
+    category: 'Dil Se Desi. Life Digital. Nationwide Campaign',
+    img: campaignWomanImg
   }
 ];
 
-const teamList = [
-  {
-    name: 'Anand Kumar Bajaj',
-    designation: 'Founder, MD & CEO',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2023/06/AnandKumar.jpg',
-    linkedin: 'https://www.linkedin.com/in/anandkumarbajajpaynearby',
-    bio: 'With 23+ years of experience in Digital Payments and Mobility, he holds six banking technology patents. Formerly, as President and Chief Innovation Officer at YES Bank, he spearheaded impactful programs. Anand now leads Mera Digital Pay, driving strategic growth and empowering retailers at the last mile to make digital and financial services available to everyone, everywhere.'
-  },
-  {
-    name: 'Subhash Kumar',
-    designation: 'Co-founder',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2023/06/SubhashKumar.jpg',
-    linkedin: 'https://www.linkedin.com/in/subhash-kumar-161461248',
-    bio: 'A technology veteran with 25+ years of experience and extensive knowledge of the payments industry, prepaid cards, remittance, and travel technology distribution. He drives sales, new product design, and technology development at Mera Digital Pay. Previously, as the COO of G.I. Technology Pvt. Ltd., he oversaw regulatory relationships, prepaid solutions, and P&L management for 15 years.'
-  },
-  {
-    name: 'Yashwant Lodha',
-    designation: 'Co-founder & Executive Director',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2023/06/YashwantLodha.jpg',
-    linkedin: 'https://www.linkedin.com/in/yashwant-lodha-40833023/',
-    bio: 'An engineering graduate from the Manipal Institute of Technology and an MBA from NMIMS. His expertise lies in product & project management and strategic analysis. Previously, as Senior Product Manager at YES Bank, he managed digital payments and mobility products, including UPI, IMPS switch, and the Domestic Remittance platform.'
-  }
-];
 
 const scoreCardStats = [
-  { num: '12+', unit: 'Lakh', label: 'Digital Pradhans' },
-  { num: '3+', unit: 'Lakh', label: 'Digital Naaris' },
+  { num: '10+', unit: 'Lakh', label: 'Banking Mitras' },
+  { num: '3+', unit: 'Lakh', label: 'Women Entrepreneurs' },
   { num: '5+', unit: 'Cr', label: 'Citizens served' },
   { num: '20,000+', unit: '', label: 'PIN codes in India' },
   { num: '10', unit: '%', label: "Market share in AePS 'Off-Us'" },
@@ -103,7 +93,7 @@ const timelineMilestones = [
   {
     year: '2022',
     month: 'April',
-    achievements: ['Retailers Onboarded: 15,00,000+', 'Launches: Digital Naari & Credit']
+    achievements: ['Retailers Onboarded: 15,00,000+', 'Launches: Women Entrepreneur Banking & Credit']
   },
   {
     year: '2024',
@@ -147,7 +137,7 @@ export default function AboutUsPage() {
           <div className="about-top-container">
             <div className="about-top-content">
               <h1 className="main-header-title">
-                Unstoppable. Ambition:<br /><span>Zidd Aage Badhne Ki</span>
+                Unstoppable Ambition:<br /><span>Dil Se Desi. Life Digital.</span>
               </h1>
               <p className="body-content">
                 A strong determination to make India a financially inclusive nation is the driving force behind all our initiatives. <strong style={{ color: '#0c4696' }}>We are determined to provide easy access to financial services to everyone, everywhere.</strong>
@@ -179,13 +169,10 @@ export default function AboutUsPage() {
               fontSize: '34px',
               fontWeight: 800,
               color: '#0c4696',
-              marginBottom: '40px',
-              position: 'relative',
-              paddingBottom: '16px'
+              marginBottom: '40px'
             }}
           >
             Awards &amp; Recognitions
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '60px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
           </h2>
 
           <div
@@ -235,7 +222,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* About Mera Digital Pay Detailed Story */}
-      <section className="bg--white padded--wrapper about-paynearby-wrapper" style={{ background: '#ffffff', padding: '70px 0' }}>
+      <section className="bg--white padded--wrapper about-meradigitalpay-wrapper" style={{ background: '#ffffff', padding: '70px 0' }}>
         <div className="container--responsive">
           <h2
             className="section-title-dashed"
@@ -244,22 +231,19 @@ export default function AboutUsPage() {
               fontSize: '34px',
               fontWeight: 800,
               color: '#0c4696',
-              marginBottom: '30px',
-              position: 'relative',
-              paddingBottom: '16px'
+              marginBottom: '30px'
             }}
           >
             About Mera Digital Pay
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '60px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
           </h2>
           <p className="body-content" style={{ fontSize: '17px', lineHeight: 1.7, color: '#334155', marginBottom: '30px' }}>
             Shri Mata Vaishno Devi Traders is a DIPP Certified Fintech Enterprise registered under The Startup India program of Government of India, founded with rich expertise in Digital Banking &amp; Payments industry. The team works on deep insights and understanding of payment and transaction technology space.
           </p>
           <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(12, 70, 150, 0.1)', marginBottom: '36px' }}>
             <img
-              src="https://paynearby.in/wp-content/uploads-efs/2022/07/Founding-Team_LR1-scaled.jpg"
+              src={gptwImg}
               alt="Mera Digital Pay Team"
-              style={{ width: '100%', height: 'auto', display: 'block' }}
+              style={{ width: '100%', height: 'auto', maxHeight: '500px', objectFit: 'cover', display: 'block' }}
             />
           </div>
           <p className="body-content" style={{ fontSize: '17px', lineHeight: 1.7, color: '#334155', marginBottom: '20px' }}>
@@ -271,74 +255,91 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Meet The Team */}
-      <section className="meetteam--wrapper" style={{ background: '#f4f8fc', padding: '70px 0' }}>
+      {/* Meet Our Director */}
+      <section className="meetteam--wrapper" style={{ background: '#f4f8fc', padding: '80px 0' }}>
         <div className="container--responsive">
-          <h2
-            className="section-title-dashed"
-            style={{
-              fontFamily: "'Cera Pro', sans-serif",
-              fontSize: '34px',
-              fontWeight: 800,
-              color: '#0c4696',
-              marginBottom: '40px',
-              position: 'relative',
-              paddingBottom: '16px'
-            }}
-          >
-            Meet The Team
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '60px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
-          </h2>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2
+              className="section-title-dashed"
+              style={{
+                fontFamily: "'Cera Pro', sans-serif",
+                fontSize: '34px',
+                fontWeight: 800,
+                color: '#0c4696',
+                margin: '0 auto',
+                display: 'inline-block'
+              }}
+            >
+              Meet Our Director
+            </h2>
+          </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
-            {teamList.map((member, idx) => (
-              <div
-                key={idx}
-                style={{
-                  background: '#ffffff',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  border: '1px solid #e2e8f0',
-                  boxShadow: '0 4px 20px rgba(12, 70, 150, 0.05)',
-                  display: 'flex',
-                  flexDirection: 'column'
-                }}
-              >
-                <div style={{ height: '300px', overflow: 'hidden', background: '#e2e8f0' }}>
-                  <img
-                    src={member.img}
-                    alt={member.name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-                <div style={{ padding: '24px', flex: '1', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
-                    <div>
-                      <h3 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '20px', fontWeight: 800, color: '#0c4696', margin: 0 }}>
-                        {member.name}
-                      </h3>
-                      <h4 style={{ fontSize: '14px', fontWeight: 600, color: '#58b147', margin: '4px 0 0' }}>
-                        {member.designation}
-                      </h4>
-                    </div>
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ color: '#0c4696', fontSize: '20px', textDecoration: 'none' }}
-                      title="LinkedIn Profile"
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="#0c4696">
-                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                      </svg>
-                    </a>
-                  </div>
-                  <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#4a5568', margin: 0 }}>
-                    {member.bio}
-                  </p>
-                </div>
+          <div style={{
+            maxWidth: '960px',
+            margin: '0 auto',
+            background: '#ffffff',
+            borderRadius: '24px',
+            border: '1px solid #e2e8f0',
+            boxShadow: '0 20px 40px rgba(12, 70, 150, 0.08)',
+            overflow: 'hidden',
+            display: 'grid',
+            gridTemplateColumns: 'minmax(280px, 380px) 1fr',
+            alignItems: 'stretch'
+          }}>
+            {/* Director Photo */}
+            <div style={{ position: 'relative', minHeight: '380px', background: '#e2e8f0' }}>
+              <img
+                src={directorImg}
+                alt="Rohitash (Rohit Singh) - Managing Director"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: '16px',
+                left: '16px',
+                right: '16px',
+                background: 'rgba(12, 70, 150, 0.9)',
+                backdropFilter: 'blur(8px)',
+                padding: '10px 16px',
+                borderRadius: '12px',
+                color: '#ffffff',
+                textAlign: 'center'
+              }}>
+                <span style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase' }}>
+                  Leadership &bull; Mera Digital Pay
+                </span>
               </div>
-            ))}
+            </div>
+
+            {/* Director Details */}
+            <div style={{ padding: '40px 36px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ marginBottom: '20px' }}>
+                <h3 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '28px', fontWeight: 800, color: '#0c4696', margin: '0 0 6px' }}>
+                  Rohitash (Rohit Singh)
+                </h3>
+                <h4 style={{ fontSize: '15px', fontWeight: 700, color: '#58b147', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  Managing Director, Mera Digital Pay
+                </h4>
+              </div>
+
+              <p style={{ fontSize: '15.5px', lineHeight: 1.75, color: '#334155', margin: '0 0 24px' }}>
+                With over 4 years of rich experience in the Indian Fintech ecosystem, Rohitash is the visionary leader driving Mera Digital Pay. He specializes in scaling Neo-Banking solutions and secure digital architectures to empower businesses across India.
+              </p>
+
+              {/* Mission Quote Box */}
+              <div style={{
+                background: 'linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%)',
+                borderLeft: '4px solid #58b147',
+                borderRadius: '0 16px 16px 0',
+                padding: '20px 22px',
+                position: 'relative'
+              }}>
+                <Quote size={24} color="#58b147" style={{ marginBottom: '8px', opacity: 0.8 }} />
+                <p style={{ fontSize: '15px', lineHeight: 1.65, color: '#0f172a', fontStyle: 'italic', margin: 0, fontWeight: 500 }}>
+                  "Our mission is to build a highly secure, seamless, and next-generation digital ecosystem that makes modern banking accessible to every business."
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -363,7 +364,7 @@ export default function AboutUsPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
             <div style={{ background: '#f8fafc', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e8f0', boxShadow: '0 4px 20px rgba(0,0,0,0.04)' }}>
               <img
-                src="https://paynearby.in/wp-content/uploads-efs/2020/12/vision.jpg"
+                src={campaignWomanImg}
                 alt="Mera Digital Pay Vision"
                 style={{ width: '100%', height: '240px', objectFit: 'cover' }}
               />
@@ -379,7 +380,7 @@ export default function AboutUsPage() {
 
             <div style={{ background: '#f8fafc', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e8f0', boxShadow: '0 4px 20px rgba(0,0,0,0.04)' }}>
               <img
-                src="https://paynearby.in/wp-content/uploads-efs/2020/12/mission2.jpg"
+                src={campaignRetailerImg}
                 alt="Mera Digital Pay Mission"
                 style={{ width: '100%', height: '240px', objectFit: 'cover' }}
               />
@@ -395,6 +396,7 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
+
 
       {/* Our Score Card */}
       <section className="score--card-wrap" style={{ background: '#0c4696', padding: '70px 0', color: '#ffffff' }}>
@@ -446,13 +448,10 @@ export default function AboutUsPage() {
               fontSize: '34px',
               fontWeight: 800,
               color: '#0c4696',
-              marginBottom: '40px',
-              position: 'relative',
-              paddingBottom: '16px'
+              marginBottom: '40px'
             }}
           >
             Our Growth Story
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '60px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>

@@ -3,41 +3,41 @@ import React from 'react';
 const whyList = [
   {
     icon: 'pn pn-network',
-    title: 'Largest Agent Network:',
-    desc: 'With over 15,00,000 active retailers, spread across 20,000+ PIN codes, harness the power of the largest agent network in the country'
+    title: 'Extensive Retail Network:',
+    desc: 'With hundreds of thousands of retail touchpoints spread across 20,000+ PIN codes, harness the power of assisted digital distribution across Bharat.'
   },
   {
     icon: 'pn pn-reliability',
     title: 'Time-Tested Reliability:',
-    desc: 'Serving more than a million transactions per day, our systems deliver the highest success matrix and 99.9% uptime. Mera Digital Pay is certified to the highest compliance standards'
+    desc: 'Serving high-velocity transaction volumes, our resilient microservice architecture delivers excellent success ratios and high operational availability.'
   },
   {
     icon: 'pn pn-iot',
     title: 'Easy Integration:',
-    desc: 'We agonize over easy to use APIs so that your teams don’t take months to integrate and go live with the solution'
+    desc: 'We offer standardized, robust APIs and SDKs so that your engineering teams can integrate and go live in record time.'
   },
   {
     icon: 'pn pn-analytics',
     title: 'Insightful Analytics:',
-    desc: 'A single, powerful unified platform for all your MIS and data requirements. Real time customer analytics that will help you make informed decisions'
+    desc: 'A single, powerful unified platform for all your MIS and data requirements. Real-time transaction dashboards help you make informed decisions.'
   },
   {
     icon: 'pn pn-technical-support',
-    title: 'Best in industry support:',
-    desc: 'Our solution experts are always available on email, phone, chats and will help you in every step of the way'
+    title: 'Best in Industry Support:',
+    desc: 'Our dedicated account teams and technical support specialists are readily available to assist at every step of your journey.'
   },
   {
     icon: 'pn pn-setting',
     title: 'Smart Automation:',
-    desc: 'We release hundreds of features and improvements frequently to keep you ahead of industry shifts; and automate processes to eliminate redundancies'
+    desc: 'Continuous platform enhancements ensure seamless ledger reconciliation and automated batch processing.'
   }
 ];
 
 export default function CorporateWhy() {
   return (
-    <section className="why-paynearby-wrapper" id="features">
+    <section className="why-meradigitalpay-wrapper" id="features">
       <div className="container--responsive">
-        <div className="why-paynearby-container">
+        <div className="why-meradigitalpay-container">
           <h4 className="section-subtitle">Why Mera Digital Pay</h4>
           <h3 className="section-title-dashed">
             Technology driven, customer first approach to last mile connectivity and solution

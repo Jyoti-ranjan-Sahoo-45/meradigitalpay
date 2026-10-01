@@ -4,27 +4,27 @@ import PartnersSection from '../components/PartnersSection';
 const eventVideos = [
   {
     id: 'Atlj9PrDZ8s',
-    title: 'UPI Par Charge Lagega? Anand Kumar Bajaj Explains MDR on Zee Business'
+    title: 'UPI & Merchant Economics: Industry Insights on MDR & Financial Inclusion'
   },
   {
     id: 'N12OVWwWyWs',
-    title: 'Mera Digital Pay enabling access to everyday usage | Mera Digital Pay exclusive Interview with ET Now Swadesh'
+    title: 'Mera Digital Pay: Enabling Essential Financial Services Across Bharat'
   },
   {
     id: 'BxKvdhprEnE',
-    title: 'How Digital Naari is helping women earn from banking & digital services | Jayatri Dasgupta'
+    title: 'How Women Banking Mitras are building sustainable livelihoods in rural India'
   },
   {
     id: 'tML5TZPnZXo',
-    title: 'Mera Digital Pay on NDTV | Bharat Gateway to the Next 500 Million | Last Mile Banking & Digital Services'
+    title: 'Building the Bharat Gateway for the Next 500 Million | Last-Mile Banking & Digital Services'
   },
   {
     id: 'QimFelSQb1Q',
-    title: 'Mera Digital Saathi explained by Anand Kumar Bajaj on ET Now Swadesh'
+    title: 'Assisted Digital Banking: Scaling Last-Mile Access with Mobile & Aadhaar Solutions'
   },
   {
     id: 'SCXEJfkf_8M',
-    title: 'Decoding Bharat Episode 5: Bharat’s Upcoming Fintech Opportunities'
+    title: 'Decoding Bharat: High-Growth Fintech & Banking Opportunities for Local Merchants'
   }
 ];
 

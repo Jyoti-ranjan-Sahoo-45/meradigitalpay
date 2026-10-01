@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import videoCashCollection from '../../assets/video-cash-collection.mp4';
+import videoMarketPenetration from '../../assets/video-market-penetration.mp4';
+import videoOrderPlacement from '../../assets/video-order-placement.mp4';
+import diagramEcoImg from '../../assets/diagram-ecosystem-services.jpeg';
+import campaignWomanImg from '../../assets/campaign-dil-se-desi-woman.jpeg';
+import campaignRetailerImg from '../../assets/campaign-dil-se-desi-retailer.jpeg';
 
 const solutionsData = [
   {
     id: 0,
     title: 'Digitize cash collection',
     shortDesc: 'Enable customers and collection agents to deposit cash at Mera Digital Pay’s extensive last mile network and optimize collection cost by upto 50%',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/11/digitize-cash-collection.png',
-    video: 'https://paynearby.in/wp-content/uploads-efs/2020/11/digitize-cash-collections-2.mp4',
-    poster: 'https://paynearby.in/wp-content/uploads-efs/2020/11/Digitize-cash-collection.jpg',
+    img: diagramEcoImg,
+    video: videoCashCollection,
+    poster: campaignRetailerImg,
     industries: [
       { icon: 'pn pn-museum', text: 'NBFCs, Micro finance Institutions (MFIs), Small Finance bank (SFBs)' },
       { icon: 'pn pn-delivery-bike', text: 'Food Delivery Cos' },
@@ -21,9 +27,9 @@ const solutionsData = [
     id: 1,
     title: 'Increase market penetration at the last mile',
     shortDesc: 'Distribute sachetize content through Mera Digital Pay’s last mile network and enable digitization of micro cash exchange to digically reach 400 million+ last mile audience',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/11/increase-market-penetration.png',
-    video: 'https://paynearby.in/wp-content/uploads-efs/2020/11/Expand_Content_Distrubution.mp4',
-    poster: 'https://paynearby.in/wp-content/uploads-efs/2020/11/EXPAND-CONTENT-DISTRIBUTION.jpg',
+    img: campaignWomanImg,
+    video: videoMarketPenetration,
+    poster: campaignWomanImg,
     industries: [
       { icon: 'pn pn-ott', text: 'OTT' },
       { icon: 'pn pn-music-video', text: 'Music/Video' },
@@ -36,9 +42,9 @@ const solutionsData = [
     id: 2,
     title: 'Digitize order placement and payment',
     shortDesc: 'Enable 3X more efficiency in order processing and cash flow by digitizing order placement and payment across the retail value chain',
-    img: 'https://paynearby.in/wp-content/uploads-efs/2020/11/digitize-order-placement.png',
-    video: 'https://paynearby.in/wp-content/uploads-efs/2020/11/Order_Placement__Payment.mp4',
-    poster: 'https://paynearby.in/wp-content/uploads-efs/2020/11/Digitize-Order-Placement-Payment.jpg',
+    img: diagramEcoImg,
+    video: videoOrderPlacement,
+    poster: diagramEcoImg,
     industries: [
       { icon: 'pn pn-fast-moving', text: 'Fast Moving Consumer Goods' },
       { icon: 'pn pn-tablet', text: 'Pharma' },
@@ -48,6 +54,7 @@ const solutionsData = [
     ]
   }
 ];
+
 
 export default function CorporateSolutions({ onOpenContact }) {
   const [activeExtendId, setActiveExtendId] = useState(null);

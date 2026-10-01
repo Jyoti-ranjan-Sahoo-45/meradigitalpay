@@ -1,5 +1,7 @@
 import React from 'react';
 import PartnersSection from '../components/PartnersSection';
+import diagramEcoImg from '../assets/diagram-ecosystem-services.jpeg';
+
 
 const featureItems = [
   {
@@ -118,11 +120,12 @@ export default function FeaturesPage() {
             </div>
             <div className="top-feature-image" style={{ textAlign: 'center' }}>
               <img
-                src="https://paynearby.in/wp-content/uploads-efs/2020/11/feature-banner.jpg"
-                alt="Mera Digital Pay Features Banner"
+                src={diagramEcoImg}
+                alt="Mera Digital Pay Features Ecosystem"
                 style={{ maxWidth: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 12px 36px rgba(12, 70, 150, 0.12)' }}
               />
             </div>
+
           </div>
         </div>
       </section>
@@ -137,13 +140,10 @@ export default function FeaturesPage() {
               fontSize: '36px',
               fontWeight: 800,
               color: '#0c4696',
-              marginBottom: '50px',
-              position: 'relative',
-              paddingBottom: '16px'
+              marginBottom: '50px'
             }}
           >
             Features
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '60px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
           </h2>
 
           <div className="features--wrap" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>

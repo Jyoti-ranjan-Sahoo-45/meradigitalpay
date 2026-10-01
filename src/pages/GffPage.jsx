@@ -22,33 +22,33 @@ const gffPhotos = [
 
 const whitepapers = [
   {
-    title: 'EASE OF LIVING',
-    pdfUrl: 'https://paynearby.in/wp-content/uploads-efs/2025/10/EASE-OF-LIVING_DN.pdf',
+    title: 'EASE OF LIVING: Assisted Digital Transformation',
+    pdfUrl: '/contact-us',
     category: 'Report'
   },
   {
-    title: 'Mera Digital Saathi',
-    pdfUrl: 'https://paynearby.in/wp-content/uploads-efs/2025/10/A5-Saathi-GFF25-Oct25-CC_LOW.pdf',
+    title: 'Mera Digital Saathi: Last-Mile Financial Access',
+    pdfUrl: '/contact-us',
     category: 'Product Overview'
   },
   {
-    title: 'Credit at the Last Mile',
-    pdfUrl: 'https://paynearby.in/wp-content/uploads-efs/2025/10/A5-Credit-GFF25-CC_LOW.pdf',
+    title: 'Credit at the Last Mile: Bridging Bharat’s Credit Gap',
+    pdfUrl: '/contact-us',
     category: 'Whitepaper'
   },
   {
-    title: 'Insurance Inclusion',
-    pdfUrl: 'https://paynearby.in/wp-content/uploads-efs/2025/10/A5-Insurance_GFF25-CC-LOW.pdf',
+    title: 'Insurance Inclusion: Micro-Protection for Rural India',
+    pdfUrl: '/contact-us',
     category: 'Whitepaper'
   },
   {
-    title: 'Savings & Investments',
-    pdfUrl: 'https://paynearby.in/wp-content/uploads-efs/2025/10/Savings-Investments-OCT25-CC-LOW.pdf',
+    title: 'Savings & Investments: Digital Wealth for Bharat',
+    pdfUrl: '/contact-us',
     category: 'Research'
   },
   {
     title: 'Designing for Her: Understanding Women’s Needs at the Last Mile',
-    pdfUrl: 'https://paynearby.in/wp-content/uploads-efs/2025/10/GFF-Grameen-Foundation-OCT25-V2-LOW.pdf',
+    pdfUrl: '/contact-us',
     category: 'Joint Report'
   }
 ];
@@ -101,13 +101,10 @@ export default function GffPage() {
               fontSize: '34px',
               fontWeight: 800,
               color: '#0c4696',
-              marginBottom: '36px',
-              position: 'relative',
-              paddingBottom: '16px'
+              marginBottom: '36px'
             }}
           >
             GFF Highlights &amp; Gallery
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '60px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
@@ -148,13 +145,10 @@ export default function GffPage() {
               fontSize: '34px',
               fontWeight: 800,
               color: '#0c4696',
-              marginBottom: '40px',
-              position: 'relative',
-              paddingBottom: '16px'
+              marginBottom: '40px'
             }}
           >
             Chalo Bharat with Mera Digital Pay — Reports &amp; Whitepapers
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '60px', height: '4px', background: '#58b147', borderRadius: '2px' }} />
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
