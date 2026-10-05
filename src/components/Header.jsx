@@ -7,6 +7,43 @@ import {
   Landmark, CreditCard, Zap, Shield, FileText, UserCheck, Plane, Briefcase
 } from 'lucide-react';
 
+const serviceLinks = [
+  { name: 'AEPS', path: '/services/aeps' },
+  { name: 'Money Transfer (DMT)', path: '/services/money-transfer-dmt' },
+  { name: 'Micro ATM Withdrawal', path: '/services/micro-atm-withdrawal' },
+  { name: 'Mobile & DTH Recharge', path: '/services/mobile-dth-recharge' },
+  { name: 'BBPS', path: '/services/bbps' },
+  { name: 'OTT Recharge', path: '/services/ott-recharge' },
+  { name: 'PAN Card', path: '/services/pan-card' },
+  { name: 'ITR Filing', path: '/services/itr-filing' },
+  { name: 'GST Registration', path: '/services/gst-registration' },
+  { name: 'MSME Registration', path: '/services/msme-registration' },
+  { name: 'IRCTC Ticket Booking', path: '/services/irctc-ticket-booking' },
+  { name: 'Flight Booking', path: '/services/flight-booking' },
+  { name: 'Bus Booking', path: '/services/bus-booking' },
+  { name: 'Hotel Booking', path: '/services/hotel-booking' },
+  { name: 'Digital Bank Account', path: '/services/digital-bank-account' },
+  { name: 'Physical Card', path: '/services/physical-card' },
+  { name: 'UPI Payment', path: '/services/upi-payment' },
+  { name: 'Loan', path: '/services/loan' },
+  { name: 'Investment', path: '/services/investment' },
+  { name: 'Health Insurance', path: '/services/health-insurance' },
+  { name: 'Motor Insurance', path: '/services/motor-insurance' },
+  { name: 'Shop Insurance', path: '/services/shop-insurance' },
+  { name: 'Device Insurance', path: '/services/device-insurance' },
+  { name: 'Account Opening', path: '/services/account-opening' },
+  { name: 'Credit Card Apply', path: '/services/credit-card-apply' },
+  { name: 'SBM FD Card Apply', path: '/services/sbm-fd-card-apply' },
+  { name: 'NSDL BC Apply', path: '/services/nsdl-bc-apply' },
+  { name: 'Kotak BC Apply', path: '/services/kotak-bc-apply' },
+  { name: 'CMS Airtel', path: '/services/cms-airtel' },
+  { name: 'Payout', path: '/services/payout' }
+];
+
+const serviceLinksByName = Object.fromEntries(
+  serviceLinks.map((service) => [service.name, service.path])
+);
+
 export default function Header({ activeSegment = 'retailer', onSelectSegment, onOpenJoin }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false);
@@ -17,6 +54,19 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
   const loginDropdownRef = useRef(null);
   const companyDropdownRef = useRef(null);
   const servicesDropdownRef = useRef(null);
+  const servicesDropdownCloseTimeoutRef = useRef(null);
+
+  const openServicesDropdown = () => {
+    clearTimeout(servicesDropdownCloseTimeoutRef.current);
+    setIsServicesDropdownOpen(true);
+  };
+
+  const closeServicesDropdownSoon = () => {
+    clearTimeout(servicesDropdownCloseTimeoutRef.current);
+    servicesDropdownCloseTimeoutRef.current = setTimeout(() => {
+      setIsServicesDropdownOpen(false);
+    }, 180);
+  };
 
   // Close dropdowns on outside click
   useEffect(() => {
@@ -32,7 +82,10 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      clearTimeout(servicesDropdownCloseTimeoutRef.current);
+    };
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -59,30 +112,17 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleServicesClick = (e) => {
-    if (e) e.preventDefault();
-    if (activeSegment !== 'retailer') {
-      if (onSelectSegment) {
-        onSelectSegment('retailer', 'services');
-      }
-    } else {
-      const el = document.getElementById('services');
-      if (el) {
-        const yOffset = -70;
-        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        window.history.pushState(null, '', `/#services`);
-      }
-    }
+  const handleServiceItemClick = (serviceName, e) => {
+    const path = serviceLinksByName[serviceName];
+    if (!path || typeof onSelectSegment !== 'function') return;
+
+    e.preventDefault();
+    onSelectSegment(path.split('/').pop());
     setIsMobileMenuOpen(false);
+    setIsMobileServicesOpen(false);
     setIsLoginDropdownOpen(false);
     setIsCompanyDropdownOpen(false);
     setIsServicesDropdownOpen(false);
-  };
-
-  const handleServiceItemClick = (serviceName, e) => {
-    if (e) e.preventDefault();
-    handleServicesClick(e);
   };
 
   const handleRegisterClick = (e) => {
@@ -243,8 +283,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
             <div 
               ref={servicesDropdownRef}
               style={{ position: 'relative' }}
-              onMouseEnter={() => setIsServicesDropdownOpen(true)}
-              onMouseLeave={() => setIsServicesDropdownOpen(false)}
+              onMouseEnter={openServicesDropdown}
+              onMouseLeave={closeServicesDropdownSoon}
             >
               <button 
                 type="button"
@@ -279,6 +319,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               {/* Mega Menu Category Card */}
               {isServicesDropdownOpen && (
                 <div 
+                  onMouseEnter={openServicesDropdown}
+                  onMouseLeave={closeServicesDropdownSoon}
                   style={{
                     position: 'fixed',
                     top: '76px',
@@ -317,7 +359,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                             {col.top.items.map((item, iIdx) => (
                               <li key={iIdx}>
                                 <a
-                                  href="/#services"
+                                  href={serviceLinksByName[item]}
                                   onClick={(e) => handleServiceItemClick(item, e)}
                                   style={{
                                     display: 'flex',
@@ -360,7 +402,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                             {col.bottom.items.map((item, iIdx) => (
                               <li key={iIdx}>
                                 <a
-                                  href="/#services"
+                                  href={serviceLinksByName[item]}
                                   onClick={(e) => handleServiceItemClick(item, e)}
                                   style={{
                                     display: 'flex',
@@ -420,7 +462,33 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 if (activeSegment !== 'solutions') e.currentTarget.style.backgroundColor = 'transparent';
               }}
             >
-              Products & API
+               API client
+            </a>
+            <a 
+              href="/products" 
+              onClick={(e) => handleNavClick('products', e)}
+              style={{
+                color: activeSegment === 'products' ? '#0A2B5E' : '#475569',
+                backgroundColor: activeSegment === 'products' ? '#EEF4FF' : 'transparent',
+                fontWeight: activeSegment === 'products' ? 700 : 600,
+                fontSize: '14px',
+                padding: '8px 14px',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+                transition: 'all 0.2s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+              onMouseEnter={(e) => {
+                if (activeSegment !== 'products') e.currentTarget.style.backgroundColor = '#f8fafc';
+              }}
+              onMouseLeave={(e) => {
+                if (activeSegment !== 'products') e.currentTarget.style.backgroundColor = 'transparent';
+              }}
+            >
+               Products
             </a>
 
             {/* Income Calculator */}
@@ -941,7 +1009,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                               {col.top.items.map((it, i) => (
                                 <li key={i}>
                                   <a 
-                                    href="/#services" 
+                                  href={serviceLinksByName[it]} 
                                     onClick={(e) => handleServiceItemClick(it, e)} 
                                     style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12.5px', color: '#64748B', textDecoration: 'none' }}
                                   >
@@ -961,7 +1029,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                               {col.bottom.items.map((it, i) => (
                                 <li key={i}>
                                   <a 
-                                    href="/#services" 
+                                    href={serviceLinksByName[it]} 
                                     onClick={(e) => handleServiceItemClick(it, e)} 
                                     style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12.5px', color: '#64748B', textDecoration: 'none' }}
                                   >

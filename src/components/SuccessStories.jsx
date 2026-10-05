@@ -10,10 +10,10 @@ import {
   Award
 } from 'lucide-react';
 
-import campaignWomanImg from '../assets/campaign-dil-se-desi-woman.jpeg';
-import campaignRetailerImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
-import digitalNaariImg from '../assets/media-digital-naari-gujarat.jpeg';
-import shgImg from '../assets/media-shg-dual-auth.jpeg';
+import campaignWomanImg from '../assets/girlimg1.jpeg';
+import campaignRetailerImg from '../assets/boyimg1.jpeg';
+import digitalNaariImg from '../assets/girlimg2.jpeg';
+import shgImg from '../assets/boy2img.jpeg';
 
 const storiesData = [
   {

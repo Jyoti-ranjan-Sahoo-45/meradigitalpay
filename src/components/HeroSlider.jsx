@@ -1,11 +1,25 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Volume2, VolumeX, Play, Pause, Sparkles } from 'lucide-react';
 import promoVideo from "./../assets/video-hero-promo.mp4";
+import heroImage1 from '../assets/hero1.jpeg';
+import heroImage2 from '../assets/hero2.jpeg';
+import heroImage3 from '../assets/hero3.jpeg';
+
+const heroImages = [heroImage1, heroImage2, heroImage3];
 
 export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [activeHeroImage, setActiveHeroImage] = useState(0);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    const sliderInterval = window.setInterval(() => {
+      setActiveHeroImage((current) => (current + 1) % heroImages.length);
+    }, 3000);
+
+    return () => window.clearInterval(sliderInterval);
+  }, []);
 
   const handleIncomeCalcClick = useCallback((e) => {
     if (e) {
@@ -58,9 +72,35 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                 <Sparkles size={14} color="#0c4696" />
                 <span>Official Brand Film • Mera Digital Pay</span>
               </div>
-              <h2 className="main-header-title" style={{ whiteSpace: 'pre-line' }}>
-                Daudega To Mera Desh Daudega:{"\n"}Har Dukaan bane Digital Kendra
-              </h2>
+              <div className="hero-promo-slider" aria-label="Mera Digital Pay promotional images">
+                <div
+                  className="hero-promo-track"
+                  style={{
+                    transform: `translateX(-${activeHeroImage * (100 / heroImages.length)}%)`
+                  }}
+                >
+                  {heroImages.map((image, index) => (
+                    <div className="hero-promo-slide" key={image}>
+                      <img
+                        src={image}
+                        alt={`Mera Digital Pay promotion ${index + 1}`}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="hero-promo-dots" aria-label="Choose promotional image">
+                  {heroImages.map((image, index) => (
+                    <button
+                      aria-label={`Show promotional image ${index + 1}`}
+                      aria-current={activeHeroImage === index ? 'true' : undefined}
+                      className={activeHeroImage === index ? 'active' : ''}
+                      key={image}
+                      onClick={() => setActiveHeroImage(index)}
+                      type="button"
+                    />
+                  ))}
+                </div>
+              </div>
               <div className="content-wrap">
                 <p className="body-content">
                   A nationwide mission to empower Bharat by providing every neighborhood{" "}
