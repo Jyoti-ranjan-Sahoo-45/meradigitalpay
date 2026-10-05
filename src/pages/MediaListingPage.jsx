@@ -1,325 +1,268 @@
 import React, { useState } from 'react';
-import PartnersSection from '../components/PartnersSection';
-import campaignWomanImg from '../assets/campaign-dil-se-desi-woman.jpeg';
-import campaignRetailerImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
-import goldLoanImg from '../assets/media-gold-loan-550cr.jpeg';
-import digitalNaariGujaratImg from '../assets/media-digital-naari-gujarat.jpeg';
-import shgDualAuthImg from '../assets/media-shg-dual-auth.jpeg';
-import mitReviewImg from '../assets/award-mit-review.jpeg';
-import gptwImg from '../assets/award-gptw-workplace.jpeg';
-import harvardImg from '../assets/award-harvard-casestudy.jpeg';
-import diagramEcoImg from '../assets/diagram-ecosystem-services.jpeg';
+import { 
+  Camera, 
+  Sparkles, 
+  Calendar, 
+  MapPin, 
+  Image as ImageIcon,
+  Award,
+  Users,
+  PartyPopper,
+  X
+} from 'lucide-react';
 
-const initialArticles = [
-  {
-    id: 'saathi-campaign',
-    title: "Mera Digital Saathi Campaign ‘Dil Se Desi. Life Digital.’ Captures Bharat’s Trust-led Digital Shift",
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'June 4, 2026',
-    img: campaignWomanImg,
-    excerpt: 'The campaign captures simple moments from everyday life, a mobile recharge at home, an urgent funds transfer or a small step towards savings. Each story shows how Saathi can help customers complete essential tasks with ease, while building confidence to use digital services more independently.',
-    fullContent: `Mera Digital Pay, India's leading branchless banking and digital services network, has unveiled its new Saathi campaign themed ‘Dil Se Desi. Life Digital.’ The initiative highlights the critical role played by local retail champions in accelerating digital adoption across rural and semi-urban Bharat.
+import workplaceImg from '../assets/award-gptw-workplace.jpeg';
+import womanLeaderImg from '../assets/campaign-dil-se-desi-woman.jpeg';
+import retailerMeetImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
+import digitalNaariImg from '../assets/media-digital-naari-gujarat.jpeg';
+import teamShgImg from '../assets/media-shg-dual-auth.jpeg';
+import awardsImg from '../assets/award-mit-review.jpeg';
 
-Through real-life narratives, the campaign captures everyday moments—from recharging a phone at home and sending money to family during emergencies to building a recurring savings habit. Mera Digital Saathi serves as a trusted companion bridging the gap between high-tech digital solutions and last-mile citizens.`
+const galleryEvents = [
+  {
+    id: 1,
+    title: 'Great Place to Work & Annual Team Celebration',
+    category: 'Celebration',
+    date: 'Annual Office Meet',
+    location: 'Head Office, Bareilly',
+    desc: 'Celebrating our company culture, high employee trust, and team milestones with all department heads and staff members.',
+    image: workplaceImg,
+    badge: 'Annual Function'
   },
   {
-    id: 'gold-loan-550-crore',
-    title: 'Mera Digital Pay crosses ₹550 crore in gold loan disbursements through small retailers in semi-urban and rural India in FY26',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'May 7, 2026',
-    img: goldLoanImg,
-    excerpt: 'Mera Digital Pay continues to partner with banks and NBFCs to expand gold loan access across Bharat. By leveraging its distribution network, the platform enables lenders to reach customers at scale through a simple, plug-and-play model, while making credit more accessible, fast and reliable at the last mile.',
-    fullContent: `Mera Digital Pay announced that it has successfully facilitated over ₹550 crore in gold loan disbursements across Bharat during FY26. Partnering with top financial institutions and NBFCs, local kirana store owners act as customer service points, providing quick doorstep evaluation and transparent formal credit options to underserved borrowers.`
+    id: 2,
+    title: 'Women Digital Entrepreneurship & Naari Shakti Meet',
+    category: 'Event',
+    date: 'Field Conference',
+    location: 'Gujarat & Maharashtra Hub',
+    desc: 'Empowering women Banking Mitras and Lakhpati Didi network with digital training workshops and honor awards.',
+    image: digitalNaariImg,
+    badge: 'Empowerment Meet'
   },
   {
-    id: 'mit-review-feature',
-    title: 'Mera Digital Pay gets featured in MIT Technology Review for last-mile digital fintech infrastructure',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'April 18, 2026',
-    img: mitReviewImg,
-    excerpt: 'MIT Technology Review recognized Mera Digital Pay for its relentless effort to ensure seamless delivery of financial and digital services across India.',
-    fullContent: `In an exclusive feature, MIT Technology Review highlighted the groundbreaking work being done by Mera Digital Pay in transforming neighborhood kirana stores into digital fintech hubs, enabling assisted digital banking for millions of citizens.`
+    id: 3,
+    title: 'National Retailer Partner & Distributor Summit',
+    category: 'Partner Summit',
+    date: 'Quarterly Meet',
+    location: 'Regional Center, Bareilly',
+    desc: 'Recognizing top performing Retailers, Master Distributors and Franchise owners across North & West India.',
+    image: retailerMeetImg,
+    badge: 'Partner Summit'
   },
   {
-    id: 'lakhpati-didi-gujarat',
-    title: 'Women Entrepreneur Banking Network Expands Lakhpati Didi Footprints in Gujarat',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'February 26, 2026',
-    img: digitalNaariGujaratImg,
-    excerpt: 'The Women Banking Mitra model is designed to generate steady and repeat income at the last mile. Women deliver essential, everyday services that households need year-round, which ensures consistent transactions and commission earnings.',
-    fullContent: `Mera Digital Pay announced an aggressive roadmap to onboard and empower over 1,00,000 women micro-entrepreneurs across Gujarat by FY28. Providing comprehensive digital literacy, POS devices, and continuous mentorship, the platform turns local women into sustainable business leaders.`
+    id: 4,
+    title: 'FinTech Innovation & Technology Milestone Award',
+    category: 'Awards',
+    date: 'Excellence Ceremony',
+    location: 'Corporate HQ',
+    desc: 'Company recognized for pioneering branchless banking, AEPS micro-banking and last-mile commerce infrastructure.',
+    image: awardsImg,
+    badge: 'Company Award'
   },
   {
-    id: 'shg-dual-auth',
-    title: 'Mera Digital Pay becomes India’s first fintech to digitise SHG cash withdrawals and deposits with dual authentication',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'January 7, 2026',
-    img: shgDualAuthImg,
-    excerpt: 'This innovation addresses a critical operational bottleneck in SHG-bank linkage by enabling compliant, transparent access to group funds without requiring repeated physical visits to bank branches.',
-    fullContent: `In a groundbreaking development for Self-Help Groups (SHGs), Mera Digital Pay has launched dual biometric authentication for SHG bank accounts. Both designated group signatories can now securely authenticate and transact at any local Mera Digital Pay store, eliminating long journeys and wait times at distant bank branches.`
+    id: 5,
+    title: 'Self-Help Group (SHG) & Rural Banking Integration Drive',
+    category: 'Field Drive',
+    date: 'Special Initiative',
+    location: 'Rural Expansion Hub',
+    desc: 'Field team implementing biometric dual-authentication cash access for self-help group women.',
+    image: teamShgImg,
+    badge: 'Field Program'
   },
   {
-    id: 'gptw-best-workplaces',
-    title: 'Great Place To Work® India features Mera Digital Pay among Top 25 Best Workplaces™ in BFSI',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'January 15, 2026',
-    img: gptwImg,
-    excerpt: 'Great Place To Work® India recognizes Mera Digital Pay’s high-trust, high-performance culture empowering individuals to build fintech solutions for Bharat.',
-    fullContent: `Mera Digital Pay was celebrated among the top workplaces in India in the BFSI sector, reflecting its progressive work culture, equal opportunity employment, and impactful purpose-driven mission.`
-  },
-  {
-    id: 'harvard-case-study-feature',
-    title: 'Harvard Business School publishes comprehensive Case Study on Mera Digital Pay',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'November 12, 2025',
-    img: harvardImg,
-    excerpt: 'A proud milestone as Harvard Business School studies the scalable branchless banking model built by Mera Digital Pay to digitize cash at the grassroots level.',
-    fullContent: `Harvard Business School has published an in-depth case study analyzing Mera Digital Pay’s unique distribution-as-a-service (DaaS) model, highlighting how local kirana merchants are digitally empowered to serve as neighborhood banking outposts.`
-  },
-  {
-    id: 'retailer-empowerment-campaign',
-    title: 'Mera Digital Pay Retailer Campaign: Empowering Local Kirana Champions Across Semi-Urban India',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'October 28, 2025',
-    img: campaignRetailerImg,
-    excerpt: 'Local kirana store owners are transforming their businesses into complete digital financial centers with the Mera Digital Pay platform.',
-    fullContent: `From cash withdrawals and domestic money transfers to bill payments and insurance, Mera Digital Pay enables local store owners to double their income while delivering vital services to their community.`
-  },
-  {
-    id: 'ecosystem-services-expansion',
-    title: 'Mera Digital Pay expands Integrated Commerce & Cash Collection Ecosystem across 20,000+ PIN Codes',
-    category: 'Mera Digital Pay',
-    author: 'By Corporate Communications',
-    date: 'September 10, 2025',
-    img: diagramEcoImg,
-    excerpt: 'Connecting order digitization, payment disbursal, product sampling, market expansion, and cash collection in one unified platform.',
-    fullContent: `Mera Digital Pay continues to extend its comprehensive suite of services, uniting enterprises, merchants, and rural citizens under one high-tech, reliable platform.`
+    id: 6,
+    title: 'Leadership & Community Outreach Workshop',
+    category: 'Workshop',
+    date: 'Strategic Session',
+    location: 'Corporate Office',
+    desc: 'Management workshop on scaling customer care operations, UPI soundbox deployments, and partner satisfaction.',
+    image: womanLeaderImg,
+    badge: 'Team Workshop'
   }
 ];
 
-
 export default function MediaListingPage() {
-  const [articles, setArticles] = useState(initialArticles);
-  const [selectedArticle, setSelectedArticle] = useState(null);
-  const [filterCategory, setFilterCategory] = useState('all');
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [filter, setFilter] = useState('all');
 
-  const handleReadMore = (article, e) => {
-    e.preventDefault();
-    setSelectedArticle(article);
-  };
+  const filteredEvents = filter === 'all'
+    ? galleryEvents
+    : galleryEvents.filter(e => e.category.toLowerCase().includes(filter));
 
   return (
-    <main className="media-listing-page-main">
-      {/* Breadcrumbs */}
-      <div id="breadcrumbs" className="breadcrumbs-wrapper bgcolor--white">
-        <div className="container--responsive">
-          <ul className="breadcrumbs-container" style={{ display: 'flex', gap: '8px', listStyle: 'none', padding: '16px 0', margin: 0, fontSize: '14px', color: '#64748b' }}>
-            <li className="item-home">
-              <a className="bread-link bread-home set-retailer" href="/" style={{ color: '#0c4696', textDecoration: 'none' }}>
-                Home
-              </a>
-            </li>
-            <li className="separator separator-home">::</li>
-            <li className="item-current item-media">
-              <span className="bread-current" style={{ fontWeight: 600, color: '#1e293b' }}>
-                Media
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Hero Banner */}
-      <section className="top-wrapper media" style={{ background: '#f8fafc', padding: '50px 0 60px', borderBottom: '1px solid #e2e8f0' }}>
-        <div className="container--responsive">
-          <div className="top-content" style={{ maxWidth: '900px' }}>
-            <h1 className="main-header-title" style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '48px', fontWeight: 800, color: '#0c4696', marginBottom: '20px', lineHeight: 1.15 }}>
-              Media Room
-            </h1>
-            <p className="body-content" style={{ fontSize: '17px', lineHeight: 1.7, color: '#4a5568', margin: 0 }}>
-              Stay updated with the latest news, press releases, reports, media coverage and industry perspectives from Mera Digital Pay.
-              <br /><br />
-              From branchless banking and digital payments to assisted commerce, credit, MSME growth, women empowerment and last-mile financial inclusion, this space brings together key stories from Mera Digital Pay’s journey of making financial and digital services accessible to every household across Bharat.
-            </p>
+    <main className="gallery-events-page-main" style={{ background: '#f8fafc', paddingBottom: '90px' }}>
+      
+      {/* Header Banner */}
+      <section style={{ background: 'linear-gradient(135deg, #0A2B5E 0%, #0D3B7A 60%, #051937 100%)', color: '#ffffff', padding: '60px 0 50px' }}>
+        <div className="container--responsive" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(217, 148, 10, 0.18)', border: '1px solid #D9940A', padding: '6px 18px', borderRadius: '30px', color: '#F5C842', fontSize: '13.5px', fontWeight: 800, marginBottom: '16px' }}>
+            <Camera size={16} />
+            <span>OFFICE EVENTS, FUNCTIONS & PHOTO GALLERY</span>
           </div>
-        </div>
-      </section>
+          <h1 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '40px', fontWeight: 900, margin: '0 0 14px', letterSpacing: '-0.5px' }}>
+            Office Events & Celebrations Gallery
+          </h1>
+          <p style={{ fontSize: '17px', color: '#cbd5e1', maxWidth: '780px', margin: '0 auto', lineHeight: 1.6 }}>
+            Glimpses of life at Mera Digital Pay — our corporate events, partner conferences, team celebrations, and field empowerment workshops.
+          </p>
 
-      {/* Main Media Grid Section */}
-      <section className="media-main-wrapper bgcolor--white">
-        <div className="container--responsive">
-          <div className="latest-news-wrapper">
-            <ul className="media-cards-container">
-              {articles.map((item) => (
-                <li key={item.id} className="news-card-item">
-                  <div className="news-card-image-box" onClick={(e) => handleReadMore(item, e)}>
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/logo.png';
-                      }}
-                    />
-                  </div>
-                  <div style={{ padding: '24px 24px 16px', flex: '1', display: 'flex', flexDirection: 'column' }}>
-                    <a
-                      href="#"
-                      onClick={(e) => handleReadMore(item, e)}
-                      style={{ textDecoration: 'none', color: '#0c4696', marginBottom: '12px' }}
-                    >
-                      <h3 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '18px', fontWeight: 800, lineHeight: 1.35, margin: 0, color: '#0c4696' }}>
-                        {item.title}
-                      </h3>
-                    </a>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', margin: '0 0 14px', fontSize: '13px', color: '#64748b' }}>
-                      <span style={{ fontWeight: 700, color: '#58b147' }}>{item.category}</span>
-                      <span>•</span>
-                      <span>{item.date}</span>
-                    </div>
-                    <p style={{ fontSize: '14.5px', lineHeight: 1.6, color: '#4a5568', margin: 0, flex: '1' }}>
-                      {item.excerpt}
-                    </p>
-                  </div>
-                  <div style={{ padding: '0 24px 24px' }}>
-                    <button
-                      type="button"
-                      onClick={(e) => handleReadMore(item, e)}
-                      style={{
-                        padding: '10px 22px',
-                        borderRadius: '8px',
-                        background: '#58b147',
-                        color: '#ffffff',
-                        fontWeight: 700,
-                        fontSize: '14px',
-                        border: 'none',
-                        cursor: 'pointer',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        transition: 'background 0.2s ease'
-                      }}
-                    >
-                      Read More →
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Modal for Full Article View */}
-      {selectedArticle && (
-        <div
-          className="article-modal-backdrop"
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0, 0, 0, 0.7)',
-            zIndex: 99999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '20px',
-            backdropFilter: 'blur(4px)'
-          }}
-          onClick={() => setSelectedArticle(null)}
-        >
-          <div
-            className="article-modal-content"
-            style={{
-              background: '#ffffff',
-              borderRadius: '20px',
-              maxWidth: '750px',
-              width: '100%',
-              maxHeight: '90vh',
-              overflowY: 'auto',
-              padding: '36px',
-              position: 'relative',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setSelectedArticle(null)}
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                background: '#f1f5f9',
-                border: 'none',
-                borderRadius: '50%',
-                width: '36px',
-                height: '36px',
-                fontSize: '18px',
-                fontWeight: 'bold',
-                color: '#64748b',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              ✕
-            </button>
-
-            <img
-              src={selectedArticle.img}
-              alt={selectedArticle.title}
-              style={{ width: '100%', maxHeight: '340px', objectFit: 'cover', borderRadius: '12px', marginBottom: '24px' }}
-            />
-
-            <div style={{ display: 'flex', gap: '12px', alignItems: 'center', fontSize: '13.5px', color: '#64748b', marginBottom: '14px' }}>
-              <span style={{ fontWeight: 700, color: '#58b147', background: '#eef8eb', padding: '4px 10px', borderRadius: '6px' }}>{selectedArticle.category}</span>
-              <span>•</span>
-              <span>{selectedArticle.author}</span>
-              <span>•</span>
-              <span>{selectedArticle.date}</span>
-            </div>
-
-            <h2 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '24px', fontWeight: 800, color: '#0c4696', lineHeight: 1.35, marginBottom: '20px' }}>
-              {selectedArticle.title}
-            </h2>
-
-            <div style={{ fontSize: '16px', lineHeight: 1.75, color: '#334155', whiteSpace: 'pre-line' }}>
-              {selectedArticle.fullContent}
-            </div>
-
-            <div style={{ marginTop: '30px', paddingTop: '20px', borderTop: '1px solid #e2e8f0', display: 'flex', justifyContent: 'flex-end' }}>
+          {/* Filter Chips */}
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px', marginTop: '28px' }}>
+            {['all', 'celebration', 'summit', 'awards', 'event'].map((cat) => (
               <button
+                key={cat}
                 type="button"
-                onClick={() => setSelectedArticle(null)}
+                onClick={() => setFilter(cat)}
                 style={{
-                  padding: '10px 24px',
-                  borderRadius: '8px',
-                  background: '#0c4696',
+                  background: filter === cat ? '#D9940A' : 'rgba(255,255,255,0.12)',
                   color: '#ffffff',
-                  fontWeight: 700,
-                  fontSize: '14px',
                   border: 'none',
+                  padding: '7px 18px',
+                  borderRadius: '20px',
+                  fontWeight: 700,
+                  fontSize: '13.5px',
+                  textTransform: 'capitalize',
                   cursor: 'pointer'
                 }}
               >
-                Close Article
+                {cat === 'all' ? 'All Photos & Events' : cat}
               </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Grid */}
+      <div className="container--responsive" style={{ maxWidth: '1100px', margin: '0 auto', padding: '50px 20px 0' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '26px' }}>
+          {filteredEvents.map((item) => (
+            <div 
+              key={item.id}
+              style={{
+                background: '#ffffff',
+                borderRadius: '22px',
+                border: '1.5px solid #e2e8f0',
+                boxShadow: '0 6px 24px rgba(10, 43, 94, 0.06)',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                cursor: 'pointer',
+                transition: 'transform 0.25s ease, box-shadow 0.25s ease'
+              }}
+              onClick={() => setSelectedPhoto(item)}
+            >
+              <div style={{ position: 'relative', height: '220px', overflow: 'hidden', background: '#e2e8f0' }}>
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.35s ease' }} 
+                />
+                <span style={{ 
+                  position: 'absolute', 
+                  top: '12px', 
+                  right: '12px', 
+                  background: 'rgba(10, 43, 94, 0.85)', 
+                  backdropFilter: 'blur(8px)',
+                  color: '#ffffff', 
+                  fontSize: '11.5px', 
+                  fontWeight: 800, 
+                  padding: '4px 12px', 
+                  borderRadius: '20px',
+                  border: '1px solid rgba(255,255,255,0.2)'
+                }}>
+                  {item.badge}
+                </span>
+              </div>
+
+              <div style={{ padding: '22px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '12.5px', color: '#64748b', marginBottom: '10px' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <Calendar size={13} color="#0A2B5E" /> {item.date}
+                    </span>
+                    <span>•</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <MapPin size={13} color="#15803d" /> {item.location}
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '18px', fontWeight: 800, color: '#0A2B5E', margin: '0 0 10px', lineHeight: 1.4 }}>
+                    {item.title}
+                  </h3>
+
+                  <p style={{ fontSize: '13.5px', color: '#475569', lineHeight: 1.6, margin: 0 }}>
+                    {item.desc}
+                  </p>
+                </div>
+
+                <div style={{ marginTop: '16px', paddingTop: '14px', borderTop: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', gap: '6px', color: '#D9940A', fontSize: '13px', fontWeight: 800 }}>
+                  <ImageIcon size={14} /> Click to View Full Image
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {selectedPhoto && (
+        <div 
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.85)',
+            backdropFilter: 'blur(8px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: '20px'
+          }}
+          onClick={() => setSelectedPhoto(null)}
+        >
+          <div 
+            style={{
+              background: '#ffffff',
+              borderRadius: '24px',
+              maxWidth: '750px',
+              width: '100%',
+              maxHeight: '90vh',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '0 30px 70px rgba(0,0,0,0.4)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ padding: '18px 24px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <h4 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '18px', fontWeight: 800, color: '#0A2B5E', margin: '0 0 2px' }}>
+                  {selectedPhoto.title}
+                </h4>
+                <span style={{ fontSize: '13px', color: '#64748b' }}>{selectedPhoto.location} • {selectedPhoto.date}</span>
+              </div>
+              <button 
+                type="button" 
+                onClick={() => setSelectedPhoto(null)}
+                style={{ background: '#f1f5f9', border: 'none', borderRadius: '50%', width: '34px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+              >
+                <X size={20} color="#0f172a" />
+              </button>
+            </div>
+            <div style={{ padding: '20px', overflowY: 'auto', textAlign: 'center' }}>
+              <img 
+                src={selectedPhoto.image} 
+                alt={selectedPhoto.title} 
+                style={{ width: '100%', maxHeight: '65vh', objectFit: 'contain', borderRadius: '14px' }} 
+              />
+              <p style={{ marginTop: '14px', fontSize: '14px', color: '#475569', textAlign: 'left', lineHeight: 1.6 }}>
+                {selectedPhoto.desc}
+              </p>
             </div>
           </div>
         </div>
       )}
 
-      {/* Partners & Download App */}
-      <PartnersSection />
     </main>
   );
 }

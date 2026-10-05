@@ -1,70 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import hero1 from "./../assets/hero1.png";
-import hero2 from "./../assets/hero2.png";
-import hero3 from "./../assets/hero3.png";
-
-const slidesData = [
-  {
-    id: 0,
-    title: "Daudega To Mera Desh Daudega:\nHar Dukaan bane Digital Kendra",
-    body: (
-      <>
-        <p className="body-content">
-          A nationwide mission to empower Bharat by providing every neighborhood{" "}
-          <span className="text--black text--bold">
-            direct access to DBT withdrawals, instant payouts, AEPS, and vital banking solutions.
-          </span>
-        </p>
-        <p className="body-content">Transform your store into a full-service Digital Banking Kendra.</p>
-        <p className="body-content text--blue text--bold">Minimal setup cost. High monthly commission earnings.</p>
-      </>
-    ),
-    image: hero1
-  },
-  {
-    id: 1,
-    title: "Join India’s Next-Generation\nBranchless Banking & FinTech Network",
-    body: (
-      <>
-        <p className="body-content">
-          With thousands of active retail partners across India, Mera Digital Pay delivers{" "}
-          <span className="text--bold text--black">secure, high-uptime financial services</span> directly to local communities.
-        </p>
-        <p className="body-content">Partner with India’s trusted digital payment platform.</p>
-        <p className="body-content text--black text--bold">Earn sustainable income on every digital transaction.</p>
-      </>
-    ),
-    image: hero2
-  },
-  {
-    id: 2,
-    title: "Upgrade your business and\nmaximize your retail earnings",
-    body: (
-      <>
-        <p className="body-content">
-          Equip your business with modern digital payment technology, multi-service utility billings, and recharge portals.
-        </p>
-        <p className="body-content">
-          Become the preferred one-stop digital service hub in your community and grow customer footfall daily.
-        </p>
-        <p className="body-content text--blue text--bold">Fast onboarding. Zero working capital locks.</p>
-      </>
-    ),
-    image: hero3
-  }
-];
+import React, { useState, useCallback, useRef } from 'react';
+import { Volume2, VolumeX, Play, Pause, Sparkles } from 'lucide-react';
+import promoVideo from "./../assets/video-hero-promo.mp4";
 
 export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slidesData.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const slide = slidesData[currentSlide];
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
 
   const handleIncomeCalcClick = useCallback((e) => {
     if (e) {
@@ -86,17 +27,50 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
     }
   }, [onOpenJoin]);
 
+  const toggleSound = (e) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
+  const togglePlay = (e) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
   return (
     <section className="top-wrapper retail hero-unified-wrapper">
       <div className="container--responsive">
         <div className="retail-top-slider-box">
           <div className="hero-slide-item slide-active">
             <div className="hero-content-col">
+              <div className="hero-video-pill-badge">
+                <Sparkles size={14} color="#0c4696" />
+                <span>Official Brand Film • Mera Digital Pay</span>
+              </div>
               <h2 className="main-header-title" style={{ whiteSpace: 'pre-line' }}>
-                {slide.title}
+                Daudega To Mera Desh Daudega:{"\n"}Har Dukaan bane Digital Kendra
               </h2>
               <div className="content-wrap">
-                {slide.body}
+                <p className="body-content">
+                  A nationwide mission to empower Bharat by providing every neighborhood{" "}
+                  <span className="text--black text--bold">
+                    direct access to DBT withdrawals, instant payouts, AEPS, and vital banking solutions.
+                  </span>
+                </p>
+                <p className="body-content">Transform your store into a full-service Digital Banking Kendra.</p>
+                <p className="body-content text--blue text--bold">Minimal setup cost. High monthly commission earnings.</p>
+                
                 <div className="group-button" style={{ position: 'relative', zIndex: 100 }}>
                   <button 
                     type="button"
@@ -117,22 +91,43 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                 </div>
               </div>
             </div>
-            <div className="hero-interactive-col">
-              <img src={slide.image} alt="Mera Digital Pay Retailer" />
-            </div>
-          </div>
 
-          {/* Slider Dots */}
-          <div className="slider-dots-container">
-            {slidesData.map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                className={`slider-dot ${idx === currentSlide ? 'active' : ''}`}
-                onClick={() => setCurrentSlide(idx)}
-                aria-label={`Slide ${idx + 1}`}
-              />
-            ))}
+            <div className="hero-interactive-col">
+              <div className="hero-video-banner-frame">
+                <video 
+                  ref={videoRef}
+                  src={promoVideo}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  className="hero-video-element"
+                />
+                
+                {/* Floating Video Overlay Controls */}
+                <div className="hero-video-overlay-bar">
+                  <button 
+                    type="button" 
+                    className="hero-vid-ctrl-btn"
+                    onClick={togglePlay}
+                    title={isPlaying ? "Pause" : "Play"}
+                  >
+                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                  </button>
+                  
+                  <span className="hero-vid-title-tag">Mera Digital Pay Promo</span>
+
+                  <button 
+                    type="button" 
+                    className="hero-vid-ctrl-btn sound"
+                    onClick={toggleSound}
+                    title={isMuted ? "Unmute Sound" : "Mute Sound"}
+                  >
+                    {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

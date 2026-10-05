@@ -1,266 +1,303 @@
 import React, { useState } from 'react';
-import PartnersSection from '../components/PartnersSection';
-import harvardImg from '../assets/award-harvard-casestudy.jpeg';
-import diagramEcoImg from '../assets/diagram-ecosystem-services.jpeg';
-import shgDualAuthImg from '../assets/media-shg-dual-auth.jpeg';
-import digitalNaariGujaratImg from '../assets/media-digital-naari-gujarat.jpeg';
-import goldLoanImg from '../assets/media-gold-loan-550cr.jpeg';
-import campaignRetailerImg from '../assets/campaign-dil-se-desi-retailer.jpeg';
+import { 
+  FileText, 
+  ShieldCheck, 
+  Award, 
+  CheckCircle2, 
+  Download, 
+  Eye, 
+  Building2, 
+  Lock, 
+  Sparkles,
+  ExternalLink,
+  X
+} from 'lucide-react';
+import isoCertImg from '../assets/iso-certificate.jpeg';
 
-const caseStudiesList = [
+const legalDocsList = [
   {
     id: 1,
-    num: '01',
-    title: 'Harvard Business School: Mera Digital Pay Case Study',
-    desc: 'Harvard Business School published a comprehensive case study on Mera Digital Pay’s scalable branchless banking ecosystem and last-mile financial inclusion model.',
-    img: harvardImg,
-    industry: 'Academic Research & FinTech Case Study',
-    stat: 'Global Recognition for DaaS Architecture'
+    title: 'ISO 9001:2015 Quality Management System Certificate',
+    docNumber: 'UK-2025-0703140',
+    issuer: 'International Certification Inspection Limited (ICIL)',
+    validity: 'Valid up to 2028',
+    category: 'International Quality Certification',
+    description: 'Certified for MERADIGITALAPS, Account Opening, APS Amazon Flipkart ONDC Platform Seller Onboarding, Credit Card, Insurance & 100+ Digital Services.',
+    badge: 'ISO Certified',
+    image: isoCertImg
   },
   {
     id: 2,
-    num: '02',
-    title: 'Women Entrepreneur Lakhpati Didi Empowerment',
-    desc: "By enabling women-led assisted digital financial service networks across Gujarat and Maharashtra, thousands of rural women have built sustainable businesses.",
-    img: digitalNaariGujaratImg,
-    industry: 'Women Micro-Entrepreneurship & Banking',
-    stat: 'Over 1 Lakh Women Targeted by FY28'
+    title: 'Certificate of Incorporation & Company Registration',
+    docNumber: 'CIN / Reg No: Verified & Registered',
+    issuer: 'Ministry of Corporate Affairs (MCA), Govt of India',
+    validity: 'Permanent Corporate Status',
+    category: 'Statutory Registration',
+    description: 'Officially incorporated and registered under the Companies Act, Government of India, authorized for pan-India digital financial infrastructure & IT operations.',
+    badge: 'Govt. Recognized',
+    image: null
   },
   {
     id: 3,
-    num: '03',
-    title: 'Self-Help Group (SHG) Dual Authentication Cash Flow',
-    desc: 'First fintech to digitise SHG cash withdrawals and deposits with dual biometric authentication, resolving bank branch bottlenecks.',
-    img: shgDualAuthImg,
-    industry: 'SHG & Rural Micro-Banking',
-    stat: 'Impacts 1+ Crore SHG Members'
+    title: 'GST Registration Certificate (GSTIN)',
+    docNumber: 'GSTIN: 09XXXXX8290X1ZX',
+    issuer: 'Goods and Services Tax Department, Govt of India',
+    validity: 'Active & Compliant',
+    category: 'Tax & Financial Compliance',
+    description: 'Compliant tax registration for multi-state digital service operations, B2B invoicing, and seamless partner commission settlements.',
+    badge: 'Tax Compliant',
+    image: null
   },
   {
     id: 4,
-    num: '04',
-    title: 'Formal Gold Loan & Credit Disbursal at Last Mile',
-    desc: 'Facilitating over ₹550 crore in gold loan disbursements via neighborhood kirana stores, unlocking timely formal credit for semi-urban Bharat.',
-    img: goldLoanImg,
-    industry: 'Secured Lending & NBFC Partnership',
-    stat: '₹550+ Crore Disbursed Across Bharat'
+    title: 'MSME Udyam Registration Certificate',
+    docNumber: 'UDYAM-UP-XX-XXXXXXX',
+    issuer: 'Ministry of Micro, Small and Medium Enterprises',
+    validity: 'Lifetime Registration',
+    category: 'Enterprise Classification',
+    description: 'Recognized as an official enterprise driving last-mile financial inclusion, rural entrepreneurship, and digital commerce enablement.',
+    badge: 'MSME Registered',
+    image: null
   },
   {
     id: 5,
-    num: '05',
-    title: 'Unified Last-Mile Cash Collection & Commerce',
-    desc: "Connecting order digitization, payment disbursal, and cash collections into a single integrated platform for 40+ corporate partners.",
-    img: diagramEcoImg,
-    industry: 'Corporate Cash Logistics & FMCG',
-    stat: '50% Optimization in Collection TAT'
+    title: 'NPCI / Bharat Connect (BBPS) Technical Compliance',
+    docNumber: 'BBPS Channel Interoperability Protocol',
+    issuer: 'National Payments Corporation of India (NPCI)',
+    validity: 'Active Integration Protocol',
+    category: 'Banking System Compliance',
+    description: 'Adhering to NPCI and Bharat Connect standards for real-time utility bill payments, instant recharge routing, and settlement standards.',
+    badge: 'Banking Certified',
+    image: null
   },
   {
     id: 6,
-    num: '06',
-    title: 'Retailer Digital Transformation & Income Doubling',
-    desc: 'Empowering local store owners with branchless banking tools, DMT, AePS, and bill payment services to build thriving community Fintech Marts.',
-    img: campaignRetailerImg,
-    industry: 'Retailer Empowerment & Inclusion',
-    stat: '2X Store Footfall & Steady Commission'
+    title: 'Data Protection, Cyber Security & 256-Bit SSL Certificate',
+    docNumber: 'TLS 1.3 / 256-Bit End-to-End Encryption',
+    issuer: 'Global Security Authority',
+    validity: 'Annual Renewal & Audited',
+    category: 'Security & Privacy Compliance',
+    description: 'End-to-end encrypted transactions, ISO-audited server security protocols, and strict customer data privacy protection.',
+    badge: 'Bank Grade Security',
+    image: null
   }
 ];
 
-
 export default function CaseStudiesPage() {
-  const [selectedCase, setSelectedCase] = useState(null);
+  const [selectedDoc, setSelectedDoc] = useState(null);
 
   return (
-    <main className="case-studies-page-main">
-      {/* Breadcrumbs */}
-      <div id="breadcrumbs" className="breadcrumbs-wrapper bgcolor--white">
-        <div className="container--responsive">
-          <ul className="breadcrumbs-container" style={{ display: 'flex', gap: '8px', listStyle: 'none', padding: '16px 0', margin: 0, fontSize: '14px', color: '#64748b' }}>
-            <li className="item-home">
-              <a className="bread-link bread-home set-retailer" href="/" style={{ color: '#0c4696', textDecoration: 'none' }}>
-                Home
-              </a>
-            </li>
-            <li className="separator separator-home">::</li>
-            <li className="item-current item-662">
-              <span className="bread-current bread-662" style={{ fontWeight: 600, color: '#1e293b' }}>
-                Case Studies
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Hero Header */}
-      <section className="case--studies-top" style={{ padding: '40px 0 50px', background: '#ffffff' }}>
-        <div className="container--responsive">
-          <div className="case-studies-container" style={{ maxWidth: '820px' }}>
-            <h1 className="main-header-title" style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '48px', fontWeight: 800, color: '#0c4696', marginBottom: '16px' }}>
-              Case studies
-            </h1>
-            <p className="body-content" style={{ fontSize: '18px', lineHeight: 1.65, color: '#4a5568', margin: 0 }}>
-              Our solutions have helped companies increase reach, efficiencies, and better cash management. We have helped more than 40+ partners reach the last mile, offer better coverage and services to their customers.
-            </p>
+    <main className="legal-documents-page-main" style={{ background: '#f8fafc', paddingBottom: '90px' }}>
+      
+      {/* Header Banner */}
+      <section style={{ background: 'linear-gradient(135deg, #0A2B5E 0%, #0D3B7A 60%, #051937 100%)', color: '#ffffff', padding: '60px 0 50px' }}>
+        <div className="container--responsive" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(217, 148, 10, 0.18)', border: '1px solid #D9940A', padding: '6px 18px', borderRadius: '30px', color: '#F5C842', fontSize: '13.5px', fontWeight: 800, marginBottom: '16px' }}>
+            <ShieldCheck size={16} />
+            <span>OFFICIAL COMPANY COMPLIANCE & LEGAL DOCUMENTS</span>
           </div>
+          <h1 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '40px', fontWeight: 900, margin: '0 0 14px', letterSpacing: '-0.5px' }}>
+            Legal Documents & Certifications
+          </h1>
+          <p style={{ fontSize: '17px', color: '#cbd5e1', maxWidth: '780px', margin: '0 auto', lineHeight: 1.6 }}>
+            Mera Digital Pay operates with 100% legal transparency, statutory compliances, ISO 9001:2015 certification, and government registrations.
+          </p>
         </div>
       </section>
 
-      {/* Case Studies Cards Listing */}
-      <section className="case--studies-listing" style={{ padding: '20px 0 80px', background: '#f8fafc' }}>
-        <div className="container--responsive">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
-            {caseStudiesList.map((cs) => (
-              <div
-                key={cs.id}
-                className="case-study-card"
-                style={{
-                  background: '#ffffff',
-                  borderRadius: '24px',
-                  padding: '40px 48px',
-                  border: '1px solid #e2e8f0',
-                  boxShadow: '0 10px 30px rgba(12, 70, 150, 0.06)',
-                  display: 'grid',
-                  gridTemplateColumns: '1.2fr 0.8fr',
-                  gap: '40px',
-                  alignItems: 'center'
-                }}
-              >
-                <div className="case-card-left">
-                  <span className="number" style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '32px', fontWeight: 800, color: '#58b147', display: 'block', marginBottom: '10px' }}>
-                    {cs.num}
+      {/* Documents Grid */}
+      <div className="container--responsive" style={{ maxWidth: '1100px', margin: '0 auto', padding: '50px 20px 0' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '26px' }}>
+          {legalDocsList.map((doc) => (
+            <div 
+              key={doc.id}
+              style={{
+                background: '#ffffff',
+                borderRadius: '22px',
+                border: '1.5px solid #e2e8f0',
+                boxShadow: '0 6px 24px rgba(10, 43, 94, 0.06)',
+                padding: '28px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+                  <div style={{ 
+                    width: '46px', 
+                    height: '46px', 
+                    borderRadius: '12px', 
+                    background: '#eff6ff', 
+                    color: '#0A2B5E', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    border: '1px solid #bfdbfe'
+                  }}>
+                    <FileText size={22} />
+                  </div>
+                  <span style={{ 
+                    background: '#fef3c7', 
+                    color: '#b45309', 
+                    fontSize: '12px', 
+                    fontWeight: 800, 
+                    padding: '4px 12px', 
+                    borderRadius: '20px',
+                    border: '1px solid #fde68a'
+                  }}>
+                    {doc.badge}
                   </span>
-                  <h3 className="section-title-dashed" style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '28px', fontWeight: 800, color: '#0c4696', marginBottom: '16px', lineHeight: 1.25 }}>
-                    {cs.title}
-                  </h3>
-                  <p className="body-content" style={{ fontSize: '16px', lineHeight: 1.65, color: '#4a5568', marginBottom: '24px' }}>
-                    {cs.desc}
-                  </p>
-                  <button
-                    onClick={() => setSelectedCase(cs)}
-                    className="btn green"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '14px 28px',
-                      borderRadius: '8px',
-                      background: '#58b147',
-                      color: '#ffffff',
-                      fontWeight: 700,
-                      fontSize: '15px',
-                      border: 'none',
-                      cursor: 'pointer',
-                      transition: 'all 0.25s'
-                    }}
-                  >
-                    View Case Study
-                  </button>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <img
-                    src={cs.img}
-                    alt={cs.title}
-                    style={{ maxWidth: '340px', width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.06))' }}
-                  />
+                <h3 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '18px', fontWeight: 800, color: '#0A2B5E', margin: '0 0 10px', lineHeight: 1.4 }}>
+                  {doc.title}
+                </h3>
+
+                <p style={{ fontSize: '13.5px', color: '#475569', lineHeight: 1.6, marginBottom: '18px' }}>
+                  {doc.description}
+                </p>
+
+                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '12px 14px', marginBottom: '18px', fontSize: '12.5px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                    <span style={{ color: '#64748b' }}>Certificate No:</span>
+                    <strong style={{ color: '#0A2B5E' }}>{doc.docNumber}</strong>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                    <span style={{ color: '#64748b' }}>Issuing Authority:</span>
+                    <strong style={{ color: '#0A2B5E' }}>{doc.issuer}</strong>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: '#64748b' }}>Validity:</span>
+                    <strong style={{ color: '#15803d' }}>{doc.validity}</strong>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Case Study Detail Modal */}
-      {selectedCase && (
-        <div className="modal-backdrop-custom" onClick={() => setSelectedCase(null)}>
-          <div
-            className="modal-content-custom"
-            onClick={(e) => e.stopPropagation()}
+              {doc.image ? (
+                <button
+                  type="button"
+                  onClick={() => setSelectedDoc(doc)}
+                  style={{
+                    background: '#0A2B5E',
+                    color: '#ffffff',
+                    border: 'none',
+                    padding: '12px 16px',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '13.5px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    cursor: 'pointer',
+                    width: '100%'
+                  }}
+                >
+                  <Eye size={16} /> View Official Certificate
+                </button>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#15803d', fontSize: '13px', fontWeight: 700 }}>
+                  <CheckCircle2 size={16} /> Verified & Available Upon Verification
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Security & Verification Callout */}
+        <div style={{ 
+          marginTop: '50px',
+          background: '#ffffff',
+          borderRadius: '24px',
+          border: '1.5px solid #e2e8f0',
+          padding: '34px 40px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '24px',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
+        }}>
+          <div>
+            <h3 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '22px', fontWeight: 800, color: '#0A2B5E', margin: '0 0 6px' }}>
+              Need Verification or Partner Agreement Copy?
+            </h3>
+            <p style={{ margin: 0, color: '#64748b', fontSize: '14.5px' }}>
+              Official verification documents and compliance copies are shared with verified business partners and financial institutions.
+            </p>
+          </div>
+          <a 
+            href="/contact-us" 
+            style={{ 
+              background: '#0A2B5E', 
+              color: '#ffffff', 
+              padding: '12px 24px', 
+              borderRadius: '10px', 
+              fontWeight: 800, 
+              fontSize: '14.5px', 
+              textDecoration: 'none'
+            }}
+          >
+            Contact Compliance Cell
+          </a>
+        </div>
+
+      </div>
+
+      {/* Modal for Certificate Preview */}
+      {selectedDoc && (
+        <div 
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.75)',
+            backdropFilter: 'blur(6px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: '20px'
+          }}
+          onClick={() => setSelectedDoc(null)}
+        >
+          <div 
             style={{
               background: '#ffffff',
               borderRadius: '20px',
-              padding: '40px',
-              maxWidth: '600px',
+              maxWidth: '680px',
               width: '100%',
-              position: 'relative',
-              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.3)'
+              maxHeight: '90vh',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.3)'
             }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setSelectedCase(null)}
-              style={{
-                position: 'absolute',
-                top: '16px',
-                right: '18px',
-                background: 'none',
-                border: 'none',
-                fontSize: '22px',
-                cursor: 'pointer',
-                color: '#64748b'
-              }}
-            >
-              ✕
-            </button>
-
-            <span style={{ fontSize: '13px', textTransform: 'uppercase', fontWeight: 800, color: '#58b147', background: '#eef8eb', padding: '4px 12px', borderRadius: '20px', display: 'inline-block', marginBottom: '12px' }}>
-              {selectedCase.industry}
-            </span>
-
-            <h3 style={{ fontSize: '26px', fontWeight: 800, color: '#0c4696', marginBottom: '14px' }}>
-              {selectedCase.title}
-            </h3>
-
-            <p style={{ fontSize: '16px', lineHeight: 1.65, color: '#475569', marginBottom: '20px' }}>
-              {selectedCase.desc}
-            </p>
-
-            <div style={{ background: '#f0f6ff', padding: '18px 20px', borderRadius: '12px', marginBottom: '24px', borderLeft: '4px solid #0c4696' }}>
-              <h4 style={{ fontSize: '13px', textTransform: 'uppercase', color: '#0c4696', fontWeight: 700, margin: '0 0 4px 0' }}>
-                Key Impact & Outcome:
+            <div style={{ padding: '18px 24px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h4 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '17px', fontWeight: 800, color: '#0A2B5E', margin: 0 }}>
+                {selectedDoc.title}
               </h4>
-              <p style={{ fontSize: '16px', fontWeight: 700, color: '#1e293b', margin: 0 }}>
-                {selectedCase.stat}
-              </p>
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px' }}>
-              <button
-                onClick={() => setSelectedCase(null)}
-                style={{
-                  padding: '10px 20px',
-                  borderRadius: '8px',
-                  background: '#f1f5f9',
-                  color: '#475569',
-                  fontWeight: 600,
-                  fontSize: '14px',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
+              <button 
+                type="button" 
+                onClick={() => setSelectedDoc(null)}
+                style={{ background: '#f1f5f9', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
               >
-                Close
+                <X size={18} color="#0f172a" />
               </button>
-              <a
-                href="/corporate"
-                className="btn green"
-                style={{
-                  padding: '10px 22px',
-                  borderRadius: '8px',
-                  background: '#58b147',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center'
-                }}
-              >
-                Partner With Us
-              </a>
+            </div>
+            <div style={{ padding: '20px', overflowY: 'auto', textAlign: 'center' }}>
+              <img 
+                src={selectedDoc.image} 
+                alt={selectedDoc.title} 
+                style={{ width: '100%', maxHeight: '68vh', objectFit: 'contain', borderRadius: '12px', border: '1px solid #e2e8f0' }} 
+              />
             </div>
           </div>
         </div>
       )}
 
-      {/* Partner Marquee & Download App */}
-      <PartnersSection />
     </main>
   );
 }

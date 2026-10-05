@@ -120,6 +120,7 @@ export default function App() {
       <Header 
         activeSegment={activeSegment} 
         onSelectSegment={handleSelectSegment} 
+        onOpenJoin={() => setIsJoinOpen(true)}
       />
 
       {/* Dynamic Page Rendering */}
@@ -146,8 +147,6 @@ export default function App() {
         <AboutUsPage />
       ) : activeSegment === 'media' ? (
         <MediaListingPage />
-      ) : activeSegment === 'features' ? (
-        <FeaturesPage />
       ) : activeSegment === 'case-studies' ? (
         <CaseStudiesPage />
       ) : activeSegment === 'solutions' ? (
