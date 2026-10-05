@@ -848,11 +848,12 @@ body {
 .service-slider-wrap-layout {
   display: flex !important;
   gap: 36px !important;
-  align-items: flex-start !important;
+  align-items: stretch !important;
 }
 
 .service-listing-tabs {
   flex: 0 0 240px !important;
+  align-self: stretch !important;
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -863,6 +864,8 @@ body {
 }
 
 .service-listing-tabs li {
+  flex: 1 1 0 !important;
+  min-height: 42px !important;
   padding: 16px 20px !important;
   color: rgba(255, 255, 255, 0.8) !important;
   font-size: 0.95rem !important;
@@ -892,6 +895,7 @@ body {
 
 .service-slider-container-box {
   flex: 1 1 auto !important;
+  min-width: 0 !important;
   background: #ffffff !important;
 }
 
@@ -908,17 +912,22 @@ body {
 }
 
 .service-card-active-view .img-card.service-image-card {
-  flex: 0 0 320px !important;
+  flex: 0 0 310px !important;
   position: relative !important;
   border-radius: 12px !important;
   overflow: hidden !important;
   background: #f4f8fc !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .service-card-active-view .img-card.service-image-card .video_thumb img {
-  width: 100% !important;
+  width: auto !important;
   height: auto !important;
-  max-height: none !important;
+  max-width: 100% !important;
+  max-height: 410px !important;
+  border-radius: 12px !important;
   object-fit: contain !important;
   display: block !important;
 }
@@ -979,7 +988,7 @@ body {
   border-color: #0c4696 !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   .services-exact-top-flex {
     flex-direction: column !important;
     text-align: center !important;
@@ -988,27 +997,53 @@ body {
     text-align: center !important;
     font-size: 2.4rem !important;
   }
-  .services-slider-wrap-layout {
+  .service-slider-wrap-layout {
     flex-direction: column !important;
+    gap: 20px !important;
   }
+
   .service-listing-tabs {
-    flex: 1 1 100% !important;
+    flex: 0 0 auto !important;
     width: 100% !important;
     display: flex !important;
+    flex-direction: row !important;
     overflow-x: auto !important;
+    align-self: auto !important;
+    padding: 10px !important;
+    gap: 8px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+
+  .service-listing-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
   .service-listing-tabs li {
+    flex: 0 0 auto !important;
+    min-height: 42px !important;
     white-space: nowrap !important;
     border-bottom: none !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 10px 14px !important;
   }
+
   .service-card-active-view {
     flex-direction: column !important;
     padding: 24px !important;
+    gap: 24px !important;
+    align-items: stretch !important;
   }
+
   .service-card-active-view .img-card.service-image-card {
-    flex: 1 1 100% !important;
+    flex: 0 1 auto !important;
     width: 100% !important;
+    max-width: 520px !important;
+    align-self: center !important;
+  }
+
+  .service-card-active-view .img-card.service-image-card .video_thumb img {
+    max-height: 300px !important;
   }
 }
 
@@ -1705,6 +1740,10 @@ body {
 
   .service-card-active-view .card-content h4 {
     font-size: 18px !important;
+  }
+
+  .service-card-active-view .img-card.service-image-card .video_thumb img {
+    max-height: 240px !important;
   }
 }
 
@@ -4620,7 +4659,7 @@ html, body {
 /* Card Body Grid (2-Columns Desktop / 1-Column Mobile) */
 .smart-card-body-grid {
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 280px minmax(0, 1fr);
   gap: 36px;
   padding: 36px 32px;
   align-items: start;
@@ -4640,19 +4679,25 @@ html, body {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   background: #f8fafc;
   border: 1px solid #f1f5f9;
-  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: auto;
 }
 
 .smart-card-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 360px;
+  border-radius: 16px;
+  object-fit: contain;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.25s ease;
 }
 
 .smart-card-img-wrap:hover img {
-  transform: scale(1.03);
+  transform: scale(1.01);
 }
 
 .smart-card-floating-badge {
@@ -4975,9 +5020,10 @@ html, body {
 
 .modal-feature-img {
   width: 100%;
+  height: auto;
   border-radius: 14px;
-  object-fit: cover;
-  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  aspect-ratio: auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid #e2e8f0;
 }
@@ -6028,7 +6074,6 @@ html, body {
     padding: 24px 20px;
   }
 }
-
 /* ═════════════════════════════════════════════════════════════════════
    HERO SLIDER VIDEO BANNER STYLES
    ═════════════════════════════════════════════════════════════════════ */
@@ -6168,9 +6213,4 @@ html, body {
     transform: translate(-50%, 0);
   }
 }
-
-
-
-
-
 
