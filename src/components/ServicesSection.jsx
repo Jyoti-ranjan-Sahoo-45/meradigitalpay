@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import digitalImage from '../assets/digital.png';
-import bankingImage from '../assets/banking.png';
-import utilityPaymentImage from '../assets/utilitypayment.png';
-import insuranceImage from '../assets/insurance.png';
-import travelImage from '../assets/travel.png';
-import offerImage from '../assets/offer.png';
-import neoImage from '../assets/neo.png';
-import retailerImage from '../assets/retailer.png';
+import digitalImage from '../assets/banking-services.jpeg';
+import bankingImage from '../assets/banking-services.jpeg';
+import accountOpen from '../assets/saving-account.jpeg';
+import utilityPaymentImage from '../assets/bill-payment.jpeg';
+import insuranceImage from '../assets/life-insurance.jpeg';
+import travelImage from '../assets/flight-booking.jpeg';
+import offerImage from '../assets/pan-card.jpeg';
+import neoImage from '../assets/personal-loan.jpeg';
+import retailerImage from '../assets/flipkart-order.jpeg';
 import app from "./../assets/app.png";
 
 const serviceList = [
@@ -77,7 +78,7 @@ const serviceList = [
     iconClass: 'pn pn-cr-banking-services',
     title: 'Open instant bank accounts for customers in your locality',
     desc: 'Offer zero-balance and regular savings and current bank account opening services in partnership with leading banks (ICICI, Axis, NSDL, Fino, Kotak, Airtel Payments Bank) using biometric e-KYC.',
-    img: bankingImage,
+    img: accountOpen,
     btnText: 'Become a Partner'
   },
   {

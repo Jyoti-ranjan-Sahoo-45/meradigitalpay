@@ -26,15 +26,15 @@ import {
   ExternalLink
 } from 'lucide-react';
 
-import retailer from "./../assets/campaign-dil-se-desi-retailer.jpeg";
-import distributer from "./../assets/distributer.png";
-import selfhelp from "./../assets/media-shg-dual-auth.jpeg";
-import districtFranchise from "./../assets/district-franchise.jpg";
-import customerImg from "./../assets/customer-solution.jpg";
-import resellerImg from "./../assets/reseller-partner.jpg";
-import b2bImg from "./../assets/b2b-partner.jpg";
-import whiteLabelImg from "./../assets/white-label-partner.jpg";
-import apiImg from "./../assets/api-partner.jpg";
+import retailer from "./../assets/retailer-partner.jpeg";
+import distributer from "./../assets/distributer-partner.jpeg";
+import selfhelp from "./../assets/franchise-partner.jpeg";
+import districtFranchise from "./../assets/district-franchise.jpeg";
+import customerImg from "./../assets/customer-solution.jpeg";
+import resellerImg from "./../assets/reseller-partner.jpeg";
+import b2bImg from "./../assets/b2b-partner.jpeg";
+import whiteLabelImg from "./../assets/white-label-partner.jpeg";
+import apiImg from "./../assets/api-partner.jpeg";
 
 export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
   const [selectedTier, setSelectedTier] = useState(null);
