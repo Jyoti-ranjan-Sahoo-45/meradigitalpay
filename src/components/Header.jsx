@@ -4,7 +4,8 @@ import {
   Menu, X, ChevronDown, UserPlus, LogIn, 
   FileCheck2, Users, Image, Info, Calculator, 
   Layers, Home, ArrowUpRight, ShieldCheck, Sparkles,
-  Landmark, CreditCard, Zap, Shield, FileText, UserCheck, Plane, Briefcase
+  Landmark, CreditCard, Zap, Shield, FileText, UserCheck, Plane, Briefcase,
+  Headphones
 } from 'lucide-react';
 
 const serviceLinks = [
@@ -684,10 +685,64 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                         <div style={{ color: '#64748B', fontSize: '11.5px', marginTop: '2px' }}>Our Mission, Vision & Core Values</div>
                       </div>
                     </a>
+
+                    {/* Contact Us */}
+                    <a
+                      href="/contact-us"
+                      onClick={(e) => handleNavClick('contact-us', e)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '12px',
+                        padding: '10px 12px',
+                        borderRadius: '10px',
+                        textDecoration: 'none',
+                        background: activeSegment === 'contact-us' ? '#EEF4FF' : 'transparent',
+                        transition: 'background 0.15s'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'contact-us' ? '#EEF4FF' : 'transparent'}
+                    >
+                      <div style={{ background: '#EFF6FF', color: '#2563EB', padding: '8px', borderRadius: '8px', display: 'flex' }}>
+                        <Headphones size={18} />
+                      </div>
+                      <div>
+                        <div style={{ color: '#0A2B5E', fontWeight: 700, fontSize: '13.5px' }}>Contact Us</div>
+                        <div style={{ color: '#64748B', fontSize: '11.5px', marginTop: '2px' }}>Support, Sales & Office Locations</div>
+                      </div>
+                    </a>
                   </div>
                 </div>
               )}
             </div>
+
+            {/* Contact Us Direct Navbar Link */}
+            <a 
+              href="/contact-us" 
+              onClick={(e) => handleNavClick('contact-us', e)}
+              style={{
+                color: activeSegment === 'contact-us' ? '#0A2B5E' : '#475569',
+                backgroundColor: activeSegment === 'contact-us' ? '#EEF4FF' : 'transparent',
+                fontWeight: activeSegment === 'contact-us' ? 700 : 600,
+                fontSize: '14px',
+                padding: '8px 14px',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+                transition: 'all 0.2s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+              onMouseEnter={(e) => {
+                if (activeSegment !== 'contact-us') e.currentTarget.style.backgroundColor = '#f8fafc';
+              }}
+              onMouseLeave={(e) => {
+                if (activeSegment !== 'contact-us') e.currentTarget.style.backgroundColor = 'transparent';
+              }}
+            >
+              Contact Us
+            </a>
 
           </nav>
 
@@ -1083,6 +1138,26 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     }}
                   >
                     <Calculator size={18} color="#0A2B5E" /> Income Calculator
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="/contact-us" 
+                    onClick={(e) => handleNavClick('contact-us', e)} 
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '10px', 
+                      padding: '10px 12px', 
+                      borderRadius: '8px', 
+                      color: activeSegment === 'contact-us' ? '#0A2B5E' : '#334155', 
+                      background: activeSegment === 'contact-us' ? '#EEF4FF' : 'transparent',
+                      fontWeight: 700, 
+                      fontSize: '14.5px', 
+                      textDecoration: 'none' 
+                    }}
+                  >
+                    <Headphones size={18} color="#0A2B5E" /> Contact Us
                   </a>
                 </li>
               </ul>
