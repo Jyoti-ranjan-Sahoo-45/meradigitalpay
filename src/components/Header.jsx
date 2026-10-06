@@ -204,11 +204,11 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: 'rgba(255, 255, 255, 0.98)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          borderBottom: '1px solid #e2e8f0',
-          boxShadow: '0 4px 20px rgba(10, 43, 94, 0.05)',
+          background: 'rgba(251, 240, 185, 0.96)',
+          backdropFilter: 'blur(14px)',
+          WebkitBackdropFilter: 'blur(14px)',
+          borderBottom: '2px solid #D9940A',
+          boxShadow: '0 4px 20px rgba(184, 134, 11, 0.15)',
           height: '76px',
           display: 'flex',
           alignItems: 'center',
@@ -259,9 +259,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/" 
               onClick={(e) => handleNavClick('retailer', e)}
               style={{
-                color: activeSegment === 'retailer' ? '#0A2B5E' : '#475569',
-                backgroundColor: activeSegment === 'retailer' ? '#EEF4FF' : 'transparent',
-                fontWeight: activeSegment === 'retailer' ? 700 : 600,
+                color: '#0A2540',
+                backgroundColor: activeSegment === 'retailer' ? '#ECC055' : 'transparent',
+                fontWeight: activeSegment === 'retailer' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
                 borderRadius: '8px',
@@ -273,7 +273,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'retailer') e.currentTarget.style.backgroundColor = '#f8fafc';
+                if (activeSegment !== 'retailer') e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
               }}
               onMouseLeave={(e) => {
                 if (activeSegment !== 'retailer') e.currentTarget.style.backgroundColor = 'transparent';
@@ -471,9 +471,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/products" 
               onClick={(e) => handleNavClick('products', e)}
               style={{
-                color: activeSegment === 'products' ? '#0A2B5E' : '#475569',
-                backgroundColor: activeSegment === 'products' ? '#EEF4FF' : 'transparent',
-                fontWeight: activeSegment === 'products' ? 700 : 600,
+                color: '#0A2540',
+                backgroundColor: activeSegment === 'products' ? '#ECC055' : 'transparent',
+                fontWeight: activeSegment === 'products' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
                 borderRadius: '8px',
@@ -485,7 +485,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'products') e.currentTarget.style.backgroundColor = '#f8fafc';
+                if (activeSegment !== 'products') e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
               }}
               onMouseLeave={(e) => {
                 if (activeSegment !== 'products') e.currentTarget.style.backgroundColor = 'transparent';
@@ -499,9 +499,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/income-calculator" 
               onClick={(e) => handleNavClick('income-calculator', e)}
               style={{
-                color: activeSegment === 'income-calculator' ? '#0A2B5E' : '#475569',
-                backgroundColor: activeSegment === 'income-calculator' ? '#EEF4FF' : 'transparent',
-                fontWeight: activeSegment === 'income-calculator' ? 700 : 600,
+                color: '#0A2540',
+                backgroundColor: activeSegment === 'income-calculator' ? '#ECC055' : 'transparent',
+                fontWeight: activeSegment === 'income-calculator' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
                 borderRadius: '8px',
@@ -513,7 +513,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'income-calculator') e.currentTarget.style.backgroundColor = '#f8fafc';
+                if (activeSegment !== 'income-calculator') e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
               }}
               onMouseLeave={(e) => {
                 if (activeSegment !== 'income-calculator') e.currentTarget.style.backgroundColor = 'transparent';
@@ -697,9 +697,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/contact-us" 
               onClick={(e) => handleNavClick('contact-us', e)}
               style={{
-                color: activeSegment === 'contact-us' ? '#0A2B5E' : '#475569',
-                backgroundColor: activeSegment === 'contact-us' ? '#EEF4FF' : 'transparent',
-                fontWeight: activeSegment === 'contact-us' ? 700 : 600,
+                color: '#0A2540',
+                backgroundColor: activeSegment === 'contact-us' ? '#ECC055' : 'transparent',
+                fontWeight: activeSegment === 'contact-us' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
                 borderRadius: '8px',
@@ -711,7 +711,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'contact-us') e.currentTarget.style.backgroundColor = '#f8fafc';
+                if (activeSegment !== 'contact-us') e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
               }}
               onMouseLeave={(e) => {
                 if (activeSegment !== 'contact-us') e.currentTarget.style.backgroundColor = 'transparent';
@@ -904,12 +904,13 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 right: 0, 
                 bottom: 0, 
                 width: '320px', 
-                background: '#ffffff', 
+                background: '#FBF0B9', 
                 padding: '24px 20px', 
                 display: 'flex', 
                 flexDirection: 'column', 
                 overflowY: 'auto',
-                boxShadow: '-4px 0 24px rgba(0,0,0,0.2)'
+                boxShadow: '-4px 0 24px rgba(0,0,0,0.25)',
+                borderLeft: '2px solid #D9940A'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -918,8 +919,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   type="button" 
                   onClick={() => setIsMobileMenuOpen(false)} 
                   style={{ 
-                    background: '#f1f5f9', 
-                    border: 'none', 
+                    background: '#F5D76E', 
+                    border: '1px solid #D9940A', 
                     borderRadius: '50%', 
                     width: '34px', 
                     height: '34px', 
