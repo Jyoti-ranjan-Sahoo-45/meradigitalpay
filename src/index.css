@@ -7854,3 +7854,31 @@ html, body {
   }
 }
 
+/* ═════════════════════════════════════════════════════════════════════
+   OUR PARTNER NETWORK EXACT 8-CARD GRID
+   ═════════════════════════════════════════════════════════════════════ */
+.partner-network-exact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(10, 43, 94, 0.08) !important;
+  border-color: #cbd5e1 !important;
+}
+
+@media (max-width: 1080px) {
+  .partner-network-exact-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .partner-network-exact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  
+  .partner-network-exact-card {
+    padding: 18px 16px 16px !important;
+  }
+}
+
+
