@@ -737,9 +737,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               type="button"
               onClick={handleRegisterClick}
               style={{
-                background: 'linear-gradient(135deg, #D9940A 0%, #B87B00 100%)',
+                background: 'linear-gradient(135deg, #0A2540 0%, #0d47a1 100%)',
                 color: '#ffffff',
-                border: 'none',
+                border: '1.5px solid #F59E0B',
                 padding: '9px 18px',
                 borderRadius: '100px',
                 fontWeight: 700,
@@ -748,21 +748,23 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 alignItems: 'center',
                 gap: '6px',
                 cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(217, 148, 10, 0.28)',
+                boxShadow: '0 4px 14px rgba(10, 37, 64, 0.35)',
                 whiteSpace: 'nowrap',
                 letterSpacing: '0.2px',
                 transition: 'all 0.2s ease'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-1px)';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(217, 148, 10, 0.38)';
+                e.currentTarget.style.boxShadow = '0 6px 18px rgba(245, 158, 11, 0.35)';
+                e.currentTarget.style.borderColor = '#FBBF24';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(217, 148, 10, 0.28)';
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(10, 37, 64, 0.35)';
+                e.currentTarget.style.borderColor = '#F59E0B';
               }}
             >
-              <UserPlus size={15} /> Adhikari Registration
+              <UserPlus size={15} color="#FBBF24" /> Adhikari Registration
             </button>
 
             {/* Adhikari Login */}
@@ -937,9 +939,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   type="button" 
                   onClick={handleRegisterClick}
                   style={{
-                    background: 'linear-gradient(135deg, #D9940A 0%, #B87B00 100%)',
+                    background: 'linear-gradient(135deg, #0A2540 0%, #0d47a1 100%)',
                     color: '#ffffff',
-                    border: 'none',
+                    border: '1.5px solid #F59E0B',
                     padding: '12px',
                     borderRadius: '12px',
                     fontWeight: 700,
@@ -948,10 +950,11 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '8px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 12px rgba(10, 37, 64, 0.25)'
                   }}
                 >
-                  <UserPlus size={16} /> Adhikari Registration
+                  <UserPlus size={16} color="#FBBF24" /> Adhikari Registration
                 </button>
                 <a 
                   href="/login" 

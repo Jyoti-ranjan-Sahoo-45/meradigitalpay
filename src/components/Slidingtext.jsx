@@ -4,9 +4,9 @@ import React from "react";
 function Slidingtext() {
   const message = (
     <span className="sliding-text-message">
-      Daudega To Mera Desh Daudega:
+      <span className="sliding-text-main">Daudega To Mera Desh Daudega:</span>
       <span className="sliding-text-highlight">Har Dukaan bane Digital Kendra</span>
-      <span aria-hidden="true" style={{ color: '#DC2626' }}>✦</span>
+      <span aria-hidden="true" style={{ color: '#DC2626', fontSize: '1.1em' }}>✦</span>
     </span>
   );
 
@@ -32,9 +32,9 @@ function Slidingtext() {
         .sliding-text-section {
           width: 100%;
           overflow: hidden;
-          background: linear-gradient(90deg, #07172c 0%, #0A2B5E 50%, #07172c 100%);
-          border-top: 1.5px solid rgba(217, 148, 10, 0.35);
-          border-bottom: 1.5px solid rgba(217, 148, 10, 0.35);
+          background: linear-gradient(90deg, #051429 0%, #0A2B5E 50%, #051429 100%);
+          border-top: 1.5px solid rgba(217, 148, 10, 0.45);
+          border-bottom: 1.5px solid rgba(217, 148, 10, 0.45);
           padding: 16px 0;
         }
 
@@ -56,17 +56,22 @@ function Slidingtext() {
           align-items: center;
           gap: 16px;
           padding-right: 32px;
-          color: #ffffff;
           font-size: clamp(1.1rem, 2.5vw, 1.875rem);
-          font-weight: 600;
+          font-weight: 700;
           line-height: 1.3;
           white-space: nowrap;
         }
 
-        .sliding-text-highlight {
-          color: #FBBF24;
+        .sliding-text-main {
+          color: #F59E0B;
           font-weight: 700;
-          text-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
+          letter-spacing: 0.3px;
+        }
+
+        .sliding-text-highlight {
+          color: #FDE047;
+          font-weight: 800;
+          text-shadow: 0 0 16px rgba(253, 224, 71, 0.45);
           white-space: nowrap;
         }
 
