@@ -5038,6 +5038,28 @@ html, body {
   align-items: start;
 }
 
+@media (max-width: 640px) {
+  .smart-modal-body {
+    padding: 16px 12px !important;
+    gap: 16px;
+  }
+
+  .modal-intro-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .modal-feature-img {
+    max-height: 200px;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  .smart-modal-footer {
+    padding: 12px 16px !important;
+  }
+}
+
 .modal-feature-img {
   width: 100%;
   height: auto;
@@ -7412,3 +7434,423 @@ html, body {
     height: 48px;
   }
 }
+
+/* ═════════════════════════════════════════════════════════════════════
+   RESPONSIVE PARTNER 0% EMI CALCULATOR
+   ═════════════════════════════════════════════════════════════════════ */
+.partner-emi-calc-wrapper {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 24px;
+  margin: 24px 0 10px;
+  box-shadow: 0 8px 30px rgba(10, 43, 94, 0.06);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.partner-emi-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.partner-emi-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.partner-emi-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.partner-emi-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #0d47a1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.25);
+}
+
+.partner-emi-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0A2B5E;
+  letter-spacing: -0.2px;
+}
+
+.partner-emi-subtitle {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.4;
+}
+
+.partner-emi-inputs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.partner-emi-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.partner-emi-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.partner-emi-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.partner-emi-input-wrapper:focus-within {
+  border-color: #0d47a1;
+  box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.12);
+  background: #ffffff;
+}
+
+.partner-emi-currency-symbol {
+  font-size: 15px;
+  font-weight: 700;
+  color: #475569;
+  margin-right: 6px;
+}
+
+.partner-emi-input-field {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 11px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0A2B5E;
+  outline: none;
+}
+
+.partner-emi-plans-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.partner-emi-plans-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.partner-emi-plan-btn {
+  flex: 1 1 58px;
+  min-width: 65px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.partner-emi-plan-btn:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.partner-emi-plan-btn.active {
+  font-weight: 700;
+  color: #ffffff;
+  background: #0A2540;
+  background: linear-gradient(135deg, #0A2540 0%, #0d47a1 100%);
+  border: 1.5px solid #F59E0B;
+  box-shadow: 0 4px 12px rgba(10, 37, 64, 0.25);
+}
+
+.partner-emi-info-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.partner-emi-info-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.partner-emi-info-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0A2B5E;
+}
+
+.partner-emi-info-desc {
+  font-size: 11.5px;
+  color: #64748B;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.partner-emi-summary-card {
+  border: 1.5px solid #cbd5e1;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.partner-emi-summary-header {
+  background: linear-gradient(135deg, #0A2B5E 0%, #0d47a1 100%);
+  padding: 18px 20px;
+  color: #ffffff;
+}
+
+.partner-emi-summary-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.partner-emi-summary-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: #bfdbfe;
+}
+
+.partner-emi-summary-badge {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.partner-emi-summary-amount-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.partner-emi-summary-amount {
+  font-size: clamp(26px, 5vw, 32px);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.partner-emi-summary-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: #93c5fd;
+}
+
+.partner-emi-summary-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: 1;
+}
+
+.partner-emi-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.partner-emi-row-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.partner-emi-row-label.total {
+  color: #0A2B5E;
+  font-weight: 700;
+}
+
+.partner-emi-row-value {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0A2B5E;
+  white-space: nowrap;
+}
+
+.partner-emi-row-value.total {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.partner-emi-row-value.free {
+  color: #16a34a;
+}
+
+.partner-emi-summary-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 2px 0;
+}
+
+.partner-emi-actions {
+  padding: 0 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.partner-emi-apply-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #0A2540 0%, #0d47a1 100%);
+  color: #ffffff;
+  border: 1.5px solid #F59E0B;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(10, 37, 64, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.partner-emi-apply-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+}
+
+.partner-emi-demo-btn {
+  width: 100%;
+  background: #ffffff;
+  color: #0A2B5E;
+  border: 1.5px solid #cbd5e1;
+  padding: 11px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.partner-emi-demo-btn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+/* Tablet & Mobile Responsiveness */
+@media (max-width: 860px) {
+  .partner-emi-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 580px) {
+  .partner-emi-calc-wrapper {
+    padding: 16px 12px;
+    border-radius: 16px;
+    margin: 16px 0 8px;
+  }
+
+  .partner-emi-inputs-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .partner-emi-plans-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .partner-emi-plan-btn {
+    min-width: 0;
+    padding: 9px 4px;
+    font-size: 12px;
+  }
+
+  .partner-emi-summary-header {
+    padding: 14px 14px;
+  }
+
+  .partner-emi-summary-body {
+    padding: 14px 14px;
+    gap: 10px;
+  }
+
+  .partner-emi-actions {
+    padding: 0 14px 14px;
+  }
+
+  .partner-emi-row-label {
+    font-size: 12px;
+  }
+
+  .partner-emi-row-value {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .partner-emi-plans-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
