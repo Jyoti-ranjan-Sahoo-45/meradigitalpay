@@ -16,14 +16,24 @@ import {
 } from "react-icons/fa";
 import logo from "../assets/logo.jpeg";
 
-function Register() {
+function Register({ onNavigate }) {
   return (
     <main className="adhikari-register-page">
       <section className="adhikari-register-layout" aria-labelledby="register-heading">
         <div className="adhikari-register-card">
           <div className="adhikari-register-form-panel">
             <div className="adhikari-register-form-content">
-              <a className="adhikari-register-brand" href="/" aria-label="Mera Digital Pay home">
+              <a 
+                className="adhikari-register-brand" 
+                href="/" 
+                onClick={(e) => {
+                  if (onNavigate) {
+                    e.preventDefault();
+                    onNavigate('retailer');
+                  }
+                }}
+                aria-label="Mera Digital Pay home"
+              >
                 <img src={logo} alt="Mera Digital Pay" />
               </a>
 
@@ -35,7 +45,17 @@ function Register() {
 
               <p className="adhikari-register-login-prompt">
                 Already have an account?{" "}
-                <a href="/login">Login here</a>
+                <a 
+                  href="/login"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate('login');
+                    }
+                  }}
+                >
+                  Login here
+                </a>
               </p>
 
               <form className="adhikari-register-form">

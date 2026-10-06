@@ -786,8 +786,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 >
                   <a 
                     href="/login" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    onClick={(e) => handleNavClick('login', e)}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -808,8 +807,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   </a>
                   <a 
                     href="/login" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    onClick={(e) => handleNavClick('login', e)}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -925,9 +923,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   <UserPlus size={16} /> Adhikari Registration
                 </button>
                 <a 
-                  href="https://www.meradigitalpay.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                  href="/login" 
+                  onClick={(e) => handleNavClick('login', e)}
                   style={{
                     background: '#0A2B5E',
                     color: '#ffffff',

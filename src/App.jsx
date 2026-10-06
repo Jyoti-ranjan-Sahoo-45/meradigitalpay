@@ -878,6 +878,7 @@ export default function App() {
           onOpenContact={() =>
             setIsContactExpertOpen(true)
           }
+          onNavigate={(segment) => handleSelectSegment(segment)}
         />
       ) : activeSegment === 'register' ? (
 
@@ -885,6 +886,7 @@ export default function App() {
           onOpenContact={() =>
             setIsContactExpertOpen(true)
           }
+          onNavigate={(segment) => handleSelectSegment(segment)}
         />
 
       ) : activeSegment === 'corporate' ? (

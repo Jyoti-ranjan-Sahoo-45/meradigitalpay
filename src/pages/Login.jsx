@@ -21,13 +21,23 @@ const socialLinks = [
   { label: "YouTube", icon: FaYoutube },
 ];
 
-function Login() {
+function Login({ onNavigate }) {
   return (
     <main className="adhikari-login-page">
       <section className="adhikari-login-layout" aria-labelledby="login-heading">
         <div className="adhikari-login-card">
           <div className="adhikari-login-form-panel">
-            <a className="adhikari-login-brand" href="/" aria-label="Mera Digital Pay home">
+            <a 
+              className="adhikari-login-brand" 
+              href="/" 
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('retailer');
+                }
+              }}
+              aria-label="Mera Digital Pay home"
+            >
               <img src={logo} alt="Mera Digital Pay" />
             </a>
 
@@ -38,10 +48,21 @@ function Login() {
             </div>
 
             <p className="adhikari-login-register">
-              New to Mera Digital Pay? <a href="/register">Register now</a>
+              New to Mera Digital Pay?{" "}
+              <a 
+                href="/register"
+                onClick={(e) => {
+                  if (onNavigate) {
+                    e.preventDefault();
+                    onNavigate('register');
+                  }
+                }}
+              >
+                Register now
+              </a>
             </p>
 
-            <form className="adhikari-login-form">
+            <form className="adhikari-login-form" onSubmit={(e) => e.preventDefault()}>
               <label className="adhikari-login-field">
                 <span>Adhikari ID</span>
                 <span className="adhikari-login-input-wrap">
@@ -69,7 +90,7 @@ function Login() {
               </label>
 
               <div className="adhikari-login-forgot">
-                <a href="/forgot-password">Forgot password?</a>
+                <a href="/forgot-password" onClick={(e) => e.preventDefault()}>Forgot password?</a>
               </div>
 
               <button className="adhikari-login-submit" type="submit">
@@ -79,8 +100,30 @@ function Login() {
             </form>
 
             <p className="adhikari-login-terms">
-              By signing in, you agree to our <a href="/terms">Terms &amp; Conditions</a> and{" "}
-              <a href="/privacy">Privacy Policy</a>.
+              By signing in, you agree to our{" "}
+              <a 
+                href="/terms"
+                onClick={(e) => {
+                  if (onNavigate) {
+                    e.preventDefault();
+                    onNavigate('terms');
+                  }
+                }}
+              >
+                Terms &amp; Conditions
+              </a>{" "}
+              and{" "}
+              <a 
+                href="/privacy"
+                onClick={(e) => {
+                  if (onNavigate) {
+                    e.preventDefault();
+                    onNavigate('privacy');
+                  }
+                }}
+              >
+                Privacy Policy
+              </a>.
             </p>
 
             <div className="adhikari-login-social">
