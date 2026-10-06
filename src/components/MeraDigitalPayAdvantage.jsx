@@ -4,21 +4,19 @@ import {
   ShieldCheck, 
   Layers, 
   TrendingUp, 
-  Building2,
-  ArrowRight,
-  Sparkles
+  Building2 
 } from 'lucide-react';
 
-const advantages = [
+const topAdvantages = [
   {
     id: 'easy-onboarding',
     title: 'Easy Business Onboarding',
     desc: 'Get started with a simple onboarding process designed for retailers, distributors, and business partners.',
     icon: UserCheck,
-    gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-    lightBg: '#ecfdf5',
-    glowColor: 'rgba(16, 185, 129, 0.25)',
-    accentColor: '#10b981',
+    iconBg: '#059669',
+    badgeBg: '#d1fae5',
+    badgeColor: '#065f46',
+    dashColor: '#059669',
     badge: 'EASY ONBOARDING'
   },
   {
@@ -26,10 +24,10 @@ const advantages = [
     title: 'Security-Focused Platform',
     desc: 'We aim to protect business and transaction information through appropriate security measures and responsible data handling.',
     icon: ShieldCheck,
-    gradient: 'linear-gradient(135deg, #0c4696 0%, #2563eb 100%)',
-    lightBg: '#eff6ff',
-    glowColor: 'rgba(37, 99, 235, 0.25)',
-    accentColor: '#2563eb',
+    iconBg: '#2563eb',
+    badgeBg: '#dbeafe',
+    badgeColor: '#1d4ed8',
+    dashColor: '#2563eb',
     badge: 'DATA PROTECTION'
   },
   {
@@ -37,21 +35,24 @@ const advantages = [
     title: 'Multiple Digital Services',
     desc: 'Access supported digital financial services, recharge, bill payments, and other business solutions through one platform.',
     icon: Layers,
-    gradient: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)',
-    lightBg: '#f5f3ff',
-    glowColor: 'rgba(139, 92, 246, 0.25)',
-    accentColor: '#8b5cf6',
+    iconBg: '#2563eb',
+    badgeBg: '#dbeafe',
+    badgeColor: '#1d4ed8',
+    dashColor: '#2563eb',
     badge: 'MULTIPLE SERVICES'
-  },
+  }
+];
+
+const bottomAdvantages = [
   {
     id: 'partner-commissions',
     title: 'Partner Commission Opportunities',
     desc: 'Explore applicable commission opportunities on eligible transactions as per your partner category and commission structure.',
     icon: TrendingUp,
-    gradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-    lightBg: '#fffbeb',
-    glowColor: 'rgba(245, 158, 11, 0.25)',
-    accentColor: '#f59e0b',
+    iconBg: '#d97706',
+    badgeBg: '#fef3c7',
+    badgeColor: '#b45309',
+    dashColor: '#d97706',
     badge: 'PARTNER EARNINGS'
   },
   {
@@ -59,90 +60,144 @@ const advantages = [
     title: 'Business Growth Opportunities',
     desc: 'Build your digital services business through retailer, distributor, franchise, reseller, B2B, White Label, and API partner models.',
     icon: Building2,
-    gradient: 'linear-gradient(135deg, #0d9488 0%, #0891b2 100%)',
-    lightBg: '#f0fdfa',
-    glowColor: 'rgba(13, 148, 136, 0.25)',
-    accentColor: '#0d9488',
+    iconBg: '#0284c7',
+    badgeBg: '#ccfbf1',
+    badgeColor: '#0f766e',
+    dashColor: '#0284c7',
     badge: 'BUSINESS GROWTH'
   }
 ];
 
-export default function MeraDigitalPayAdvantage({ onOpenJoin }) {
+function AdvantageCard({ item }) {
+  const IconComponent = item.icon;
   return (
-    <section className="advantage-container bgcolor--white" id="advantage-section">
-      <div className="container--responsive">
+    <div 
+      className="mdp-adv-exact-card"
+      style={{
+        background: 'rgba(255, 255, 255, 0.94)',
+        backdropFilter: 'blur(8px)',
+        borderRadius: '22px',
+        border: '1.5px solid rgba(226, 232, 240, 0.85)',
+        padding: '26px 24px 22px',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease'
+      }}
+    >
+      {/* Top Header Row: Icon Button & Badge Pill */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+        <div 
+          style={{
+            width: '46px',
+            height: '46px',
+            borderRadius: '13px',
+            background: item.iconBg,
+            color: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: `0 4px 12px ${item.iconBg}40`
+          }}
+        >
+          <IconComponent size={22} strokeWidth={2.2} />
+        </div>
+
+        <span 
+          style={{
+            background: item.badgeBg,
+            color: item.badgeColor,
+            fontSize: '11px',
+            fontWeight: 800,
+            letterSpacing: '0.8px',
+            textTransform: 'uppercase',
+            padding: '5px 12px',
+            borderRadius: '100px'
+          }}
+        >
+          {item.badge}
+        </span>
+      </div>
+
+      {/* Card Title */}
+      <h4 
+        style={{
+          fontSize: '17px',
+          fontWeight: 800,
+          color: '#1e3a8a',
+          margin: '0 0 10px 0',
+          lineHeight: 1.35
+        }}
+      >
+        {item.title}
+      </h4>
+
+      {/* Card Description */}
+      <p 
+        style={{
+          fontSize: '13.5px',
+          color: '#64748b',
+          lineHeight: 1.5,
+          margin: '0 0 20px 0',
+          flex: 1
+        }}
+      >
+        {item.desc}
+      </p>
+
+      {/* Bottom Colored Accent Dash */}
+      <div 
+        style={{
+          width: '32px',
+          height: '3.5px',
+          borderRadius: '2px',
+          background: item.dashColor,
+          marginTop: 'auto'
+        }}
+      />
+    </div>
+  );
+}
+
+export default function MeraDigitalPayAdvantage() {
+  return (
+    <section className="mdp-advantage-exact-section" style={{ padding: '40px 0 50px', background: 'transparent' }}>
+      <div className="container--responsive" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         
-        {/* Section Header */}
-        <div className="center-content mdp-advantage-header">
-          <div className="mdp-advantage-pill">
-            <Sparkles size={16} color="#58b147" />
-            <span>Why Partner With Us</span>
-          </div>
-          <h3 className="section-title-dashed">
-            Advantages of Mera Digital Pay
-          </h3>
-          <p className="body-content">
-            Grow your digital business with technology-driven financial services, flexible business opportunities, and a partner-focused digital ecosystem.
-          </p>
-        </div>
-
-        {/* Advantage Grid with Vivid Themed Visual Cards */}
-        <div className="mdp-advantage-grid mdp-adv-grid-5">
-          {advantages.map((item) => {
-            const IconComponent = item.icon;
-            return (
-              <div 
-                key={item.id} 
-                className="mdp-advantage-card"
-                style={{ '--accent-glow': item.glowColor, '--accent-color': item.accentColor }}
-              >
-                {/* Top Badge & Icon */}
-                <div className="mdp-adv-top-row">
-                  <div 
-                    className="mdp-adv-icon-badge"
-                    style={{ background: item.gradient, boxShadow: `0 8px 20px ${item.glowColor}` }}
-                  >
-                    <IconComponent size={28} color="#ffffff" strokeWidth={2.2} />
-                  </div>
-                  <span 
-                    className="mdp-adv-pill-tag"
-                    style={{ background: item.lightBg, color: item.accentColor }}
-                  >
-                    {item.badge}
-                  </span>
-                </div>
-
-                {/* Card Content */}
-                <h4 className="mdp-adv-card-title">{item.title}</h4>
-                <p className="mdp-adv-card-desc">{item.desc}</p>
-
-                {/* Bottom decorative bar */}
-                <div 
-                  className="mdp-adv-accent-bar"
-                  style={{ background: item.gradient }}
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Call to action bar at bottom of advantage section */}
-        <div className="mdp-adv-cta-strip">
-          <div className="mdp-adv-cta-text">
-            <h4>Ready to transform your retail business?</h4>
-            <p>Start offering AEPS, DMT, Bill Payments and Recharge today with zero hassle.</p>
-          </div>
-          <button 
-            type="button"
-            className="btn green mdp-adv-cta-btn"
-            onClick={() => onOpenJoin && onOpenJoin()}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          
+          {/* Top Row: 3 Cards */}
+          <div 
+            className="mdp-adv-exact-top-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '24px'
+            }}
           >
-            Book Live Demo <ArrowRight size={18} />
-          </button>
+            {topAdvantages.map((item) => (
+              <AdvantageCard key={item.id} item={item} />
+            ))}
+          </div>
+
+          {/* Bottom Row: 2 Cards (Centered) */}
+          <div 
+            className="mdp-adv-exact-bottom-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, minmax(0, 480px))',
+              justifyContent: 'center',
+              gap: '24px'
+            }}
+          >
+            {bottomAdvantages.map((item) => (
+              <AdvantageCard key={item.id} item={item} />
+            ))}
+          </div>
+
         </div>
 
       </div>
     </section>
   );
 }
-

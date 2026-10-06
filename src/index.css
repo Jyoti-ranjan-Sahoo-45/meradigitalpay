@@ -7881,4 +7881,42 @@ html, body {
   }
 }
 
+/* ═════════════════════════════════════════════════════════════════════
+   MERA DIGITAL PAY ADVANTAGE 5-CARD EXACT GRID
+   ═════════════════════════════════════════════ */
+.mdp-adv-exact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(10, 43, 94, 0.08) !important;
+  border-color: #cbd5e1 !important;
+}
+
+@media (max-width: 980px) {
+  .mdp-adv-exact-top-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .mdp-adv-exact-bottom-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mdp-adv-exact-top-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .mdp-adv-exact-bottom-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .mdp-adv-exact-card {
+    padding: 20px 18px 18px !important;
+  }
+}
+
+
 
