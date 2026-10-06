@@ -1,7 +1,7 @@
 /* ═════════════════════════════════════════════════════════════════════
    MERA DIGITAL PAY DESIGN SYSTEM & PRODUCTION STYLES
    ═════════════════════════════════════════════════════════════════════ */
-
+@import "tailwindcss";
 @import './meradigitalpay-theme.css';
 @import './meradigitalpay-inline.css';
 
@@ -697,8 +697,8 @@ body {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 12px 28px !important;
-  font-weight: 700 !important;
+  padding: 15px 28px !important;
+  font-weight: 800 !important;
   font-size: 0.95rem !important;
   border-radius: 6px !important;
   cursor: pointer !important;
@@ -710,7 +710,7 @@ body {
 .hero-content-col .group-button .btn.green {
   background-color: #58b147 !important;
   color: #ffffff !important;
-  border: 1.5px solid transparent !important;
+  border: 2px solid transparent !important;
 }
 
 .hero-content-col .group-button .btn.green:hover {
@@ -843,6 +843,18 @@ body {
   margin: 16px auto 0 !important;
   text-align: center !important;
   font-weight: 400 !important;
+}
+
+.services-india-image-wrapper {
+  margin: 0 auto 50px;
+  width: 100%;
+}
+
+.services-india-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 .service-slider-wrap-layout {
@@ -4701,9 +4713,7 @@ html, body {
 }
 
 .smart-card-floating-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -6084,18 +6094,18 @@ html, body {
   background: #eff6ff;
   border: 1px solid #bfdbfe;
   color: #0c4696;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
-  padding: 5px 14px;
+  padding: 10px 14px;
   border-radius: 20px;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
 .hero-video-banner-frame {
   position: relative;
   width: 100%;
   max-width: 320px;
-  max-height: 480px;
+  max-height: 580px;
   aspect-ratio: 9 / 16;
   margin: 0 auto;
   border-radius: 28px;
@@ -6493,9 +6503,10 @@ html, body {
 }
 
 .hero-promo-slider {
+  position: relative;
   overflow: hidden;
   width: 100%;
-  margin: 0 0 20px;
+  margin: 0 0 30px;
   border: 1px solid rgba(12, 70, 150, 0.12);
   border-radius: 16px;
   background: #ffffff;
@@ -6525,7 +6536,11 @@ html, body {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 12px;
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+  left: 0;
+  margin: 0;
 }
 
 .hero-promo-dots button {
@@ -6547,8 +6562,843 @@ html, body {
 
 @media (max-width: 991px) {
   .hero-promo-slider {
-    max-width: 620px;
+    max-width: 600px;
     margin-right: auto;
     margin-left: auto;
+  }
+}
+
+/* Adhikari login page */
+.adhikari-login-page {
+  min-height: 620px;
+  padding: clamp(32px, 6vw, 76px) 20px;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(59, 130, 246, 0.09), transparent 34%),
+    linear-gradient(145deg, #f5f8ff 0%, #eef3fb 100%) !important;
+}
+
+.adhikari-login-layout {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
+.adhikari-login-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+  overflow: hidden;
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(19, 43, 84, 0.12);
+}
+
+.adhikari-login-form-panel {
+  min-width: 0;
+  padding: clamp(32px, 5vw, 58px) clamp(24px, 6vw, 76px) 34px;
+}
+
+.adhikari-login-brand {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.adhikari-login-brand img {
+  display: block;
+  width: 112px;
+  height: 86px;
+  object-fit: contain;
+}
+
+.adhikari-login-heading {
+  text-align: center;
+}
+
+.adhikari-login-eyebrow,
+.adhikari-support-kicker {
+  display: inline-block;
+  color: #2870b9;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.adhikari-login-heading h1 {
+  margin: 9px 0 8px;
+  color: #102b55;
+  font-size: clamp(28px, 3.5vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.adhikari-login-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.adhikari-login-register {
+  margin: 22px 0 28px;
+  color: #64748b;
+  font-size: 13px;
+  text-align: center;
+}
+
+.adhikari-login-register a,
+.adhikari-login-forgot a,
+.adhikari-login-terms a {
+  color: #1767a8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.adhikari-login-register a:hover,
+.adhikari-login-forgot a:hover,
+.adhikari-login-terms a:hover {
+  text-decoration: underline;
+}
+
+.adhikari-login-form {
+  display: grid;
+  gap: 18px;
+}
+
+.adhikari-login-field {
+  display: grid;
+  gap: 8px;
+  color: #263b58;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.adhikari-login-input-wrap {
+  display: flex;
+  min-width: 0;
+  height: 52px;
+  align-items: center;
+  gap: 12px;
+  padding: 0 15px;
+  border: 1px solid #d9e1ec;
+  border-radius: 12px;
+  background: #fbfcfe;
+  color: #8292a8;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.adhikari-login-input-wrap:focus-within {
+  border-color: #2870b9;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(40, 112, 185, 0.12);
+}
+
+.adhikari-login-input-wrap svg {
+  flex: 0 0 auto;
+  font-size: 15px;
+}
+
+.adhikari-login-input-wrap input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1e293b;
+  font: inherit;
+  font-size: 14px;
+}
+
+.adhikari-login-input-wrap input::placeholder {
+  color: #9aa8b9;
+}
+
+.adhikari-login-forgot {
+  margin-top: -7px;
+  text-align: right;
+  font-size: 12px;
+}
+
+.adhikari-login-submit {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(100deg, #0b806f, #119985);
+  box-shadow: 0 8px 18px rgba(17, 130, 112, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.adhikari-login-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 22px rgba(17, 130, 112, 0.27);
+  filter: brightness(1.04);
+}
+
+.adhikari-login-submit:focus-visible,
+.adhikari-login-social a:focus-visible {
+  outline: 3px solid #8bd2c7;
+  outline-offset: 3px;
+}
+
+.adhikari-login-terms {
+  margin: 19px 0 0;
+  color: #8793a4;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.adhikari-login-social {
+  display: grid;
+  gap: 11px;
+  justify-items: center;
+  margin-top: 24px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.adhikari-login-social > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+}
+
+.adhikari-login-social a {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e1e8f1;
+  border-radius: 50%;
+  background: #f7f9fc;
+  color: #24466f;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.adhikari-login-social a:hover {
+  border-color: #174c83;
+  background: #174c83;
+  color: #ffffff;
+}
+
+.adhikari-login-support {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(36px, 5vw, 62px) clamp(26px, 4vw, 48px);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(91, 158, 242, 0.32), transparent 38%),
+    linear-gradient(150deg, #10396e 0%, #0a2854 58%, #071d42 100%);
+  color: #ffffff;
+}
+
+.adhikari-login-support::after {
+  position: absolute;
+  right: -100px;
+  bottom: 36px;
+  width: 270px;
+  height: 270px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(255, 255, 255, 0.035), 0 0 0 58px rgba(255, 255, 255, 0.025);
+  content: "";
+  pointer-events: none;
+}
+
+.adhikari-support-content,
+.adhikari-support-note {
+  position: relative;
+  z-index: 1;
+}
+
+.adhikari-support-kicker {
+  color: #9bc6ff;
+}
+
+.adhikari-support-content h2 {
+  margin: 12px 0 10px;
+  color: #ffffff;
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.adhikari-support-content > p {
+  max-width: 340px;
+  margin: 0;
+  color: #cfdbeb;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.adhikari-support-contact {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.adhikari-support-contact + .adhikari-support-contact {
+  margin-top: 18px;
+}
+
+.adhikari-support-icon {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #b9d7ff;
+  font-size: 16px;
+}
+
+.adhikari-support-contact > span:last-child {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.adhikari-support-contact small {
+  color: #aebfd5;
+  font-size: 11px;
+}
+
+.adhikari-support-contact strong {
+  overflow-wrap: anywhere;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.adhikari-support-contact:hover strong {
+  text-decoration: underline;
+}
+
+.adhikari-support-note {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 52px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.adhikari-support-note-mark {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.adhikari-support-note p {
+  max-width: 230px;
+  margin: 0;
+  color: #c7d5e8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .adhikari-login-page {
+    min-height: 0;
+    padding: 28px 16px 38px;
+  }
+
+  .adhikari-login-card {
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 20px;
+  }
+
+  .adhikari-login-form-panel {
+    padding: 30px clamp(20px, 7vw, 44px) 28px;
+  }
+
+  .adhikari-login-brand {
+    margin-bottom: 16px;
+  }
+
+  .adhikari-login-brand img {
+    width: 94px;
+    height: 72px;
+  }
+
+  .adhikari-login-register {
+    margin: 18px 0 24px;
+  }
+
+  .adhikari-login-support {
+    padding: 32px clamp(24px, 7vw, 44px);
+  }
+
+  .adhikari-support-note {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  .adhikari-login-page {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .adhikari-login-form-panel {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+}
+
+/* Responsive partner registration page */
+.adhikari-register-page {
+  box-sizing: border-box;
+  min-height: 620px;
+  padding: clamp(28px, 5vw, 68px) 20px;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(59, 130, 246, 0.09), transparent 34%),
+    linear-gradient(145deg, #f5f8ff 0%, #eef3fb 100%);
+}
+
+.adhikari-register-page *,
+.adhikari-register-page *::before,
+.adhikari-register-page *::after {
+  box-sizing: border-box;
+}
+
+.adhikari-register-layout {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
+.adhikari-register-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+  overflow: hidden;
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(19, 43, 84, 0.12);
+}
+
+.adhikari-register-form-panel {
+  display: flex;
+  min-width: 0;
+  justify-content: center;
+  padding: clamp(30px, 4vw, 52px) clamp(24px, 5vw, 66px);
+}
+
+.adhikari-register-form-content {
+  width: 100%;
+  max-width: 520px;
+  min-width: 0;
+}
+
+.adhikari-register-brand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.adhikari-register-brand img {
+  display: block;
+  width: 102px;
+  height: 78px;
+  object-fit: contain;
+}
+
+.adhikari-register-heading {
+  text-align: center;
+}
+
+.adhikari-register-heading > span,
+.adhikari-register-benefits-kicker {
+  color: #2870b9;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.adhikari-register-heading h1 {
+  margin: 8px 0;
+  color: #102b55;
+  font-size: clamp(27px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  overflow-wrap: normal;
+}
+
+.adhikari-register-heading p {
+  max-width: 390px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: normal;
+}
+
+.adhikari-register-login-prompt {
+  margin: 18px 0 24px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.adhikari-register-login-prompt a {
+  color: #1767a8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.adhikari-register-login-prompt a:hover {
+  text-decoration: underline;
+}
+
+.adhikari-register-form {
+  display: grid;
+  gap: 14px;
+}
+
+.adhikari-register-location-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.adhikari-register-field {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+  color: #263b58;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.adhikari-register-input {
+  display: flex;
+  min-width: 0;
+  height: 49px;
+  align-items: center;
+  gap: 11px;
+  padding: 0 13px;
+  border: 1px solid #d9e1ec;
+  border-radius: 11px;
+  background: #fbfcfe;
+  color: #8292a8;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.adhikari-register-input:focus-within {
+  border-color: #37388f;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(55, 56, 143, 0.1);
+}
+
+.adhikari-register-input > svg {
+  flex: 0 0 auto;
+  font-size: 14px;
+}
+
+.adhikari-register-input input,
+.adhikari-register-input select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #263b58;
+  font: inherit;
+  font-size: 13px;
+}
+
+.adhikari-register-input input::placeholder {
+  color: #9aa8b9;
+  opacity: 1;
+}
+
+.adhikari-register-select select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.adhikari-register-select > svg:last-child {
+  flex: 0 0 auto;
+  font-size: 12px;
+}
+
+.adhikari-register-submit {
+  display: flex;
+  width: 100%;
+  min-height: 51px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 3px;
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(100deg, #ed6400, #ff7a1a);
+  box-shadow: 0 8px 18px rgba(237, 100, 0, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.adhikari-register-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 22px rgba(237, 100, 0, 0.28);
+}
+
+.adhikari-register-submit:focus-visible,
+.adhikari-register-social a:focus-visible {
+  outline: 3px solid #8bd2c7;
+  outline-offset: 3px;
+}
+
+.adhikari-register-social {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  margin-top: 22px;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.adhikari-register-social > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+}
+
+.adhikari-register-social a {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e1e8f1;
+  border-radius: 50%;
+  background: #f7f9fc;
+  color: #24466f;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.adhikari-register-social a:hover {
+  border-color: #174c83;
+  background: #174c83;
+  color: #ffffff;
+}
+
+.adhikari-register-benefits {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(36px, 5vw, 64px) clamp(26px, 4vw, 50px);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(91, 158, 242, 0.32), transparent 38%),
+    linear-gradient(150deg, #10396e 0%, #0a2854 58%, #071d42 100%);
+  color: #ffffff;
+}
+
+.adhikari-register-benefits::after {
+  position: absolute;
+  right: -100px;
+  bottom: -70px;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(255, 255, 255, 0.035), 0 0 0 58px rgba(255, 255, 255, 0.025);
+  content: "";
+  pointer-events: none;
+}
+
+.adhikari-register-benefits > * {
+  position: relative;
+  z-index: 1;
+}
+
+.adhikari-register-benefits-kicker {
+  color: #9bc6ff;
+}
+
+.adhikari-register-benefits h2 {
+  max-width: 360px;
+  margin: 12px 0 10px;
+  color: #ffffff;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  overflow-wrap: normal;
+}
+
+.adhikari-register-benefits > p {
+  max-width: 370px;
+  margin: 0;
+  color: #cfdbeb;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.adhikari-register-benefits ul {
+  display: grid;
+  gap: 18px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.adhikari-register-benefits li {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 13px;
+  color: #f5f8ff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.adhikari-register-benefits li > span {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #a9dfcf;
+  font-size: 13px;
+}
+
+.adhikari-register-benefit-note {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 48px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.adhikari-register-benefit-note > span {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.adhikari-register-benefit-note p {
+  max-width: 240px;
+  margin: 0;
+  color: #c7d5e8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 820px) {
+  .adhikari-register-page {
+    min-height: 0;
+    padding: 28px 16px 38px;
+  }
+
+  .adhikari-register-card {
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 20px;
+  }
+
+  .adhikari-register-form-panel {
+    padding: 30px clamp(20px, 7vw, 44px);
+  }
+
+  .adhikari-register-benefits {
+    padding: 32px clamp(24px, 7vw, 44px);
+  }
+
+  .adhikari-register-benefits ul {
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .adhikari-register-benefit-note {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .adhikari-register-page {
+    padding: 20px 12px 28px;
+  }
+
+  .adhikari-register-form-panel {
+    padding: 26px 18px;
+  }
+
+  .adhikari-register-location-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .adhikari-register-input {
+    height: 48px;
   }
 }

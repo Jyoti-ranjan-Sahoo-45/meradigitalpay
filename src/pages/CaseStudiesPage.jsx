@@ -3,7 +3,6 @@ import {
   FileText, 
   ShieldCheck, 
   Award, 
-  CheckCircle2, 
   Download, 
   Eye, 
   Building2, 
@@ -13,6 +12,8 @@ import {
   X
 } from 'lucide-react';
 import isoCertImg from '../assets/iso-certificate.jpeg';
+import gst from '../assets/gst.jpeg';
+import msme from '../assets/msme.jpeg';
 
 const legalDocsList = [
   {
@@ -28,17 +29,6 @@ const legalDocsList = [
   },
   {
     id: 2,
-    title: 'Certificate of Incorporation & Company Registration',
-    docNumber: 'CIN / Reg No: Verified & Registered',
-    issuer: 'Ministry of Corporate Affairs (MCA), Govt of India',
-    validity: 'Permanent Corporate Status',
-    category: 'Statutory Registration',
-    description: 'Officially incorporated and registered under the Companies Act, Government of India, authorized for pan-India digital financial infrastructure & IT operations.',
-    badge: 'Govt. Recognized',
-    image: null
-  },
-  {
-    id: 3,
     title: 'GST Registration Certificate (GSTIN)',
     docNumber: 'GSTIN: 09XXXXX8290X1ZX',
     issuer: 'Goods and Services Tax Department, Govt of India',
@@ -46,41 +36,20 @@ const legalDocsList = [
     category: 'Tax & Financial Compliance',
     description: 'Compliant tax registration for multi-state digital service operations, B2B invoicing, and seamless partner commission settlements.',
     badge: 'Tax Compliant',
-    image: null
+    image: gst
   },
   {
-    id: 4,
+    id: 3,
     title: 'MSME Udyam Registration Certificate',
-    docNumber: 'UDYAM-UP-XX-XXXXXXX',
+    docNumber: 'UDYAM-UP-15-0017747',
     issuer: 'Ministry of Micro, Small and Medium Enterprises',
     validity: 'Lifetime Registration',
     category: 'Enterprise Classification',
     description: 'Recognized as an official enterprise driving last-mile financial inclusion, rural entrepreneurship, and digital commerce enablement.',
     badge: 'MSME Registered',
-    image: null
+    image: msme
   },
-  {
-    id: 5,
-    title: 'NPCI / Bharat Connect (BBPS) Technical Compliance',
-    docNumber: 'BBPS Channel Interoperability Protocol',
-    issuer: 'National Payments Corporation of India (NPCI)',
-    validity: 'Active Integration Protocol',
-    category: 'Banking System Compliance',
-    description: 'Adhering to NPCI and Bharat Connect standards for real-time utility bill payments, instant recharge routing, and settlement standards.',
-    badge: 'Banking Certified',
-    image: null
-  },
-  {
-    id: 6,
-    title: 'Data Protection, Cyber Security & 256-Bit SSL Certificate',
-    docNumber: 'TLS 1.3 / 256-Bit End-to-End Encryption',
-    issuer: 'Global Security Authority',
-    validity: 'Annual Renewal & Audited',
-    category: 'Security & Privacy Compliance',
-    description: 'End-to-end encrypted transactions, ISO-audited server security protocols, and strict customer data privacy protection.',
-    badge: 'Bank Grade Security',
-    image: null
-  }
+  
 ];
 
 export default function CaseStudiesPage() {
@@ -174,33 +143,28 @@ export default function CaseStudiesPage() {
                 </div>
               </div>
 
-              {doc.image ? (
-                <button
-                  type="button"
-                  onClick={() => setSelectedDoc(doc)}
-                  style={{
-                    background: '#0A2B5E',
-                    color: '#ffffff',
-                    border: 'none',
-                    padding: '12px 16px',
-                    borderRadius: '10px',
-                    fontWeight: 700,
-                    fontSize: '13.5px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    cursor: 'pointer',
-                    width: '100%'
-                  }}
-                >
-                  <Eye size={16} /> View Official Certificate
-                </button>
-              ) : (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#15803d', fontSize: '13px', fontWeight: 700 }}>
-                  <CheckCircle2 size={16} /> Verified & Available Upon Verification
-                </div>
-              )}
+              <button
+                type="button"
+                aria-label={`View official certificate: ${doc.title}`}
+                onClick={() => setSelectedDoc(doc)}
+                style={{
+                  background: '#0A2B5E',
+                  color: '#ffffff',
+                  border: 'none',
+                  padding: '12px 16px',
+                  borderRadius: '10px',
+                  fontWeight: 700,
+                  fontSize: '13.5px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  width: '100%'
+                }}
+              >
+                <Eye size={16} /> View Official Certificate
+              </button>
             </div>
           ))}
         </div>

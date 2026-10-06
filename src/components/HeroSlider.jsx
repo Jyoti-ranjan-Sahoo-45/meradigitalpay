@@ -102,14 +102,14 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                 </div>
               </div>
               <div className="content-wrap">
-                <p className="body-content">
+                {/* <p className="body-content">
                   A nationwide mission to empower Bharat by providing every neighborhood{" "}
                   <span className="text--black text--bold">
                     direct access to DBT withdrawals, instant payouts, AEPS, and vital banking solutions.
                   </span>
                 </p>
                 <p className="body-content">Transform your store into a full-service Digital Banking Kendra.</p>
-                <p className="body-content text--blue text--bold">Minimal setup cost. High monthly commission earnings.</p>
+                <p className="body-content text--blue text--bold">Minimal setup cost. High monthly commission earnings.</p> */}
                 
                 <div className="group-button" style={{ position: 'relative', zIndex: 100 }}>
                   <button 
@@ -145,7 +145,7 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                 />
                 
                 {/* Floating Video Overlay Controls */}
-                <div className="hero-video-overlay-bar">
+                {/* <div className="hero-video-overlay-bar">
                   <button 
                     type="button" 
                     className="hero-vid-ctrl-btn"
@@ -165,7 +165,7 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                   >
                     {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

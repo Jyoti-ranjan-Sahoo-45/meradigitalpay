@@ -8,36 +8,36 @@ import {
 } from 'lucide-react';
 
 const serviceLinks = [
-  { name: 'AEPS', path: '/services/aeps' },
-  { name: 'Money Transfer (DMT)', path: '/services/money-transfer-dmt' },
-  { name: 'Micro ATM Withdrawal', path: '/services/micro-atm-withdrawal' },
-  { name: 'Mobile & DTH Recharge', path: '/services/mobile-dth-recharge' },
-  { name: 'BBPS', path: '/services/bbps' },
-  { name: 'OTT Recharge', path: '/services/ott-recharge' },
-  { name: 'PAN Card', path: '/services/pan-card' },
-  { name: 'ITR Filing', path: '/services/itr-filing' },
-  { name: 'GST Registration', path: '/services/gst-registration' },
-  { name: 'MSME Registration', path: '/services/msme-registration' },
-  { name: 'IRCTC Ticket Booking', path: '/services/irctc-ticket-booking' },
-  { name: 'Flight Booking', path: '/services/flight-booking' },
-  { name: 'Bus Booking', path: '/services/bus-booking' },
-  { name: 'Hotel Booking', path: '/services/hotel-booking' },
-  { name: 'Digital Bank Account', path: '/services/digital-bank-account' },
-  { name: 'Physical Card', path: '/services/physical-card' },
-  { name: 'UPI Payment', path: '/services/upi-payment' },
-  { name: 'Loan', path: '/services/loan' },
-  { name: 'Investment', path: '/services/investment' },
-  { name: 'Health Insurance', path: '/services/health-insurance' },
-  { name: 'Motor Insurance', path: '/services/motor-insurance' },
-  { name: 'Shop Insurance', path: '/services/shop-insurance' },
-  { name: 'Device Insurance', path: '/services/device-insurance' },
-  { name: 'Account Opening', path: '/services/account-opening' },
-  { name: 'Credit Card Apply', path: '/services/credit-card-apply' },
-  { name: 'SBM FD Card Apply', path: '/services/sbm-fd-card-apply' },
-  { name: 'NSDL BC Apply', path: '/services/nsdl-bc-apply' },
-  { name: 'Kotak BC Apply', path: '/services/kotak-bc-apply' },
-  { name: 'CMS Airtel', path: '/services/cms-airtel' },
-  { name: 'Payout', path: '/services/payout' }
+  { name: 'AEPS', path: '#' },
+  { name: 'Money Transfer (DMT)', path: '#' },
+  { name: 'Micro ATM Withdrawal', path: '#' },
+  { name: 'Mobile & DTH Recharge', path: '#' },
+  { name: 'BBPS', path: '#' },
+  { name: 'OTT Recharge', path: '#' },
+  { name: 'PAN Card', path: '#' },
+  { name: 'ITR Filing', path: '#' },
+  { name: 'GST Registration', path: '#' },
+  { name: 'MSME Registration', path: '#' },
+  { name: 'IRCTC Ticket Booking', path: '#' },
+  { name: 'Flight Booking', path: '#' },
+  { name: 'Bus Booking', path: '#' },
+  { name: 'Hotel Booking', path: '#' },
+  { name: 'Digital Bank Account', path: '#' },
+  { name: 'Physical Card', path: '#' },
+  { name: 'UPI Payment', path: '#' },
+  { name: 'Loan', path: '#' },
+  { name: 'Investment', path: '#' },
+  { name: 'Health Insurance', path: '#' },
+  { name: 'Motor Insurance', path: '#' },
+  { name: 'Shop Insurance', path: '#' },
+  { name: 'Device Insurance', path: '#' },
+  { name: 'Account Opening', path: '#' },
+  { name: 'Credit Card Apply', path: '#' },
+  { name: 'SBM FD Card Apply', path: '#' },
+  { name: 'NSDL BC Apply', path: '#' },
+  { name: 'Kotak BC Apply', path: '#' },
+  { name: 'CMS Airtel', path: '#' },
+  { name: 'Payout', path: '#' }
 ];
 
 const serviceLinksByName = Object.fromEntries(
@@ -117,6 +117,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
     if (!path || typeof onSelectSegment !== 'function') return;
 
     e.preventDefault();
+    if (path === '#') return;
+
     onSelectSegment(path.split('/').pop());
     setIsMobileMenuOpen(false);
     setIsMobileServicesOpen(false);
@@ -783,7 +785,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   }}
                 >
                   <a 
-                    href="https://www.meradigitalpay.com" 
+                    href="/login" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     style={{
@@ -805,7 +807,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     <ArrowUpRight size={14} color="#64748B" />
                   </a>
                   <a 
-                    href="https://www.meradigitalpay.com" 
+                    href="/login" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     style={{

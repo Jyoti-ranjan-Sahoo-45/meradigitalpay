@@ -8,7 +8,7 @@ import travelImage from '../assets/flight-booking.jpeg';
 import offerImage from '../assets/pan-card.jpeg';
 import neoImage from '../assets/personal-loan.jpeg';
 import retailerImage from '../assets/flipkart-order.jpeg';
-import app from "./../assets/app.png";
+import indiaImage from '../assets/indiaimg.jpeg';
 
 const serviceList = [
   {
@@ -119,27 +119,8 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
   return (
     <section className="services-wrap custom-services-section" id="services">
       <div className="container--responsive">
-        {/* Exact Header matching User Reference */}
-        <div className="services-exact-header">
-          <div className="services-exact-top-flex">
-            <div className="services-exact-phone-wrapper">
-              <img 
-                src={app} 
-                alt="One App multiple services" 
-              />
-            </div>
-            <div className="services-exact-heading-wrapper">
-              <h2>
-                One App<br />
-                <span>multiple</span><br />
-                services
-              </h2>
-            </div>
-          </div>
-          <p className="services-exact-subheading">
-            A great earning potential with the opportunity to grow your business<br />
-            with minimal one time investment and zero working capital
-          </p>
+        <div className="services-india-image-wrapper">
+          <img src={indiaImage} alt="Mera Digital Pay services and reach across India" />
         </div>
 
         {/* Tabbed Interactive Carousel */}

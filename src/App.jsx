@@ -94,6 +94,8 @@ import NsdlBcApply from './services/NsdlBcApply';
 import KotakBcApply from './services/KotakBcApply';
 import CmsAirtel from './services/CmsAirtel';
 import Payout from './services/Payout';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 
 export default function App() {
@@ -271,6 +273,14 @@ export default function App() {
       /* =====================================================
          EXISTING ROUTES
       ===================================================== */
+
+      if (path === '/login') {
+        return 'login';
+      }
+
+      if (path === '/register') {
+        return 'register';
+      }
 
       if (
         path.includes('income-calculator') ||
@@ -458,6 +468,13 @@ export default function App() {
 
     let newPath = '/';
 
+    if (segment === 'login') {
+      newPath = '/login';
+    }
+
+    if (segment === 'register') {
+      newPath = '/register';
+    }
 
     /* =======================================================
        BANKING SERVICES
@@ -851,6 +868,20 @@ export default function App() {
       ) : activeSegment === 'products' ? (
 
         <Products
+          onOpenContact={() =>
+            setIsContactExpertOpen(true)
+          }
+        />
+      ) : activeSegment === 'login' ? (
+
+        <Login
+          onOpenContact={() =>
+            setIsContactExpertOpen(true)
+          }
+        />
+      ) : activeSegment === 'register' ? (
+
+        <Register
           onOpenContact={() =>
             setIsContactExpertOpen(true)
           }

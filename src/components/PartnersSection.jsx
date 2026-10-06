@@ -7,6 +7,25 @@ import meraDigitalApsImg from '../assets/brands/mera-digital-aps.jpeg';
 import digitalPartnerPayImg from '../assets/brands/digital-partner-pay.jpeg';
 import smartEarnPartnerImg from '../assets/brands/smart-earn-partner.jpeg';
 import smvdkPartnerImg from '../assets/brands/smvdk-partner.jpeg';
+import partnerLogo1 from '../assets/logo/logo1.png';
+import partnerLogo2 from '../assets/logo/logo2.png';
+import partnerLogo3 from '../assets/logo/logo3.png';
+import partnerLogo4 from '../assets/logo/logo4.png';
+import partnerLogo5 from '../assets/logo/logo5.png';
+import partnerLogo6 from '../assets/logo/logo6.png';
+import partnerLogo7 from '../assets/logo/logo7.png';
+import partnerLogo8 from '../assets/logo/logo8.png';
+import partnerLogo9 from '../assets/logo/logo9.png';
+import partnerLogo10 from '../assets/logo/logo10.png';
+import partnerLogo11 from '../assets/logo/logo11.png';
+import partnerLogo12 from '../assets/logo/logo12.png';
+import partnerLogo13 from '../assets/logo/logo13.png';
+import partnerLogo14 from '../assets/logo/logo14.png';
+import partnerLogo15 from '../assets/logo/logo15.png';
+import partnerLogo16 from '../assets/logo/logo16.png';
+import partnerLogo17 from '../assets/logo/logo17.png';
+import partnerLogo18 from '../assets/logo/logo18.png';
+import partnerLogo19 from '../assets/logo/logo19.png';
 
 const ourBrandsList = [
   { id: 1, name: 'Mera Digital Pay', subtitle: 'Flagship Digital Payment Platform', logo: logoImg, isMain: true },
@@ -17,31 +36,25 @@ const ourBrandsList = [
 ];
 
 const partners = [
-  { id: 1, name: 'LIC', category: 'Insurance', color: '#005a9c', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Life_Insurance_Corporation_of_India_logo.svg/300px-Life_Insurance_Corporation_of_India_logo.svg.png' },
-  { id: 2, name: 'ICICI Bank', category: 'Banking', color: '#b02a30', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/320px-ICICI_Bank_Logo.svg.png' },
-  { id: 3, name: 'Axis Bank', category: 'Banking', color: '#861f41', logo: 'https://paynearby.in/wp-content/uploads-efs/2022/02/Axis-Bank.png' },
-  { id: 4, name: 'Kotak Mahindra Bank', category: 'Banking', color: '#da251c', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Kotak_Mahindra_Bank_logo.svg/320px-Kotak_Mahindra_Bank_logo.svg.png' },
-  { id: 5, name: 'NSDL Payments Bank', category: 'Payments Bank', color: '#00579e', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/NSDL_Payments_Bank_Logo.png/320px-NSDL_Payments_Bank_Logo.png' },
-  { id: 6, name: 'YES BANK', category: 'Banking', color: '#003874', logo: 'https://paynearby.in/wp-content/uploads-efs/2023/05/logo-yes-bank.png' },
-  { id: 7, name: 'RBL Bank', category: 'Banking', color: '#2b3990', logo: 'https://paynearby.in/wp-content/uploads-efs/2022/02/RBL-Bank.png' },
-  { id: 8, name: 'IDFC FIRST Bank', category: 'Banking', color: '#9d2235', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/IDFC_First_Bank_logo.svg/320px-IDFC_First_Bank_logo.svg.png' },
-  { id: 9, name: 'HDFC Bank', category: 'Banking', color: '#004c8f', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo.svg/320px-HDFC_Bank_Logo.svg.png' },
-  { id: 10, name: 'Unity Small Finance Bank', category: 'Banking', color: '#0b7285', logo: 'https://paynearby.in/wp-content/uploads-efs/2023/04/Unity-small-finance-bank.png' },
-  { id: 11, name: 'SBM Bank India', category: 'Banking', color: '#e8590c', logo: 'https://paynearby.in/wp-content/uploads-efs/2023/03/SBM-Logo_PNG.png' },
-  { id: 12, name: 'Airtel Payments Bank', category: 'Payments Bank', color: '#e02424', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Airtel_Payments_Bank_Logo.svg/320px-Airtel_Payments_Bank_Logo.svg.png' },
-  { id: 13, name: 'Fino Payments Bank', category: 'Payments Bank', color: '#be185d', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Fino_Payments_Bank_Logo.png/320px-Fino_Payments_Bank_Logo.png' },
-  { id: 14, name: 'Jio Payments Bank', category: 'Payments Bank', color: '#0c4a6e', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/320px-Reliance_Jio_Logo_%28October_2015%29.svg.png' },
-  { id: 15, name: 'Slice', category: 'Fintech', color: '#7c3aed', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Slice_card_logo.png/320px-Slice_card_logo.png' },
-  { id: 16, name: 'DigiLocker', category: 'Govt Services', color: '#0284c7', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/DigiLocker_logo.png/320px-DigiLocker_logo.png' },
-  { id: 17, name: 'Razorpay', category: 'Payment Gateway', color: '#0c4696', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Razorpay_logo.svg/320px-Razorpay_logo.svg.png' },
-  { id: 18, name: 'Fingpay', category: 'Fintech', color: '#ea580c', logo: 'https://paynearby.in/wp-content/uploads-efs/2022/02/BCFI-logo-01.png' },
-  { id: 19, name: 'NPCI', category: 'Payments Infrastructure', color: '#0369a1', logo: 'https://paynearby.in/wp-content/uploads-efs/2022/02/NPCI.png' },
-  { id: 20, name: 'Bharat Connect', category: 'BBPS Network', color: '#0c4696', logo: 'https://paynearby.in/wp-content/uploads-efs/2025/05/Bharat-Connect-Primary-Logo_PNG.png' },
-  { id: 21, name: 'Flipkart', category: 'E-Commerce', color: '#2563eb', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Flipkart_logo.svg/320px-Flipkart_logo.svg.png' },
-  { id: 22, name: 'Amazon', category: 'E-Commerce', color: '#d97706', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/320px-Amazon_logo.svg.png' },
-  { id: 23, name: 'ONDC', category: 'Digital Commerce', color: '#047857', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/ONDC_Logo.png/320px-ONDC_Logo.png' },
-  { id: 24, name: 'Vyapar App', category: 'Business Accounting', color: '#dc2626', logo: 'https://play-lh.googleusercontent.com/97y4r1wS7C8_lE-3Yn46P1d_v6YV2xW8Y2bU0A0=w240-h480-rw' },
-  { id: 25, name: 'Mera Digital Pay', category: 'Fintech Platform', color: '#0c4696', logo: logoImg }
+  { id: 1, name: 'Flipkart', category: 'Insurance', color: '#005a9c', logo: partnerLogo1 },
+  { id: 2, name: 'Amazon', category: 'Banking', color: '#b02a30', logo: partnerLogo2 },
+  { id: 3, name: 'Bharat Connect', category: 'Banking', color: '#861f41', logo: partnerLogo3 },
+  { id: 4, name: 'Ondc', category: 'Banking', color: '#da251c', logo: partnerLogo4 },
+  { id: 5, name: 'Lic', category: 'Payments Bank', color: '#00579e', logo: partnerLogo5 },
+  { id: 6, name: 'Digilocker', category: 'Banking', color: '#003874', logo: partnerLogo6 },
+  { id: 7, name: 'Protean', category: 'Banking', color: '#2b3990', logo: partnerLogo7 },
+  { id: 8, name: 'Nsdl', category: 'Banking', color: '#9d2235', logo: partnerLogo8 },
+  { id: 9, name: 'IDFC FIRST Bank', category: 'Banking', color: '#004c8f', logo: partnerLogo9 },
+  { id: 10, name: 'Jio', category: 'Banking', color: '#0b7285', logo: partnerLogo10 },
+  { id: 11, name: 'Npcl', category: 'Banking', color: '#e8590c', logo: partnerLogo11 },
+  { id: 12, name: 'ICICI Bank', category: 'Payments Bank', color: '#e02424', logo: partnerLogo12 },
+  { id: 13, name: 'Axis Bank', category: 'Payments Bank', color: '#be185d', logo: partnerLogo13 },
+  { id: 14, name: 'Fino', category: 'Payments Bank', color: '#0c4a6e', logo: partnerLogo14 },
+  { id: 15, name: 'kotak', category: 'Fintech', color: '#7c3aed', logo: partnerLogo15 },
+  { id: 16, name: 'YES BANK', category: 'Govt Services', color: '#0284c7', logo: partnerLogo16 },
+  { id: 17, name: 'AU SMALL FINANCE BANK', category: 'Payment Gateway', color: '#0c4696', logo: partnerLogo17 },
+  { id: 18, name: 'Payments Bank', category: 'Fintech', color: '#ea580c', logo: partnerLogo18 },
+  { id: 19, name: 'SBM', category: 'Payments Infrastructure', color: '#0369a1', logo: partnerLogo19 }
 ];
 
 const youtubeVideos = [
@@ -160,7 +173,7 @@ export default function PartnersSection() {
           <h3 className="section-title-dashed">Our Partners</h3>
         </div>
 
-        {/* Seamless Smooth Partner Marquee Slider with all 25 Partners */}
+        {/* Seamless Smooth Partner Marquee Slider with all 19 Partners */}
         <div className="partner-marquee-container">
           <div className="partner-marquee-track">
             {/* First Set of Logos */}

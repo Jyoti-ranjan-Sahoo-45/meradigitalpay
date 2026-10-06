@@ -8,6 +8,7 @@ import MeraDigitalPayAdvantage from '../components/MeraDigitalPayAdvantage';
 import SuccessStories from '../components/SuccessStories';
 import CaseStudySection from '../components/CaseStudySection';
 import PartnersSection from '../components/PartnersSection';
+import TransactionSuccess from '../components/TransactionSuccess';
 
 export default function RetailerPage({ onOpenVideo, onOpenJoin, onOpenIncomeCalc }) {
   return (
@@ -36,6 +37,8 @@ export default function RetailerPage({ onOpenVideo, onOpenJoin, onOpenIncomeCalc
 
       {/* 5. Pan-India Reach & Partner Network Counter */}
       <PanIndiaStats />
+
+      <TransactionSuccess/>
 
       {/* 6. Mera Digital Pay Advantage Grid */}
       <MeraDigitalPayAdvantage 

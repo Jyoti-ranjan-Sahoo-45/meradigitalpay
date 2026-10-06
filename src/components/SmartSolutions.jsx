@@ -260,12 +260,12 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
               <div className="smart-card-body-grid">
                 {/* Left Media Column */}
                 <div className="smart-card-media-col">
+                  <div className={`smart-card-floating-badge ${item.badgeColor}`}>
+                    <CheckCircle2 size={15} />
+                    <span>{item.badgeText}</span>
+                  </div>
                   <div className="smart-card-img-wrap">
                     <img src={item.image} alt={`${item.title} Solution`} />
-                    <div className={`smart-card-floating-badge ${item.badgeColor}`}>
-                      <CheckCircle2 size={15} />
-                      <span>{item.badgeText}</span>
-                    </div>
                   </div>
                 </div>
 
