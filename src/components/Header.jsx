@@ -634,31 +634,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       </div>
                     </a>
 
-                    {/* Gallery & Events */}
-                    <a
-                      href="/media-listing"
-                      onClick={(e) => handleNavClick('media', e)}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '12px',
-                        padding: '10px 12px',
-                        borderRadius: '10px',
-                        textDecoration: 'none',
-                        background: activeSegment === 'media' ? '#EEF4FF' : 'transparent',
-                        transition: 'background 0.15s'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'media' ? '#EEF4FF' : 'transparent'}
-                    >
-                      <div style={{ background: '#FCE7F3', color: '#DB2777', padding: '8px', borderRadius: '8px', display: 'flex' }}>
-                        <Image size={18} />
-                      </div>
-                      <div>
-                        <div style={{ color: '#0A2B5E', fontWeight: 700, fontSize: '13.5px' }}>Gallery & Events</div>
-                        <div style={{ color: '#64748B', fontSize: '11.5px', marginTop: '2px' }}>Office Celebrations & Fintech Summits</div>
-                      </div>
-                    </a>
+
 
                     {/* About Us */}
                     <a
@@ -1206,26 +1182,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     <Users size={18} color="#D97706" /> Directors & Staff
                   </a>
                 </li>
-                <li>
-                  <a 
-                    href="/media-listing" 
-                    onClick={(e) => handleNavClick('media', e)} 
-                    style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '10px', 
-                      padding: '10px 12px', 
-                      borderRadius: '8px', 
-                      color: activeSegment === 'media' ? '#0A2B5E' : '#334155', 
-                      background: activeSegment === 'media' ? '#EEF4FF' : 'transparent',
-                      fontWeight: 600, 
-                      fontSize: '14px', 
-                      textDecoration: 'none' 
-                    }}
-                  >
-                    <Image size={18} color="#DB2777" /> Gallery & Events
-                  </a>
-                </li>
+
                 <li>
                   <a 
                     href="/about-us" 
