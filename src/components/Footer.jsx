@@ -4,7 +4,7 @@ import {
   Send, ShieldCheck, Award, Smartphone, CheckCircle, ArrowRight
 } from 'lucide-react';
 import logoImg from '../assets/logo.png';
-import meraDigitalApsImg from '../assets/brands/mera-digital-aps.jpeg';
+import meraDigitalApsImg from '../assets/brands/mera-digital-aps.png';
 import digitalPartnerPayImg from '../assets/brands/digital-partner-pay.jpeg';
 import smartEarnPartnerImg from '../assets/brands/smart-earn-partner.jpeg';
 import smvdkPartnerImg from '../assets/brands/smvdk-partner.jpeg';

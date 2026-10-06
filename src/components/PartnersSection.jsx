@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight, ShieldCheck, Sparkles } from 'lucide-react';
 import downloadImage from '../assets/download.png';
 import logoImg from '../assets/logo.png';
-import meraDigitalApsImg from '../assets/brands/mera-digital-aps.jpeg';
+import meraDigitalApsImg from '../assets/brands/mera-digital-aps.png';
 import digitalPartnerPayImg from '../assets/brands/digital-partner-pay.jpeg';
 import smartEarnPartnerImg from '../assets/brands/smart-earn-partner.jpeg';
 import smvdkPartnerImg from '../assets/brands/smvdk-partner.jpeg';
