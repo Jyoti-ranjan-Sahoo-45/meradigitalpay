@@ -35,6 +35,7 @@ import resellerImg from "./../assets/reseller-partner.jpeg";
 import b2bImg from "./../assets/b2b-partner.jpeg";
 import whiteLabelImg from "./../assets/white-label-partner.jpeg";
 import apiImg from "./../assets/api-partner.jpeg";
+import PartnerEmiCalculator from './PartnerEmiCalculator';
 
 export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
   const [selectedTier, setSelectedTier] = useState(null);
@@ -737,6 +738,14 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                       </ul>
                     </div>
                   </div>
+
+                  {/* Reseller Partner EMI Calculator */}
+                  <PartnerEmiCalculator 
+                    defaultCost={45000} 
+                    partnerTitle="Reseller Partner"
+                    onApply={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                    onRequestDemo={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                  />
                 </div>
               )}
 
@@ -787,6 +796,14 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                       </ul>
                     </div>
                   </div>
+
+                  {/* B2B Partner EMI Calculator */}
+                  <PartnerEmiCalculator 
+                    defaultCost={45000} 
+                    partnerTitle="B2B Partner"
+                    onApply={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                    onRequestDemo={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                  />
                 </div>
               )}
 
@@ -860,6 +877,14 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                       </ul>
                     </div>
                   </div>
+
+                  {/* White Label Partner EMI Calculator */}
+                  <PartnerEmiCalculator 
+                    defaultCost={45000} 
+                    partnerTitle="White Label Partner"
+                    onApply={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                    onRequestDemo={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                  />
                 </div>
               )}
 
@@ -940,28 +965,13 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                     </div>
                   </div>
 
-                  {/* API 0% EMI Section */}
-                  <div className="smart-emi-box">
-                    <div className="emi-box-title">
-                      <CreditCard size={18} className="text-amber-600" />
-                      <span>0% Interest EMI Option on API Packages</span>
-                    </div>
-                    <div className="emi-box-grid">
-                      <div className="emi-box-cell">
-                        <div className="emi-cell-head">Example 1: Total Fee ₹60,000</div>
-                        <div className="emi-cell-row"><span>Down Payment:</span> <span>₹20,000</span></div>
-                        <div className="emi-cell-row"><span>Remaining Balance:</span> <span>₹40,000</span></div>
-                        <div className="emi-cell-row highlight"><span>Monthly EMI:</span> <span>₹10,000 / month (4 Months)</span></div>
-                      </div>
-                      <div className="emi-box-cell">
-                        <div className="emi-cell-head">Example 2: Total Fee ₹30,000</div>
-                        <div className="emi-cell-row"><span>Down Payment:</span> <span>₹10,000</span></div>
-                        <div className="emi-cell-row"><span>Remaining Balance:</span> <span>₹20,000</span></div>
-                        <div className="emi-cell-row highlight"><span>Monthly EMI:</span> <span>₹10,000 / month (2 Months)</span></div>
-                      </div>
-                    </div>
-                    <p className="emi-box-footer">*Zero interest EMI options subject to API package eligibility and contract terms.</p>
-                  </div>
+                  {/* API Partner EMI Calculator */}
+                  <PartnerEmiCalculator 
+                    defaultCost={45000} 
+                    partnerTitle="API Partner"
+                    onApply={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                    onRequestDemo={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                  />
                 </div>
               )}
 
