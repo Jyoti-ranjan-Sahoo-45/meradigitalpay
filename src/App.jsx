@@ -1070,7 +1070,7 @@ export default function App() {
             setIsJoinOpen(true)
           }
           onOpenIncomeCalc={() =>
-            setIsIncomeCalcOpen(true)
+            handleSelectSegment('income-calculator')
           }
         />
 
