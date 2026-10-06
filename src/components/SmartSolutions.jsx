@@ -40,6 +40,13 @@ import PartnerEmiCalculator from './PartnerEmiCalculator';
 export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
   const [selectedTier, setSelectedTier] = useState(null);
 
+  const handleApplyNow = () => {
+    setSelectedTier(null);
+    window.history.pushState(null, '', '/contact-us');
+    window.dispatchEvent(new Event('popstate'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Prevent background scroll when modal is active
   useEffect(() => {
     if (selectedTier) {
@@ -303,14 +310,13 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                         >
                           Income Calculator
                         </button>
-                        <a 
-                          href="https://www.meradigitalpay.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
+                        <button 
+                          type="button"
                           className="smart-btn secondary"
+                          onClick={handleApplyNow}
                         >
                           Apply Now
-                        </a>
+                        </button>
                       </>
                     ) : (
                       <>
@@ -743,7 +749,7 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                   <PartnerEmiCalculator 
                     defaultCost={45000} 
                     partnerTitle="Reseller Partner"
-                    onApply={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                    onApply={handleApplyNow}
                     onRequestDemo={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
                   />
                 </div>
@@ -801,7 +807,7 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                   <PartnerEmiCalculator 
                     defaultCost={45000} 
                     partnerTitle="B2B Partner"
-                    onApply={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                    onApply={handleApplyNow}
                     onRequestDemo={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
                   />
                 </div>
@@ -882,7 +888,7 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                   <PartnerEmiCalculator 
                     defaultCost={45000} 
                     partnerTitle="White Label Partner"
-                    onApply={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                    onApply={handleApplyNow}
                     onRequestDemo={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
                   />
                 </div>
@@ -969,7 +975,7 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                   <PartnerEmiCalculator 
                     defaultCost={45000} 
                     partnerTitle="API Partner"
-                    onApply={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                    onApply={handleApplyNow}
                     onRequestDemo={() => { setSelectedTier(null); if (typeof onOpenJoin === 'function') onOpenJoin(); }}
                   />
                 </div>
@@ -1046,14 +1052,13 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                     >
                       Income Calculator
                     </button>
-                    <a 
-                      href="https://www.meradigitalpay.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                    <button 
+                      type="button"
                       className="smart-btn secondary"
+                      onClick={handleApplyNow}
                     >
-                      Apply Now <ExternalLink size={14} />
-                    </a>
+                      Apply Now <ArrowRight size={14} />
+                    </button>
                   </>
                 ) : (
                   <>

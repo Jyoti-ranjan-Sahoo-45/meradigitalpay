@@ -345,6 +345,10 @@ export default function PartnerEmiCalculator({
                     months: selectedPlanMonths,
                     monthlyEmi
                   });
+                } else {
+                  window.history.pushState(null, '', '/contact-us');
+                  window.dispatchEvent(new Event('popstate'));
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               }}
               style={{
