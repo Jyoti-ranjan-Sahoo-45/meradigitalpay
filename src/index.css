@@ -210,10 +210,10 @@ body {
    ═════════════════════════════════════════════════════════════════════ */
 .mdp-footer-root {
   background: #081a34 !important;
-  background: linear-gradient(135deg, #07172c 0%, #0b2c4d 35%, #073a46 70%, #092032 100%) !important;
+  background: linear-gradient(135deg, #07172c 0%, #0b2c4d 35%, #0A2B5E 70%, #07172c 100%) !important;
   border-top: 3px solid transparent !important;
-  border-image: linear-gradient(90deg, rgba(107, 197, 232, 1) 0%, rgba(187, 240, 210, 1) 50%, rgba(237, 221, 83, 1) 100%) 1 !important;
-  box-shadow: 0 -8px 25px rgba(11, 44, 77, 0.2) !important;
+  border-image: linear-gradient(90deg, #0A2B5E 0%, #D9940A 35%, #DC2626 70%, #0A2B5E 100%) 1 !important;
+  box-shadow: 0 -8px 25px rgba(10, 43, 94, 0.2) !important;
   color: #e2e8f0 !important;
   font-family: 'Cera Pro', 'Plus Jakarta Sans', sans-serif !important;
   position: relative !important;
@@ -246,7 +246,7 @@ body {
 .mdp-brands-title {
   font-size: 0.88rem !important;
   font-weight: 800 !important;
-  color: #f97316 !important;
+  color: #F59E0B !important;
   letter-spacing: 0.8px !important;
   text-transform: uppercase !important;
 }
@@ -284,7 +284,7 @@ body {
 }
 
 .mdp-brand-badge-name {
-  color: #0c4696 !important;
+  color: #0A2B5E !important;
   font-size: 0.82rem !important;
   font-weight: 700 !important;
   white-space: nowrap !important;
@@ -307,19 +307,19 @@ body {
 }
 
 .mdp-col-title {
-  color: #f97316 !important;
+  color: #F59E0B !important;
   font-size: 0.95rem !important;
   font-weight: 800 !important;
   letter-spacing: 0.6px !important;
   margin: 0 0 16px 0 !important;
   text-transform: uppercase !important;
-  border-bottom: 1px solid rgba(249, 115, 22, 0.3) !important;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.3) !important;
   padding-bottom: 6px !important;
   display: inline-block !important;
 }
 
 .mdp-subheading-orange {
-  color: #f97316 !important;
+  color: #F59E0B !important;
   font-size: 0.84rem !important;
   font-weight: 800 !important;
   letter-spacing: 0.5px !important;
@@ -377,7 +377,7 @@ body {
 }
 
 .mdp-icon-orange {
-  color: #f97316 !important;
+  color: #F59E0B !important;
   flex-shrink: 0 !important;
   margin-top: 2px !important;
 }
@@ -708,28 +708,29 @@ body {
 }
 
 .hero-content-col .group-button .btn.green {
-  background-color: #58b147 !important;
+  background: linear-gradient(135deg, #D9940A 0%, #B87B00 100%) !important;
   color: #ffffff !important;
   border: 2px solid transparent !important;
+  box-shadow: 0 4px 14px rgba(217, 148, 10, 0.3) !important;
 }
 
 .hero-content-col .group-button .btn.green:hover {
-  background-color: #469637 !important;
+  background: linear-gradient(135deg, #B87B00 0%, #92400E 100%) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(88, 177, 71, 0.35);
+  box-shadow: 0 6px 18px rgba(217, 148, 10, 0.45);
 }
 
 .hero-content-col .group-button .btn.border {
   background-color: transparent !important;
-  border: 1.5px solid #0c4696 !important;
-  color: #0c4696 !important;
+  border: 1.5px solid #0A2B5E !important;
+  color: #0A2B5E !important;
 }
 
 .hero-content-col .group-button .btn.border:hover {
-  background-color: #0c4696 !important;
+  background-color: #0A2B5E !important;
   color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(12, 70, 150, 0.25);
+  box-shadow: 0 6px 18px rgba(10, 43, 94, 0.25);
 }
 
 .hero-interactive-col {

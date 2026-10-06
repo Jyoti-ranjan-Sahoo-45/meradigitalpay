@@ -6,7 +6,7 @@ function Slidingtext() {
     <span className="sliding-text-message">
       Daudega To Mera Desh Daudega:
       <span className="sliding-text-highlight">Har Dukaan bane Digital Kendra</span>
-      <span aria-hidden="true">✦</span>
+      <span aria-hidden="true" style={{ color: '#DC2626' }}>✦</span>
     </span>
   );
 
@@ -32,7 +32,9 @@ function Slidingtext() {
         .sliding-text-section {
           width: 100%;
           overflow: hidden;
-          background: #000;
+          background: linear-gradient(90deg, #07172c 0%, #0A2B5E 50%, #07172c 100%);
+          border-top: 1.5px solid rgba(217, 148, 10, 0.35);
+          border-bottom: 1.5px solid rgba(217, 148, 10, 0.35);
           padding: 16px 0;
         }
 
@@ -54,7 +56,7 @@ function Slidingtext() {
           align-items: center;
           gap: 16px;
           padding-right: 32px;
-          color: #fff;
+          color: #ffffff;
           font-size: clamp(1.1rem, 2.5vw, 1.875rem);
           font-weight: 600;
           line-height: 1.3;
@@ -62,7 +64,9 @@ function Slidingtext() {
         }
 
         .sliding-text-highlight {
-          color: #facc15;
+          color: #FBBF24;
+          font-weight: 700;
+          text-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
           white-space: nowrap;
         }
 
