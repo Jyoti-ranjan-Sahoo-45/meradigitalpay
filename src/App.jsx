@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { UserPlus } from 'lucide-react';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -1175,26 +1176,19 @@ export default function App() {
       />
 
       {/* =====================================================
-          FLOATING WHATSAPP BUTTON WITH GENTLE PULSE
+          FLOATING QUICK ADHIKARI REGISTRATION ACTION WIDGET
       ===================================================== */}
-      <a
-        href="https://api.whatsapp.com/send?phone=917088898725&text=Hello%20Mera%20Digital%20Pay%2C%20I%20want%20to%20know%20more%20about%20your%20services"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="whatsapp-floating-btn"
-        title="Chat with Mera Digital Pay on WhatsApp"
-        aria-label="Chat on WhatsApp"
+      <button 
+        type="button" 
+        className="floating-adhikari-fab"
+        onClick={() => setIsJoinOpen(true)}
+        aria-label="Join as Adhikari"
       >
-        <svg 
-          width="32" 
-          height="32" 
-          viewBox="0 0 24 24" 
-          fill="currentColor"
-        >
-          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.976.58 2.028.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.079-2.148-.521-1.733-.715-2.847-2.48-2.934-2.595-.087-.114-.707-.94-.707-1.792 0-.852.448-1.271.607-1.444.159-.174.347-.217.463-.217l.332.007c.108.005.253-.041.396.3.145.347.492 1.2.535 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/>
-          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.661 1.435 5.176L2 22l4.985-1.392A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.2a8.17 8.17 0 01-4.223-1.168l-.303-.18-2.966.828.84-2.884-.197-.314A8.167 8.167 0 013.8 12c0-4.522 3.678-8.2 8.2-8.2s8.2 3.678 8.2 8.2c0 4.521-3.678 8.2-8.2 8.2z"/>
-        </svg>
-      </a>
+        <span className="floating-adhikari-fab-icon">
+          <UserPlus size={16} />
+        </span>
+        <span>Adhikari Registration • Join Now</span>
+      </button>
 
     </div>
   );

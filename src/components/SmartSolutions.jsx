@@ -240,7 +240,7 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
       <div className="container--responsive">
         
         {/* Section Header */}
-        <div className="smart-solutions-header reveal-init">
+        <div className="smart-solutions-header">
           <div className="smart-solutions-pill">
             <Sparkles size={16} className="text-blue-600" />
             <span>Comprehensive Digital Ecosystem</span>
@@ -255,8 +255,8 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
 
         {/* All Solution Summary Cards Stream */}
         <div className="smart-solutions-stream">
-          {solutions.map((item, idx) => (
-            <div className={`smart-card-item tier-${item.id} reveal-init delay-${((idx % 3) + 1) * 100}`} id={`tier-${item.id}`} key={item.id}>
+          {solutions.map((item) => (
+            <div className={`smart-card-item tier-${item.id}`} id={`tier-${item.id}`} key={item.id}>
               <div className="smart-card-header-bar">
                 <div className="tier-counter-badge">
                   <Sparkles size={15} />

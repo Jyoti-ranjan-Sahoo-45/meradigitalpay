@@ -97,11 +97,11 @@ export default function SuccessStories({ onOpenJoin }) {
   };
 
   return (
-    <section className="success-story-section reveal-init" id="success-stories">
+    <section className="success-story-section" id="success-stories">
       <div className="container--responsive">
         
         {/* Section Header */}
-        <div className="center-content success-story-header reveal-init delay-100">
+        <div className="center-content success-story-header">
           <div className="hindi-story-pill">
             <Sparkles size={16} />
             <span>सक्सेस स्टोरी</span>
@@ -147,14 +147,12 @@ export default function SuccessStories({ onOpenJoin }) {
         </div>
 
         {/* Main Featured Success Story Card */}
-        <div className="story-card-wrapper reveal-init delay-200">
+        <div className="story-card-wrapper">
           <div 
-            key={`story-${activeStory.id}`}
             className="success-featured-card"
             style={{ 
               '--accent-color': activeStory.accentColor,
-              '--accent-light': activeStory.accentLight,
-              animation: 'wowFadeInUp 0.35s ease forwards'
+              '--accent-light': activeStory.accentLight
             }}
           >
             {/* Left Lavender/Purple Curved Shape with Avatar */}

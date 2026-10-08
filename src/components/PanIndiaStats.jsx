@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { 
   Store, 
   Truck, 
@@ -7,61 +7,8 @@ import {
   Share2, 
   Briefcase, 
   Layers, 
-  Code2 
+  Code2
 } from 'lucide-react';
-
-function CounterNumber({ targetValue, duration = 1800 }) {
-  const [displayValue, setDisplayValue] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const elementRef = useRef(null);
-
-  // Extract number and suffix (e.g. 10 and 'K+' from '10K+')
-  const numericMatch = targetValue.match(/\d+/);
-  const targetNumber = numericMatch ? parseInt(numericMatch[0], 10) : 10;
-  const suffix = targetValue.replace(/\d+/, '');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          const startTime = performance.now();
-
-          const updateCounter = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
-            const easeProgress = 1 - Math.pow(1 - progress, 3);
-            const currentVal = Math.floor(easeProgress * targetNumber);
-
-            setDisplayValue(currentVal);
-
-            if (progress < 1) {
-              requestAnimationFrame(updateCounter);
-            } else {
-              setDisplayValue(targetNumber);
-            }
-          };
-
-          requestAnimationFrame(updateCounter);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasAnimated, targetNumber, duration]);
-
-  return (
-    <span ref={elementRef}>
-      {hasAnimated ? displayValue : 0}{suffix}
-    </span>
-  );
-}
 
 const partnerNetworkStats = [
   {
@@ -148,7 +95,7 @@ const partnerNetworkStats = [
 
 export default function PanIndiaStats() {
   return (
-    <section className="partner-network-section reveal-init" id="partner-network" style={{ padding: '40px 0 50px', background: 'transparent' }}>
+    <section className="partner-network-section" id="partner-network" style={{ padding: '40px 0 50px', background: 'transparent' }}>
       <div className="container--responsive" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         
         {/* Header Pill */}
@@ -181,13 +128,12 @@ export default function PanIndiaStats() {
             gap: '20px'
           }}
         >
-          {partnerNetworkStats.map((item, idx) => {
+          {partnerNetworkStats.map((item) => {
             const IconComponent = item.icon;
-            const delayClass = `delay-${((idx % 4) + 1) * 100}`;
             return (
               <div 
                 key={item.id} 
-                className={`partner-network-exact-card reveal-init ${delayClass}`}
+                className="partner-network-exact-card"
                 style={{
                   background: 'rgba(255, 255, 255, 0.92)',
                   backdropFilter: 'blur(8px)',
@@ -197,7 +143,7 @@ export default function PanIndiaStats() {
                   display: 'flex',
                   flexDirection: 'column',
                   boxShadow: '0 4px 18px rgba(0, 0, 0, 0.03)',
-                  transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease'
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease'
                 }}
               >
                 {/* Top Row: Icon & Dot */}
@@ -227,7 +173,7 @@ export default function PanIndiaStats() {
                   />
                 </div>
 
-                {/* Count Number with Dynamic Animated Count-Up */}
+                {/* Count Number */}
                 <div 
                   style={{
                     fontSize: '30px',
@@ -238,7 +184,7 @@ export default function PanIndiaStats() {
                     marginBottom: '6px'
                   }}
                 >
-                  <CounterNumber targetValue={item.count} />
+                  {item.count}
                 </div>
 
                 {/* Title */}

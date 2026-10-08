@@ -117,22 +117,21 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
   const currentItem = serviceList[activeTab];
 
   return (
-    <section className="services-wrap custom-services-section reveal-init" id="services">
+    <section className="services-wrap custom-services-section" id="services">
       <div className="container--responsive">
-        <div className="services-india-image-wrapper reveal-init delay-100">
+        <div className="services-india-image-wrapper">
           <img src={indiaImage} alt="Mera Digital Pay services and reach across India" />
         </div>
 
         {/* Tabbed Interactive Carousel */}
-        <div className="service-slider-wrap-layout reveal-init delay-200">
+        <div className="service-slider-wrap-layout">
           {/* Left Navigation Listing Tabs */}
           <ul className="service-listing-tabs">
             {serviceList.map((item, idx) => (
               <li
                 key={item.id}
-                className={`${idx === activeTab ? 'active-service-tab' : ''} reveal-init delay-${((idx % 4) + 1) * 100}`}
+                className={idx === activeTab ? 'active-service-tab' : ''}
                 onClick={() => setActiveTab(idx)}
-                style={{ transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)' }}
               >
                 {item.tabName}
               </li>
@@ -141,15 +140,15 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
 
           {/* Right Active Service Card */}
           <div className="service-slider-container-box">
-            <div className="service-card-active-view" key={currentItem.id} style={{ animation: 'wowFadeInUp 0.35s ease forwards' }}>
+            <div className="service-card-active-view">
               <div className="img-card service-image-card">
                 <div className="video_thumb">
-                  <img src={currentItem.img} alt={currentItem.title} style={{ transition: 'transform 0.4s ease' }} />
+                  <img src={currentItem.img} alt={currentItem.title} />
                 </div>
               </div>
 
               <div className="card-content">
-                <i className={`${currentItem.iconClass} service-icon-hover`} data-path="16"></i>
+                <i className={currentItem.iconClass} data-path="16"></i>
                 <h6 style={{ letterSpacing: '1px', textTransform: 'uppercase' }}>{currentItem.category}</h6>
                 <h4>{currentItem.title}</h4>
                 <p className="body-content" style={{ whiteSpace: 'pre-line' }}>{currentItem.desc}</p>
@@ -161,10 +160,8 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
                       e.preventDefault(); 
                       if (typeof onOpenJoin === 'function') onOpenJoin(); 
                     }}
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                   >
-                    <span>{currentItem.btnText || 'Become a Partner'}</span>
-                    <span className="cta-arrow" style={{ transition: 'transform 0.25s ease' }}>→</span>
+                    {currentItem.btnText || 'Become a Partner'}
                   </button>
                   <div className="slider-btns-custom">
                     <button onClick={handlePrev} className="slider-nav-btn" aria-label="Previous">←</button>

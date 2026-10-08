@@ -68,11 +68,11 @@ const bottomAdvantages = [
   }
 ];
 
-function AdvantageCard({ item, delayClass = 'delay-100' }) {
+function AdvantageCard({ item }) {
   const IconComponent = item.icon;
   return (
     <div 
-      className={`mdp-adv-exact-card reveal-init ${delayClass}`}
+      className="mdp-adv-exact-card"
       style={{
         background: 'rgba(255, 255, 255, 0.94)',
         backdropFilter: 'blur(8px)',
@@ -82,7 +82,7 @@ function AdvantageCard({ item, delayClass = 'delay-100' }) {
         display: 'flex',
         flexDirection: 'column',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
-        transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease'
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease'
       }}
     >
       {/* Top Header Row: Icon Button & Badge Pill */}
@@ -97,8 +97,7 @@ function AdvantageCard({ item, delayClass = 'delay-100' }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: `0 4px 12px ${item.iconBg}40`,
-            transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)'
+            boxShadow: `0 4px 12px ${item.iconBg}40`
           }}
         >
           <IconComponent size={22} strokeWidth={2.2} />
@@ -162,7 +161,7 @@ function AdvantageCard({ item, delayClass = 'delay-100' }) {
 
 export default function MeraDigitalPayAdvantage() {
   return (
-    <section className="mdp-advantage-exact-section reveal-init" style={{ padding: '40px 0 50px', background: 'transparent' }}>
+    <section className="mdp-advantage-exact-section" style={{ padding: '40px 0 50px', background: 'transparent' }}>
       <div className="container--responsive" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -176,8 +175,8 @@ export default function MeraDigitalPayAdvantage() {
               gap: '24px'
             }}
           >
-            {topAdvantages.map((item, idx) => (
-              <AdvantageCard key={item.id} item={item} delayClass={`delay-${(idx + 1) * 100}`} />
+            {topAdvantages.map((item) => (
+              <AdvantageCard key={item.id} item={item} />
             ))}
           </div>
 
@@ -191,8 +190,8 @@ export default function MeraDigitalPayAdvantage() {
               gap: '24px'
             }}
           >
-            {bottomAdvantages.map((item, idx) => (
-              <AdvantageCard key={item.id} item={item} delayClass={`delay-${(idx + 1) * 150}`} />
+            {bottomAdvantages.map((item) => (
+              <AdvantageCard key={item.id} item={item} />
             ))}
           </div>
 
