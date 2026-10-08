@@ -8194,13 +8194,153 @@ a.btn-active-press:active {
   animation: ambientAura 8s infinite alternate ease-in-out;
 }
 
-/* 9. Interactive Image & Video Card Glow */
+/* 9. Interactive Image & Video Card Glow & Gentle Scale */
 .retail-top-slider-box {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
 .retail-top-slider-box:hover {
   box-shadow: 0 25px 60px -20px rgba(10, 25, 49, 0.35), 0 0 0 1px rgba(201, 162, 39, 0.3);
+}
+
+.hero-video-banner-frame {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.hero-video-banner-frame:hover {
+  transform: scale(1.02) translateY(-4px);
+}
+
+/* 10. CTA Buttons: Gold Hover & Arrow Movement */
+.btn,
+.group-button .btn,
+button.btn-primary,
+.cta-gold-hover {
+  position: relative;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn:hover,
+.group-button .btn:hover {
+  box-shadow: 0 8px 25px rgba(201, 162, 39, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+.btn:hover .cta-arrow,
+.btn:hover svg.arrow-icon,
+.btn:hover [class*="lucide-arrow"] {
+  transform: translateX(5px) !important;
+  transition: transform 0.25s ease !important;
+}
+
+.btn .cta-arrow,
+.btn svg.arrow-icon,
+.btn [class*="lucide-arrow"] {
+  transition: transform 0.25s ease !important;
+  display: inline-block;
+}
+
+/* 11. Service Icons: Small Hover Animation */
+.service-icon-hover,
+.service-listing-tabs li,
+.partner-network-exact-card:hover [class*="lucide"],
+.mdp-adv-exact-card:hover [class*="lucide"] {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.partner-network-exact-card:hover [class*="lucide"],
+.mdp-adv-exact-card:hover [class*="lucide"],
+.service-card-active-view i:hover {
+  transform: scale(1.18) rotate(-4deg) !important;
+}
+
+/* 12. Floating Fintech Badges */
+.floating-fintech-badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid #C9A227;
+  padding: 8px 14px;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(10, 25, 49, 0.15);
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0A1931;
+  z-index: 20;
+  pointer-events: none;
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+.floating-fintech-badge.badge-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+/* 13. App Section Phone Parallax/Floating */
+.download-phone-mockup img {
+  animation: gentleFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 20px 30px rgba(10, 25, 49, 0.2));
+  transition: transform 0.4s ease;
+}
+
+.download-phone-mockup:hover img {
+  transform: scale(1.03) translateY(-8px);
+}
+
+/* 14. Partner Logos Marquee Continuous Smooth Speed */
+.partner-marquee-track {
+  animation: partnerMarquee 32s linear infinite !important;
+  will-change: transform;
+}
+
+.partner-marquee-container:hover .partner-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes partnerMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* 15. WhatsApp Floating Button with Gentle Pulse */
+.whatsapp-floating-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 58px;
+  height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  z-index: 9999;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  animation: whatsappPulse 2.5s infinite;
+}
+
+.whatsapp-floating-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.65);
+}
+
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.65), 0 8px 24px rgba(37, 211, 102, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.45);
+  }
 }
 
 

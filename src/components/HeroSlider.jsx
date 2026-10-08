@@ -111,28 +111,55 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                 <p className="body-content">Transform your store into a full-service Digital Banking Kendra.</p>
                 <p className="body-content text--blue text--bold">Minimal setup cost. High monthly commission earnings.</p> */}
                 
-                <div className="group-button" style={{ position: 'relative', zIndex: 100 }}>
+                <div className="group-button" style={{ position: 'relative', zIndex: 100, display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                   <button 
                     type="button"
                     className="btn border"
                     onClick={handleIncomeCalcClick}
-                    style={{ cursor: 'pointer', pointerEvents: 'auto', position: 'relative', zIndex: 101 }}
+                    style={{ cursor: 'pointer', pointerEvents: 'auto', position: 'relative', zIndex: 101, display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                   >
-                    Income Calculator
+                    <span>Income Calculator</span>
+                    <span className="cta-arrow" style={{ transition: 'transform 0.25s ease' }}>→</span>
                   </button>
                   <button 
                     type="button"
                     className="btn green"
                     onClick={handleBookDemoClick}
-                    style={{ cursor: 'pointer', pointerEvents: 'auto', position: 'relative', zIndex: 101 }}
+                    style={{ cursor: 'pointer', pointerEvents: 'auto', position: 'relative', zIndex: 101, display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                   >
-                    Book Demo
+                    <span>Book Demo</span>
+                    <span className="cta-arrow" style={{ transition: 'transform 0.25s ease' }}>→</span>
                   </button>
                 </div>
               </div>
             </div>
 
-            <div className="hero-interactive-col">
+            <div className="hero-interactive-col" style={{ position: 'relative' }}>
+              {/* Floating Fintech Badges */}
+              <div 
+                className="floating-fintech-badge" 
+                style={{ top: '15px', left: '-20px' }}
+              >
+                <span style={{ fontSize: '15px' }}>⚡</span>
+                <span>Instant Settlement</span>
+              </div>
+
+              <div 
+                className="floating-fintech-badge badge-slow" 
+                style={{ bottom: '25px', right: '-15px' }}
+              >
+                <span style={{ fontSize: '15px' }}>🛡️</span>
+                <span>100% Bank Grade Security</span>
+              </div>
+
+              <div 
+                className="floating-fintech-badge" 
+                style={{ bottom: '-15px', left: '30px' }}
+              >
+                <span style={{ fontSize: '15px' }}>💰</span>
+                <span>High Monthly Earnings</span>
+              </div>
+
               <div className="hero-video-banner-frame">
                 <video 
                   ref={videoRef}
@@ -143,29 +170,6 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                   playsInline
                   className="hero-video-element"
                 />
-                
-                {/* Floating Video Overlay Controls */}
-                {/* <div className="hero-video-overlay-bar">
-                  <button 
-                    type="button" 
-                    className="hero-vid-ctrl-btn"
-                    onClick={togglePlay}
-                    title={isPlaying ? "Pause" : "Play"}
-                  >
-                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                  </button>
-                  
-                  <span className="hero-vid-title-tag">Mera Digital Pay Promo</span>
-
-                  <button 
-                    type="button" 
-                    className="hero-vid-ctrl-btn sound"
-                    onClick={toggleSound}
-                    title={isMuted ? "Unmute Sound" : "Mute Sound"}
-                  >
-                    {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                  </button>
-                </div> */}
               </div>
             </div>
           </div>
