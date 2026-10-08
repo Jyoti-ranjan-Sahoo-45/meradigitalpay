@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight, ShieldCheck, Sparkles } from 'lucide-react';
 import downloadImage from '../assets/download.png';
+import downloadImage2 from '../assets/download2.png';
 import logoImg from '../assets/logo.png';
 import meraDigitalApsImg from '../assets/brands/mera-digital-aps.png';
 import digitalPartnerPayImg from '../assets/brands/digital-partner-pay.jpeg';
@@ -108,8 +109,18 @@ function PartnerLogoItem({ partner }) {
   );
 }
 
+const downloadAppSlides = [downloadImage, downloadImage2];
+
 export default function PartnersSection() {
   const [selectedPopupVideo, setSelectedPopupVideo] = useState(null);
+  const [activeDownloadImgIndex, setActiveDownloadImgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveDownloadImgIndex((prev) => (prev + 1) % downloadAppSlides.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="our-partner-wraper bgcolor--white" id="partners">
@@ -375,12 +386,70 @@ export default function PartnersSection() {
               </div>
             </div>
 
-            <div className="content-wraper download-phone-mockup" style={{ flex: '1 1 360px', textAlign: 'center' }}>
-              <img 
-                src={downloadImage} 
-                alt="Mera Digital Pay App" 
-                style={{ maxHeight: '460px', width: 'auto', maxWidth: '100%' }}
-              />
+            <div 
+              className="content-wraper download-phone-mockup" 
+              style={{ 
+                flex: '1 1 360px', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                position: 'relative' 
+              }}
+            >
+              <div 
+                style={{ 
+                  position: 'relative', 
+                  width: '100%', 
+                  display: 'flex', 
+                  justifyContent: 'center', 
+                  alignItems: 'center',
+                  minHeight: '460px' 
+                }}
+              >
+                {downloadAppSlides.map((imgSrc, idx) => (
+                  <img 
+                    key={idx}
+                    src={imgSrc} 
+                    alt={`Mera Digital Pay App Screen ${idx + 1}`} 
+                    style={{ 
+                      position: idx === 0 ? 'relative' : 'absolute',
+                      maxHeight: '460px', 
+                      width: 'auto', 
+                      maxWidth: '100%',
+                      objectFit: 'contain',
+                      opacity: activeDownloadImgIndex === idx ? 1 : 0,
+                      transform: activeDownloadImgIndex === idx 
+                        ? 'scale(1) translateX(0)' 
+                        : (idx > activeDownloadImgIndex ? 'scale(0.94) translateX(40px)' : 'scale(0.94) translateX(-40px)'),
+                      transition: 'all 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                      pointerEvents: activeDownloadImgIndex === idx ? 'auto' : 'none'
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Slider Dots */}
+              <div style={{ display: 'flex', gap: '8px', marginTop: '16px', alignItems: 'center' }}>
+                {downloadAppSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveDownloadImgIndex(idx)}
+                    aria-label={`Show App Slide ${idx + 1}`}
+                    style={{
+                      width: activeDownloadImgIndex === idx ? '26px' : '8px',
+                      height: '8px',
+                      borderRadius: '100px',
+                      background: activeDownloadImgIndex === idx ? '#C9A227' : 'rgba(201, 162, 39, 0.3)',
+                      border: 'none',
+                      padding: 0,
+                      cursor: 'pointer',
+                      transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+                    }}
+                  />
+                ))}
+              </div>
             </div>
 
           </div>

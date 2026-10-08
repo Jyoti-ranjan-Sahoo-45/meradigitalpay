@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle2, Shield } from 'lucide-react';
 import downloadImage from '../assets/download.png';
+import downloadImage2 from '../assets/download2.png';
+
+const downloadAppSlides = [downloadImage, downloadImage2];
 
 export default function DownloadAppSection() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isCaptchaChecked, setIsCaptchaChecked] = useState(true);
   const [statusMessage, setStatusMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlideIndex((prev) => (prev + 1) % downloadAppSlides.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -95,11 +106,69 @@ export default function DownloadAppSection() {
             </form>
           </div>
 
-          <div className="download-phone-img-wrap">
-            <img 
-              src={downloadImage}
-              alt="Mera Digital Pay Mobile App Screen" 
-            />
+          <div 
+            className="download-phone-img-wrap"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative'
+            }}
+          >
+            <div 
+              style={{ 
+                position: 'relative', 
+                width: '100%', 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                minHeight: '440px' 
+              }}
+            >
+              {downloadAppSlides.map((imgSrc, idx) => (
+                <img 
+                  key={idx}
+                  src={imgSrc}
+                  alt={`Mera Digital Pay Mobile App Screen ${idx + 1}`} 
+                  style={{
+                    position: idx === 0 ? 'relative' : 'absolute',
+                    maxHeight: '440px',
+                    width: 'auto',
+                    maxWidth: '100%',
+                    objectFit: 'contain',
+                    opacity: activeSlideIndex === idx ? 1 : 0,
+                    transform: activeSlideIndex === idx 
+                      ? 'scale(1) translateX(0)' 
+                      : (idx > activeSlideIndex ? 'scale(0.94) translateX(40px)' : 'scale(0.94) translateX(-40px)'),
+                    transition: 'all 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                    pointerEvents: activeSlideIndex === idx ? 'auto' : 'none'
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Slider dots */}
+            <div style={{ display: 'flex', gap: '8px', marginTop: '14px', alignItems: 'center' }}>
+              {downloadAppSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveSlideIndex(idx)}
+                  aria-label={`Show App Slide ${idx + 1}`}
+                  style={{
+                    width: activeSlideIndex === idx ? '24px' : '8px',
+                    height: '8px',
+                    borderRadius: '100px',
+                    background: activeSlideIndex === idx ? '#C9A227' : 'rgba(201, 162, 39, 0.3)',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
