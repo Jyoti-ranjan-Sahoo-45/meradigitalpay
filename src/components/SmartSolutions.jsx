@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   Store, 
   Layers, 
@@ -357,7 +358,7 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
       {/* ════════════════════════════════════════════════════════════════
          FULL DETAILS POPUP MODAL (100% COMPLETE TEXT PRESERVED)
          ════════════════════════════════════════════════════════════════ */}
-      {selectedTier && (
+      {selectedTier && typeof document !== 'undefined' && createPortal(
         <div className="smart-modal-overlay" onClick={() => setSelectedTier(null)}>
           <div 
             className="smart-modal-container"
@@ -1088,7 +1089,8 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
             </div>
 
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
     </section>
