@@ -59,12 +59,12 @@ html, body {
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  background: #0A1931 !important;
+  background: #E5E4E2 !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
   border-bottom: 2px solid #C9A227 !important;
   z-index: 1000 !important;
-  box-shadow: 0 4px 20px rgba(10, 25, 49, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(10, 25, 49, 0.12) !important;
 }
 
 .site-branding {

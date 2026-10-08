@@ -204,11 +204,11 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: '#0A1931',
+          background: '#E5E4E2',
           backdropFilter: 'blur(14px)',
           WebkitBackdropFilter: 'blur(14px)',
           borderBottom: '2px solid #C9A227',
-          boxShadow: '0 4px 20px rgba(10, 25, 49, 0.4)',
+          boxShadow: '0 4px 20px rgba(10, 25, 49, 0.1)',
           height: '76px',
           display: 'flex',
           alignItems: 'center',
@@ -259,7 +259,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/" 
               onClick={(e) => handleNavClick('retailer', e)}
               style={{
-                color: activeSegment === 'retailer' ? '#0A1931' : '#F1F5F9',
+                color: '#0A1931',
                 backgroundColor: activeSegment === 'retailer' ? '#C9A227' : 'transparent',
                 border: activeSegment === 'retailer' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'retailer' ? 800 : 600,
@@ -282,7 +282,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               onMouseLeave={(e) => {
                 if (activeSegment !== 'retailer') {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#F1F5F9';
+                  e.currentTarget.style.color = '#0A1931';
                 }
               }}
             >
@@ -300,7 +300,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 type="button"
                 onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
                 style={{
-                  color: isServicesDropdownOpen ? '#C9A227' : '#F1F5F9',
+                  color: isServicesDropdownOpen ? '#C9A227' : '#0A1931',
                   backgroundColor: isServicesDropdownOpen ? 'rgba(201, 162, 39, 0.15)' : 'transparent',
                   border: isServicesDropdownOpen ? '1px solid #C9A227' : '1px solid transparent',
                   fontWeight: 600,
@@ -321,7 +321,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   style={{ 
                     transition: 'transform 0.2s', 
                     transform: isServicesDropdownOpen ? 'rotate(180deg)' : 'none',
-                    color: '#C9A227'
+                    color: isServicesDropdownOpen ? '#C9A227' : '#0A1931'
                   }} 
                 />
               </button>
@@ -452,7 +452,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/solutions" 
               onClick={(e) => handleNavClick('solutions', e)}
               style={{
-                color: activeSegment === 'solutions' ? '#0A1931' : '#F1F5F9',
+                color: '#0A1931',
                 backgroundColor: activeSegment === 'solutions' ? '#C9A227' : 'transparent',
                 border: activeSegment === 'solutions' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'solutions' ? 800 : 600,
@@ -475,7 +475,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               onMouseLeave={(e) => {
                 if (activeSegment !== 'solutions') {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#F1F5F9';
+                  e.currentTarget.style.color = '#0A1931';
                 }
               }}
             >
@@ -485,7 +485,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/products" 
               onClick={(e) => handleNavClick('products', e)}
               style={{
-                color: activeSegment === 'products' ? '#0A1931' : '#F1F5F9',
+                color: '#0A1931',
                 backgroundColor: activeSegment === 'products' ? '#C9A227' : 'transparent',
                 border: activeSegment === 'products' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'products' ? 800 : 600,
@@ -508,7 +508,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               onMouseLeave={(e) => {
                 if (activeSegment !== 'products') {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#F1F5F9';
+                  e.currentTarget.style.color = '#0A1931';
                 }
               }}
             >
@@ -520,7 +520,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/income-calculator" 
               onClick={(e) => handleNavClick('income-calculator', e)}
               style={{
-                color: activeSegment === 'income-calculator' ? '#0A1931' : '#F1F5F9',
+                color: '#0A1931',
                 backgroundColor: activeSegment === 'income-calculator' ? '#C9A227' : 'transparent',
                 border: activeSegment === 'income-calculator' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'income-calculator' ? 800 : 600,
@@ -543,7 +543,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               onMouseLeave={(e) => {
                 if (activeSegment !== 'income-calculator') {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#F1F5F9';
+                  e.currentTarget.style.color = '#0A1931';
                 }
               }}
             >
@@ -561,7 +561,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 type="button"
                 onClick={() => setIsCompanyDropdownOpen(!isCompanyDropdownOpen)}
                 style={{
-                  color: (isCompanyActive || isCompanyDropdownOpen) ? '#C9A227' : '#F1F5F9',
+                  color: (isCompanyActive || isCompanyDropdownOpen) ? '#C9A227' : '#0A1931',
                   backgroundColor: (isCompanyActive || isCompanyDropdownOpen) ? 'rgba(201, 162, 39, 0.15)' : 'transparent',
                   border: (isCompanyActive || isCompanyDropdownOpen) ? '1px solid #C9A227' : '1px solid transparent',
                   fontWeight: isCompanyActive ? 800 : 600,
@@ -582,7 +582,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   style={{ 
                     transition: 'transform 0.2s', 
                     transform: isCompanyDropdownOpen ? 'rotate(180deg)' : 'none',
-                    color: '#C9A227'
+                    color: (isCompanyActive || isCompanyDropdownOpen) ? '#C9A227' : '#0A1931'
                   }} 
                 />
               </button>
@@ -726,7 +726,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/contact-us" 
               onClick={(e) => handleNavClick('contact-us', e)}
               style={{
-                color: activeSegment === 'contact-us' ? '#0A1931' : '#F1F5F9',
+                color: '#0A1931',
                 backgroundColor: activeSegment === 'contact-us' ? '#C9A227' : 'transparent',
                 border: activeSegment === 'contact-us' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'contact-us' ? 800 : 600,
@@ -749,7 +749,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               onMouseLeave={(e) => {
                 if (activeSegment !== 'contact-us') {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#F1F5F9';
+                  e.currentTarget.style.color = '#0A1931';
                 }
               }}
             >
@@ -914,7 +914,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               padding: '6px'
             }}
           >
-            {isMobileMenuOpen ? <X size={28} color="#C9A227" /> : <Menu size={28} color="#C9A227" />}
+            {isMobileMenuOpen ? <X size={28} color="#0A1931" /> : <Menu size={28} color="#0A1931" />}
           </button>
 
         </div>
