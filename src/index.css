@@ -11,23 +11,20 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: #F8E7A2 !important;
-  background: linear-gradient(180deg, #FBF0B9 0%, #F5D76E 25%, #ECC055 60%, #E5B842 100%) fixed !important;
+  background: #ffffff !important;
   min-height: 100vh !important;
 }
 
 #root, main, .site-content, .content-area, .site-main {
-  background: transparent !important;
+  background: #ffffff !important;
 }
 
 .bgcolor--white, .bgcolor-white {
-  background: #F7DF89 !important;
-  background: linear-gradient(180deg, rgba(251, 240, 185, 0.9) 0%, rgba(245, 215, 110, 0.9) 100%) !important;
+  background: #ffffff !important;
 }
 
 .padded--wrapper, .services-wrapper, .features-section, .event-wrapper, .company-overview, .counter-section {
-  background: #F8E7A2 !important;
-  background: linear-gradient(180deg, rgba(251, 240, 185, 0.8) 0%, rgba(236, 192, 85, 0.8) 100%) !important;
+  background: #ffffff !important;
 }
 
 .header--placeholder {
@@ -62,12 +59,12 @@ html, body {
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  background: rgba(251, 240, 185, 0.96) !important;
+  background: #0A1931 !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
-  border-bottom: 2px solid #D9940A !important;
+  border-bottom: 2px solid #C9A227 !important;
   z-index: 1000 !important;
-  box-shadow: 0 4px 20px rgba(184, 134, 11, 0.15) !important;
+  box-shadow: 0 4px 20px rgba(10, 25, 49, 0.35) !important;
 }
 
 .site-branding {
@@ -218,11 +215,10 @@ html, body {
    OFFICIAL MERA DIGITAL PAY COMPREHENSIVE FOOTER STYLES
    ═════════════════════════════════════════════════════════════════════ */
 .mdp-footer-root {
-  background: #081a34 !important;
-  background: linear-gradient(135deg, #07172c 0%, #0b2c4d 35%, #0A2B5E 70%, #07172c 100%) !important;
-  border-top: 3px solid transparent !important;
-  border-image: linear-gradient(90deg, #0A2B5E 0%, #D9940A 35%, #DC2626 70%, #0A2B5E 100%) 1 !important;
-  box-shadow: 0 -8px 25px rgba(10, 43, 94, 0.2) !important;
+  background: #0A1931 !important;
+  background: linear-gradient(180deg, #0A1931 0%, #061122 100%) !important;
+  border-top: 3px solid #C9A227 !important;
+  box-shadow: 0 -8px 25px rgba(10, 25, 49, 0.3) !important;
   color: #e2e8f0 !important;
   font-family: 'Cera Pro', 'Plus Jakarta Sans', sans-serif !important;
   position: relative !important;
@@ -239,9 +235,9 @@ html, body {
 
 /* Brands Strip */
 .mdp-footer-brands-bar {
-  background: rgba(0, 0, 0, 0.28) !important;
+  background: rgba(0, 0, 0, 0.3) !important;
   padding: 16px 0 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.3) !important;
 }
 
 .mdp-brands-inner {
@@ -255,7 +251,7 @@ html, body {
 .mdp-brands-title {
   font-size: 0.88rem !important;
   font-weight: 800 !important;
-  color: #F59E0B !important;
+  color: #C9A227 !important;
   letter-spacing: 0.8px !important;
   text-transform: uppercase !important;
 }
@@ -274,14 +270,16 @@ html, body {
   background: rgba(255, 255, 255, 0.96) !important;
   padding: 5px 12px !important;
   border-radius: 8px !important;
+  border: 1px solid #C9A227 !important;
   text-decoration: none !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
-  transition: transform 0.2s, box-shadow 0.2s !important;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s !important;
 }
 
 .mdp-brand-badge:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 6px 15px rgba(201, 162, 39, 0.3) !important;
+  border-color: #e5b842 !important;
 }
 
 .mdp-brand-badge img {
@@ -293,7 +291,7 @@ html, body {
 }
 
 .mdp-brand-badge-name {
-  color: #0A2B5E !important;
+  color: #0A1931 !important;
   font-size: 0.82rem !important;
   font-weight: 700 !important;
   white-space: nowrap !important;
@@ -316,19 +314,19 @@ html, body {
 }
 
 .mdp-col-title {
-  color: #F59E0B !important;
+  color: #C9A227 !important;
   font-size: 0.95rem !important;
   font-weight: 800 !important;
   letter-spacing: 0.6px !important;
   margin: 0 0 16px 0 !important;
   text-transform: uppercase !important;
-  border-bottom: 1px solid rgba(245, 158, 11, 0.3) !important;
+  border-bottom: 1.5px solid rgba(201, 162, 39, 0.4) !important;
   padding-bottom: 6px !important;
   display: inline-block !important;
 }
 
 .mdp-subheading-orange {
-  color: #F59E0B !important;
+  color: #C9A227 !important;
   font-size: 0.84rem !important;
   font-weight: 800 !important;
   letter-spacing: 0.5px !important;
@@ -342,7 +340,8 @@ html, body {
   border-radius: 12px !important;
   margin-bottom: 20px !important;
   display: inline-block !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border: 1.5px solid #C9A227 !important;
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.15) !important;
 }
 
 .mdp-logo-img {
@@ -386,7 +385,7 @@ html, body {
 }
 
 .mdp-icon-orange {
-  color: #F59E0B !important;
+  color: #C9A227 !important;
   flex-shrink: 0 !important;
   margin-top: 2px !important;
 }
@@ -447,21 +446,22 @@ html, body {
   width: 38px !important;
   height: 38px !important;
   border-radius: 50% !important;
-  background: #0c4696 !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #0A1931 !important;
+  border: 1.5px solid #C9A227 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   text-decoration: none !important;
-  transition: transform 0.2s !important;
+  transition: transform 0.2s, border-color 0.2s !important;
 }
 
 .mdp-app-btn:hover {
   transform: translateY(-2px) !important;
+  border-color: #f5cf53 !important;
 }
 
-.mdp-app-apk { background: #f97316 !important; }
-.mdp-app-ios { background: #000000 !important; }
+.mdp-app-apk { background: #C9A227 !important; border-color: #C9A227 !important; }
+.mdp-app-ios { background: #000000 !important; border-color: #C9A227 !important; }
 
 .mdp-info-list {
   display: flex !important;
@@ -478,7 +478,7 @@ html, body {
 }
 
 .mdp-info-label {
-  color: #94a3b8 !important;
+  color: #C9A227 !important;
   font-size: 0.76rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -493,7 +493,7 @@ html, body {
 }
 
 .mdp-info-item a:hover {
-  color: #38bdf8 !important;
+  color: #C9A227 !important;
 }
 
 .mdp-info-val {
@@ -520,12 +520,12 @@ html, body {
 }
 
 .mdp-links-list li a:hover {
-  color: #38bdf8 !important;
+  color: #C9A227 !important;
   transform: translateX(3px) !important;
 }
 
 .mdp-more-apis {
-  color: #f97316 !important;
+  color: #C9A227 !important;
   font-size: 0.82rem !important;
   font-weight: 700 !important;
   margin-top: 4px !important;
@@ -539,7 +539,7 @@ html, body {
 .mdp-cert-strip {
   background: rgba(0, 0, 0, 0.35) !important;
   padding: 14px 0 !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-top: 1px solid rgba(201, 162, 39, 0.25) !important;
 }
 
 .mdp-cert-inner {
@@ -559,20 +559,20 @@ html, body {
   font-weight: 700 !important;
 }
 
-.mdp-cert-icon-gold { color: #fbbf24 !important; }
+.mdp-cert-icon-gold { color: #C9A227 !important; }
 .mdp-cert-icon-green { color: #22c55e !important; }
 
 .mdp-cert-divider {
   width: 1px !important;
   height: 18px !important;
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(201, 162, 39, 0.3) !important;
 }
 
 /* Copyright Bottom Bar */
 .mdp-copyright-bar {
-  background: #040c18 !important;
+  background: #060e1b !important;
   padding: 16px 0 !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-top: 1px solid rgba(201, 162, 39, 0.25) !important;
 }
 
 .mdp-copyright-inner {

@@ -32,9 +32,9 @@ function Slidingtext() {
         .sliding-text-section {
           width: 100%;
           overflow: hidden;
-          background: linear-gradient(90deg, #051429 0%, #0A2B5E 50%, #051429 100%);
-          border-top: 1.5px solid rgba(217, 148, 10, 0.45);
-          border-bottom: 1.5px solid rgba(217, 148, 10, 0.45);
+          background: linear-gradient(90deg, #0A1931 0%, #152C52 50%, #0A1931 100%);
+          border-top: 1.5px solid #C9A227;
+          border-bottom: 1.5px solid #C9A227;
           padding: 16px 0;
         }
 
@@ -63,15 +63,15 @@ function Slidingtext() {
         }
 
         .sliding-text-main {
-          color: #F59E0B;
+          color: #C9A227;
           font-weight: 700;
           letter-spacing: 0.3px;
         }
 
         .sliding-text-highlight {
-          color: #FDE047;
+          color: #FEE78A;
           font-weight: 800;
-          text-shadow: 0 0 16px rgba(253, 224, 71, 0.45);
+          text-shadow: 0 0 16px rgba(201, 162, 39, 0.45);
           white-space: nowrap;
         }
 

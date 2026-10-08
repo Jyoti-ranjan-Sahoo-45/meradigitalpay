@@ -204,11 +204,11 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: 'rgba(251, 240, 185, 0.96)',
+          background: '#0A1931',
           backdropFilter: 'blur(14px)',
           WebkitBackdropFilter: 'blur(14px)',
-          borderBottom: '2px solid #D9940A',
-          boxShadow: '0 4px 20px rgba(184, 134, 11, 0.15)',
+          borderBottom: '2px solid #C9A227',
+          boxShadow: '0 4px 20px rgba(10, 25, 49, 0.4)',
           height: '76px',
           display: 'flex',
           alignItems: 'center',
@@ -259,8 +259,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/" 
               onClick={(e) => handleNavClick('retailer', e)}
               style={{
-                color: '#0A2540',
-                backgroundColor: activeSegment === 'retailer' ? '#ECC055' : 'transparent',
+                color: activeSegment === 'retailer' ? '#0A1931' : '#F1F5F9',
+                backgroundColor: activeSegment === 'retailer' ? '#C9A227' : 'transparent',
+                border: activeSegment === 'retailer' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'retailer' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
@@ -273,10 +274,16 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'retailer') e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
+                if (activeSegment !== 'retailer') {
+                  e.currentTarget.style.backgroundColor = 'rgba(201, 162, 39, 0.15)';
+                  e.currentTarget.style.color = '#C9A227';
+                }
               }}
               onMouseLeave={(e) => {
-                if (activeSegment !== 'retailer') e.currentTarget.style.backgroundColor = 'transparent';
+                if (activeSegment !== 'retailer') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#F1F5F9';
+                }
               }}
             >
               Home
@@ -293,13 +300,13 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 type="button"
                 onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
                 style={{
-                  color: isServicesDropdownOpen ? '#D97706' : '#475569',
-                  backgroundColor: isServicesDropdownOpen ? '#FFFBEB' : 'transparent',
+                  color: isServicesDropdownOpen ? '#C9A227' : '#F1F5F9',
+                  backgroundColor: isServicesDropdownOpen ? 'rgba(201, 162, 39, 0.15)' : 'transparent',
+                  border: isServicesDropdownOpen ? '1px solid #C9A227' : '1px solid transparent',
                   fontWeight: 600,
                   fontSize: '14px',
                   padding: '8px 14px',
                   borderRadius: '8px',
-                  border: 'none',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
                   transition: 'all 0.2s ease',
@@ -314,7 +321,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   style={{ 
                     transition: 'transform 0.2s', 
                     transform: isServicesDropdownOpen ? 'rotate(180deg)' : 'none',
-                    color: isServicesDropdownOpen ? '#D97706' : '#64748B'
+                    color: '#C9A227'
                   }} 
                 />
               </button>
@@ -339,9 +346,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   <div
                     style={{
                       background: '#ffffff',
-                      border: '1.5px solid #e2e8f0',
+                      border: '1.5px solid #C9A227',
                       borderRadius: '24px',
-                      boxShadow: '0 25px 60px -15px rgba(10, 43, 94, 0.18), 0 0 0 1px rgba(0,0,0,0.03)',
+                      boxShadow: '0 25px 60px -15px rgba(10, 25, 49, 0.25), 0 0 0 1px rgba(201, 162, 39, 0.1)',
                       padding: '28px 32px',
                       display: 'grid',
                       gridTemplateColumns: 'repeat(4, 1fr)',
@@ -353,8 +360,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                         {/* Top Category */}
                         <div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                            <col.top.icon size={17} color="#0A2B5E" style={{ flexShrink: 0 }} />
-                            <h4 style={{ margin: 0, fontSize: '14.5px', fontWeight: 800, color: '#0A2B5E', letterSpacing: '-0.2px' }}>
+                            <col.top.icon size={17} color="#0A1931" style={{ flexShrink: 0 }} />
+                            <h4 style={{ margin: 0, fontSize: '14.5px', fontWeight: 800, color: '#0A1931', letterSpacing: '-0.2px' }}>
                               {col.top.title}
                             </h4>
                           </div>
@@ -375,7 +382,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                                     transition: 'all 0.15s ease'
                                   }}
                                   onMouseEnter={(e) => {
-                                    e.currentTarget.style.color = '#D97706';
+                                    e.currentTarget.style.color = '#C9A227';
                                     e.currentTarget.style.transform = 'translateX(2px)';
                                   }}
                                   onMouseLeave={(e) => {
@@ -383,7 +390,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                                     e.currentTarget.style.transform = 'translateX(0)';
                                   }}
                                 >
-                                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F97316', flexShrink: 0 }}></span>
+                                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#C9A227', flexShrink: 0 }}></span>
                                   <span>{item}</span>
                                 </a>
                               </li>
@@ -396,8 +403,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                         {/* Bottom Category */}
                         <div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                            <col.bottom.icon size={17} color="#0A2B5E" style={{ flexShrink: 0 }} />
-                            <h4 style={{ margin: 0, fontSize: '14.5px', fontWeight: 800, color: '#0A2B5E', letterSpacing: '-0.2px' }}>
+                            <col.bottom.icon size={17} color="#0A1931" style={{ flexShrink: 0 }} />
+                            <h4 style={{ margin: 0, fontSize: '14.5px', fontWeight: 800, color: '#0A1931', letterSpacing: '-0.2px' }}>
                               {col.bottom.title}
                             </h4>
                           </div>
@@ -418,7 +425,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                                     transition: 'all 0.15s ease'
                                   }}
                                   onMouseEnter={(e) => {
-                                    e.currentTarget.style.color = '#D97706';
+                                    e.currentTarget.style.color = '#C9A227';
                                     e.currentTarget.style.transform = 'translateX(2px)';
                                   }}
                                   onMouseLeave={(e) => {
@@ -426,7 +433,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                                     e.currentTarget.style.transform = 'translateX(0)';
                                   }}
                                 >
-                                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F97316', flexShrink: 0 }}></span>
+                                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#C9A227', flexShrink: 0 }}></span>
                                   <span>{item}</span>
                                 </a>
                               </li>
@@ -445,9 +452,10 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/solutions" 
               onClick={(e) => handleNavClick('solutions', e)}
               style={{
-                color: activeSegment === 'solutions' ? '#0A2B5E' : '#475569',
-                backgroundColor: activeSegment === 'solutions' ? '#EEF4FF' : 'transparent',
-                fontWeight: activeSegment === 'solutions' ? 700 : 600,
+                color: activeSegment === 'solutions' ? '#0A1931' : '#F1F5F9',
+                backgroundColor: activeSegment === 'solutions' ? '#C9A227' : 'transparent',
+                border: activeSegment === 'solutions' ? '1px solid #C9A227' : '1px solid transparent',
+                fontWeight: activeSegment === 'solutions' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
                 borderRadius: '8px',
@@ -459,10 +467,16 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'solutions') e.currentTarget.style.backgroundColor = '#f8fafc';
+                if (activeSegment !== 'solutions') {
+                  e.currentTarget.style.backgroundColor = 'rgba(201, 162, 39, 0.15)';
+                  e.currentTarget.style.color = '#C9A227';
+                }
               }}
               onMouseLeave={(e) => {
-                if (activeSegment !== 'solutions') e.currentTarget.style.backgroundColor = 'transparent';
+                if (activeSegment !== 'solutions') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#F1F5F9';
+                }
               }}
             >
                API client
@@ -471,8 +485,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/products" 
               onClick={(e) => handleNavClick('products', e)}
               style={{
-                color: '#0A2540',
-                backgroundColor: activeSegment === 'products' ? '#ECC055' : 'transparent',
+                color: activeSegment === 'products' ? '#0A1931' : '#F1F5F9',
+                backgroundColor: activeSegment === 'products' ? '#C9A227' : 'transparent',
+                border: activeSegment === 'products' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'products' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
@@ -485,10 +500,16 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'products') e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
+                if (activeSegment !== 'products') {
+                  e.currentTarget.style.backgroundColor = 'rgba(201, 162, 39, 0.15)';
+                  e.currentTarget.style.color = '#C9A227';
+                }
               }}
               onMouseLeave={(e) => {
-                if (activeSegment !== 'products') e.currentTarget.style.backgroundColor = 'transparent';
+                if (activeSegment !== 'products') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#F1F5F9';
+                }
               }}
             >
                Products
@@ -499,8 +520,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/income-calculator" 
               onClick={(e) => handleNavClick('income-calculator', e)}
               style={{
-                color: '#0A2540',
-                backgroundColor: activeSegment === 'income-calculator' ? '#ECC055' : 'transparent',
+                color: activeSegment === 'income-calculator' ? '#0A1931' : '#F1F5F9',
+                backgroundColor: activeSegment === 'income-calculator' ? '#C9A227' : 'transparent',
+                border: activeSegment === 'income-calculator' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'income-calculator' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
@@ -513,10 +535,16 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'income-calculator') e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
+                if (activeSegment !== 'income-calculator') {
+                  e.currentTarget.style.backgroundColor = 'rgba(201, 162, 39, 0.15)';
+                  e.currentTarget.style.color = '#C9A227';
+                }
               }}
               onMouseLeave={(e) => {
-                if (activeSegment !== 'income-calculator') e.currentTarget.style.backgroundColor = 'transparent';
+                if (activeSegment !== 'income-calculator') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#F1F5F9';
+                }
               }}
             >
               Income Calculator
@@ -533,13 +561,13 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 type="button"
                 onClick={() => setIsCompanyDropdownOpen(!isCompanyDropdownOpen)}
                 style={{
-                  color: isCompanyActive ? '#0A2B5E' : '#475569',
-                  backgroundColor: isCompanyActive ? '#EEF4FF' : (isCompanyDropdownOpen ? '#f8fafc' : 'transparent'),
-                  fontWeight: isCompanyActive ? 700 : 600,
+                  color: (isCompanyActive || isCompanyDropdownOpen) ? '#C9A227' : '#F1F5F9',
+                  backgroundColor: (isCompanyActive || isCompanyDropdownOpen) ? 'rgba(201, 162, 39, 0.15)' : 'transparent',
+                  border: (isCompanyActive || isCompanyDropdownOpen) ? '1px solid #C9A227' : '1px solid transparent',
+                  fontWeight: isCompanyActive ? 800 : 600,
                   fontSize: '14px',
                   padding: '8px 14px',
                   borderRadius: '8px',
-                  border: 'none',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
                   transition: 'all 0.2s ease',
@@ -553,7 +581,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   size={14} 
                   style={{ 
                     transition: 'transform 0.2s', 
-                    transform: isCompanyDropdownOpen ? 'rotate(180deg)' : 'none' 
+                    transform: isCompanyDropdownOpen ? 'rotate(180deg)' : 'none',
+                    color: '#C9A227'
                   }} 
                 />
               </button>
@@ -572,9 +601,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   <div
                     style={{
                       background: '#ffffff',
-                      border: '1px solid #e2e8f0',
+                      border: '1.5px solid #C9A227',
                       borderRadius: '16px',
-                      boxShadow: '0 20px 40px -15px rgba(10, 43, 94, 0.15), 0 0 0 1px rgba(0,0,0,0.03)',
+                      boxShadow: '0 20px 40px -15px rgba(10, 25, 49, 0.2), 0 0 0 1px rgba(201, 162, 39, 0.1)',
                       padding: '12px',
                       width: '320px',
                       display: 'flex',
@@ -593,17 +622,17 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                         padding: '10px 12px',
                         borderRadius: '10px',
                         textDecoration: 'none',
-                        background: activeSegment === 'case-studies' ? '#EEF4FF' : 'transparent',
+                        background: activeSegment === 'case-studies' ? '#FEF9C3' : 'transparent',
                         transition: 'background 0.15s'
                       }}
                       onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'case-studies' ? '#EEF4FF' : 'transparent'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'case-studies' ? '#FEF9C3' : 'transparent'}
                     >
                       <div style={{ background: '#E0F2FE', color: '#0284C7', padding: '8px', borderRadius: '8px', display: 'flex' }}>
                         <FileCheck2 size={18} />
                       </div>
                       <div>
-                        <div style={{ color: '#0A2B5E', fontWeight: 700, fontSize: '13.5px' }}>Legal Documents</div>
+                        <div style={{ color: '#0A1931', fontWeight: 700, fontSize: '13.5px' }}>Legal Documents</div>
                         <div style={{ color: '#64748B', fontSize: '11.5px', marginTop: '2px' }}>ISO 9001:2015, MCA, GSTIN & MSME</div>
                       </div>
                     </a>
@@ -619,17 +648,17 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                         padding: '10px 12px',
                         borderRadius: '10px',
                         textDecoration: 'none',
-                        background: activeSegment === 'corporate' ? '#EEF4FF' : 'transparent',
+                        background: activeSegment === 'corporate' ? '#FEF9C3' : 'transparent',
                         transition: 'background 0.15s'
                       }}
                       onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'corporate' ? '#EEF4FF' : 'transparent'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'corporate' ? '#FEF9C3' : 'transparent'}
                     >
-                      <div style={{ background: '#FEF3C7', color: '#D97706', padding: '8px', borderRadius: '8px', display: 'flex' }}>
+                      <div style={{ background: '#FEF3C7', color: '#C9A227', padding: '8px', borderRadius: '8px', display: 'flex' }}>
                         <Users size={18} />
                       </div>
                       <div>
-                        <div style={{ color: '#0A2B5E', fontWeight: 700, fontSize: '13.5px' }}>Directors & Staff</div>
+                        <div style={{ color: '#0A1931', fontWeight: 700, fontSize: '13.5px' }}>Directors & Staff</div>
                         <div style={{ color: '#64748B', fontSize: '11.5px', marginTop: '2px' }}>Board of Directors & Key Management</div>
                       </div>
                     </a>
@@ -647,17 +676,17 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                         padding: '10px 12px',
                         borderRadius: '10px',
                         textDecoration: 'none',
-                        background: activeSegment === 'about-us' ? '#EEF4FF' : 'transparent',
+                        background: activeSegment === 'about-us' ? '#FEF9C3' : 'transparent',
                         transition: 'background 0.15s'
                       }}
                       onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'about-us' ? '#EEF4FF' : 'transparent'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'about-us' ? '#FEF9C3' : 'transparent'}
                     >
                       <div style={{ background: '#DCFCE7', color: '#16A34A', padding: '8px', borderRadius: '8px', display: 'flex' }}>
                         <Info size={18} />
                       </div>
                       <div>
-                        <div style={{ color: '#0A2B5E', fontWeight: 700, fontSize: '13.5px' }}>About Us</div>
+                        <div style={{ color: '#0A1931', fontWeight: 700, fontSize: '13.5px' }}>About Us</div>
                         <div style={{ color: '#64748B', fontSize: '11.5px', marginTop: '2px' }}>Our Mission, Vision & Core Values</div>
                       </div>
                     </a>
@@ -673,17 +702,17 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                         padding: '10px 12px',
                         borderRadius: '10px',
                         textDecoration: 'none',
-                        background: activeSegment === 'contact-us' ? '#EEF4FF' : 'transparent',
+                        background: activeSegment === 'contact-us' ? '#FEF9C3' : 'transparent',
                         transition: 'background 0.15s'
                       }}
                       onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'contact-us' ? '#EEF4FF' : 'transparent'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'contact-us' ? '#FEF9C3' : 'transparent'}
                     >
                       <div style={{ background: '#EFF6FF', color: '#2563EB', padding: '8px', borderRadius: '8px', display: 'flex' }}>
                         <Headphones size={18} />
                       </div>
                       <div>
-                        <div style={{ color: '#0A2B5E', fontWeight: 700, fontSize: '13.5px' }}>Contact Us</div>
+                        <div style={{ color: '#0A1931', fontWeight: 700, fontSize: '13.5px' }}>Contact Us</div>
                         <div style={{ color: '#64748B', fontSize: '11.5px', marginTop: '2px' }}>Support, Sales & Office Locations</div>
                       </div>
                     </a>
@@ -697,8 +726,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               href="/contact-us" 
               onClick={(e) => handleNavClick('contact-us', e)}
               style={{
-                color: '#0A2540',
-                backgroundColor: activeSegment === 'contact-us' ? '#ECC055' : 'transparent',
+                color: activeSegment === 'contact-us' ? '#0A1931' : '#F1F5F9',
+                backgroundColor: activeSegment === 'contact-us' ? '#C9A227' : 'transparent',
+                border: activeSegment === 'contact-us' ? '1px solid #C9A227' : '1px solid transparent',
                 fontWeight: activeSegment === 'contact-us' ? 800 : 600,
                 fontSize: '14px',
                 padding: '8px 14px',
@@ -711,10 +741,16 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 gap: '6px'
               }}
               onMouseEnter={(e) => {
-                if (activeSegment !== 'contact-us') e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
+                if (activeSegment !== 'contact-us') {
+                  e.currentTarget.style.backgroundColor = 'rgba(201, 162, 39, 0.15)';
+                  e.currentTarget.style.color = '#C9A227';
+                }
               }}
               onMouseLeave={(e) => {
-                if (activeSegment !== 'contact-us') e.currentTarget.style.backgroundColor = 'transparent';
+                if (activeSegment !== 'contact-us') {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#F1F5F9';
+                }
               }}
             >
               Contact Us
@@ -737,34 +773,32 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               type="button"
               onClick={handleRegisterClick}
               style={{
-                background: 'linear-gradient(135deg, #0A2540 0%, #0d47a1 100%)',
-                color: '#ffffff',
-                border: '1.5px solid #F59E0B',
+                background: 'linear-gradient(135deg, #C9A227 0%, #A68018 100%)',
+                color: '#0A1931',
+                border: '1.5px solid #C9A227',
                 padding: '9px 18px',
                 borderRadius: '100px',
-                fontWeight: 700,
+                fontWeight: 800,
                 fontSize: '13px',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
                 cursor: 'pointer',
-                boxShadow: '0 4px 14px rgba(10, 37, 64, 0.35)',
+                boxShadow: '0 4px 14px rgba(201, 162, 39, 0.35)',
                 whiteSpace: 'nowrap',
                 letterSpacing: '0.2px',
                 transition: 'all 0.2s ease'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-1px)';
-                e.currentTarget.style.boxShadow = '0 6px 18px rgba(245, 158, 11, 0.35)';
-                e.currentTarget.style.borderColor = '#FBBF24';
+                e.currentTarget.style.boxShadow = '0 6px 18px rgba(201, 162, 39, 0.5)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 14px rgba(10, 37, 64, 0.35)';
-                e.currentTarget.style.borderColor = '#F59E0B';
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(201, 162, 39, 0.35)';
               }}
             >
-              <UserPlus size={15} color="#FBBF24" /> Adhikari Registration
+              <UserPlus size={15} color="#0A1931" /> Adhikari Registration
             </button>
 
             {/* Adhikari Login */}
@@ -773,9 +807,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 type="button"
                 onClick={() => setIsLoginDropdownOpen(!isLoginDropdownOpen)}
                 style={{
-                  background: '#0A2B5E',
+                  background: '#0A1931',
                   color: '#ffffff',
-                  border: 'none',
+                  border: '1.5px solid #C9A227',
                   padding: '9px 18px',
                   borderRadius: '100px',
                   fontWeight: 700,
@@ -784,22 +818,24 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   alignItems: 'center',
                   gap: '6px',
                   cursor: 'pointer',
-                  boxShadow: '0 4px 12px rgba(10, 43, 94, 0.22)',
+                  boxShadow: '0 4px 12px rgba(10, 25, 49, 0.25)',
                   whiteSpace: 'nowrap',
                   letterSpacing: '0.2px',
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-1px)';
-                  e.currentTarget.style.backgroundColor = '#0d387a';
+                  e.currentTarget.style.backgroundColor = '#11294e';
+                  e.currentTarget.style.borderColor = '#f5cf53';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.backgroundColor = '#0A2B5E';
+                  e.currentTarget.style.backgroundColor = '#0A1931';
+                  e.currentTarget.style.borderColor = '#C9A227';
                 }}
               >
-                <LogIn size={15} /> Adhikari Login 
-                <ChevronDown size={13} style={{ transition: 'transform 0.2s', transform: isLoginDropdownOpen ? 'rotate(180deg)' : 'none' }} />
+                <LogIn size={15} color="#C9A227" /> Adhikari Login 
+                <ChevronDown size={13} color="#C9A227" style={{ transition: 'transform 0.2s', transform: isLoginDropdownOpen ? 'rotate(180deg)' : 'none' }} />
               </button>
 
               {isLoginDropdownOpen && (
@@ -809,9 +845,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     top: 'calc(100% + 8px)',
                     right: 0,
                     background: '#ffffff',
-                    border: '1px solid #e2e8f0',
+                    border: '1.5px solid #C9A227',
                     borderRadius: '14px',
-                    boxShadow: '0 16px 36px rgba(10, 43, 94, 0.16)',
+                    boxShadow: '0 16px 36px rgba(10, 25, 49, 0.2)',
                     minWidth: '210px',
                     zIndex: 1100,
                     padding: '8px'
@@ -825,7 +861,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       padding: '10px 14px',
-                      color: '#0A2B5E',
+                      color: '#0A1931',
                       fontWeight: 700,
                       fontSize: '13.5px',
                       textDecoration: 'none',
@@ -836,7 +872,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                   >
                     <span>Retailer Portal Login</span>
-                    <ArrowUpRight size={14} color="#64748B" />
+                    <ArrowUpRight size={14} color="#C9A227" />
                   </a>
                   <a 
                     href="/login" 
@@ -846,7 +882,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       padding: '10px 14px',
-                      color: '#0A2B5E',
+                      color: '#0A1931',
                       fontWeight: 700,
                       fontSize: '13.5px',
                       textDecoration: 'none',
@@ -857,7 +893,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                   >
                     <span>Distributor Portal Login</span>
-                    <ArrowUpRight size={14} color="#64748B" />
+                    <ArrowUpRight size={14} color="#C9A227" />
                   </a>
                 </div>
               )}
@@ -878,7 +914,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
               padding: '6px'
             }}
           >
-            {isMobileMenuOpen ? <X size={28} color="#0A2B5E" /> : <Menu size={28} color="#0A2B5E" />}
+            {isMobileMenuOpen ? <X size={28} color="#C9A227" /> : <Menu size={28} color="#C9A227" />}
           </button>
 
         </div>
@@ -891,7 +927,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
             style={{ 
               position: 'fixed', 
               inset: 0, 
-              background: 'rgba(0,0,0,0.6)', 
+              background: 'rgba(0,0,0,0.65)', 
               zIndex: 9999 
             }}
           >
@@ -904,13 +940,13 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                 right: 0, 
                 bottom: 0, 
                 width: '320px', 
-                background: '#FBF0B9', 
+                background: '#0A1931', 
                 padding: '24px 20px', 
                 display: 'flex', 
                 flexDirection: 'column', 
                 overflowY: 'auto',
-                boxShadow: '-4px 0 24px rgba(0,0,0,0.25)',
-                borderLeft: '2px solid #D9940A'
+                boxShadow: '-4px 0 24px rgba(0,0,0,0.5)',
+                borderLeft: '2px solid #C9A227'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -919,8 +955,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   type="button" 
                   onClick={() => setIsMobileMenuOpen(false)} 
                   style={{ 
-                    background: '#F5D76E', 
-                    border: '1px solid #D9940A', 
+                    background: 'rgba(201, 162, 39, 0.15)', 
+                    border: '1px solid #C9A227', 
                     borderRadius: '50%', 
                     width: '34px', 
                     height: '34px', 
@@ -930,7 +966,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     cursor: 'pointer' 
                   }}
                 >
-                  <X size={20} color="#0A2B5E" />
+                  <X size={20} color="#C9A227" />
                 </button>
               </div>
 
@@ -940,29 +976,30 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                   type="button" 
                   onClick={handleRegisterClick}
                   style={{
-                    background: 'linear-gradient(135deg, #0A2540 0%, #0d47a1 100%)',
-                    color: '#ffffff',
-                    border: '1.5px solid #F59E0B',
+                    background: 'linear-gradient(135deg, #C9A227 0%, #A68018 100%)',
+                    color: '#0A1931',
+                    border: '1.5px solid #C9A227',
                     padding: '12px',
                     borderRadius: '12px',
-                    fontWeight: 700,
+                    fontWeight: 800,
                     fontSize: '14px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '8px',
                     cursor: 'pointer',
-                    boxShadow: '0 4px 12px rgba(10, 37, 64, 0.25)'
+                    boxShadow: '0 4px 12px rgba(201, 162, 39, 0.25)'
                   }}
                 >
-                  <UserPlus size={16} color="#FBBF24" /> Adhikari Registration
+                  <UserPlus size={16} color="#0A1931" /> Adhikari Registration
                 </button>
                 <a 
                   href="/login" 
                   onClick={(e) => handleNavClick('login', e)}
                   style={{
-                    background: '#0A2B5E',
+                    background: '#0A1931',
                     color: '#ffffff',
+                    border: '1.5px solid #C9A227',
                     padding: '12px',
                     borderRadius: '12px',
                     fontWeight: 700,
@@ -974,12 +1011,12 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     textDecoration: 'none'
                   }}
                 >
-                  <LogIn size={16} /> Adhikari Login
+                  <LogIn size={16} color="#C9A227" /> Adhikari Login
                 </a>
               </div>
 
               {/* Navigation Items */}
-              <div style={{ fontSize: '11px', fontWeight: 800, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '8px' }}>
+              <div style={{ fontSize: '11px', fontWeight: 800, color: '#C9A227', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '8px' }}>
                 Main Navigation
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -993,14 +1030,14 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       gap: '10px', 
                       padding: '10px 12px', 
                       borderRadius: '8px', 
-                      color: activeSegment === 'retailer' ? '#0A2B5E' : '#334155', 
-                      background: activeSegment === 'retailer' ? '#EEF4FF' : 'transparent',
+                      color: activeSegment === 'retailer' ? '#0A1931' : '#F1F5F9', 
+                      background: activeSegment === 'retailer' ? '#C9A227' : 'transparent',
                       fontWeight: 700, 
                       fontSize: '14.5px', 
                       textDecoration: 'none' 
                     }}
                   >
-                    <Home size={18} color="#0A2B5E" /> Home
+                    <Home size={18} color={activeSegment === 'retailer' ? '#0A1931' : '#C9A227'} /> Home
                   </a>
                 </li>
                 
@@ -1012,12 +1049,12 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     style={{ 
                       display: 'flex', 
                       alignItems: 'center', 
-                      justifyContent: 'space-between',
+                      justifyContent: 'space-between', 
                       width: '100%',
                       padding: '10px 12px', 
                       borderRadius: '8px', 
-                      color: isMobileServicesOpen ? '#D97706' : '#334155', 
-                      background: isMobileServicesOpen ? '#FFFBEB' : 'transparent',
+                      color: isMobileServicesOpen ? '#C9A227' : '#F1F5F9', 
+                      background: isMobileServicesOpen ? 'rgba(201, 162, 39, 0.15)' : 'transparent',
                       fontWeight: 700, 
                       fontSize: '14.5px', 
                       border: 'none',
@@ -1026,9 +1063,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <Layers size={18} color={isMobileServicesOpen ? "#D97706" : "#0A2B5E"} /> Services
+                      <Layers size={18} color="#C9A227" /> Services
                     </div>
-                    <ChevronDown size={16} style={{ transition: 'transform 0.2s', transform: isMobileServicesOpen ? 'rotate(180deg)' : 'none' }} />
+                    <ChevronDown size={16} color="#C9A227" style={{ transition: 'transform 0.2s', transform: isMobileServicesOpen ? 'rotate(180deg)' : 'none' }} />
                   </button>
 
                   {isMobileServicesOpen && (
@@ -1036,8 +1073,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       {serviceColumns.map((col, cIdx) => (
                         <div key={cIdx} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                           <div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 800, color: '#0A2B5E', marginBottom: '6px' }}>
-                              <col.top.icon size={14} color="#D97706" /> {col.top.title}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 800, color: '#C9A227', marginBottom: '6px' }}>
+                              <col.top.icon size={14} color="#C9A227" /> {col.top.title}
                             </div>
                             <ul style={{ listStyle: 'none', padding: '0 0 0 12px', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                               {col.top.items.map((it, i) => (
@@ -1045,9 +1082,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                                   <a 
                                   href={serviceLinksByName[it]} 
                                     onClick={(e) => handleServiceItemClick(it, e)} 
-                                    style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12.5px', color: '#64748B', textDecoration: 'none' }}
+                                    style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12.5px', color: '#cbd5e1', textDecoration: 'none' }}
                                   >
-                                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#F97316' }}></span>
+                                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#C9A227' }}></span>
                                     {it}
                                   </a>
                                 </li>
@@ -1056,8 +1093,8 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                           </div>
 
                           <div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 800, color: '#0A2B5E', marginBottom: '6px' }}>
-                              <col.bottom.icon size={14} color="#D97706" /> {col.bottom.title}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 800, color: '#C9A227', marginBottom: '6px' }}>
+                              <col.bottom.icon size={14} color="#C9A227" /> {col.bottom.title}
                             </div>
                             <ul style={{ listStyle: 'none', padding: '0 0 0 12px', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                               {col.bottom.items.map((it, i) => (
@@ -1065,9 +1102,9 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                                   <a 
                                     href={serviceLinksByName[it]} 
                                     onClick={(e) => handleServiceItemClick(it, e)} 
-                                    style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12.5px', color: '#64748B', textDecoration: 'none' }}
+                                    style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12.5px', color: '#cbd5e1', textDecoration: 'none' }}
                                   >
-                                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#F97316' }}></span>
+                                    <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#C9A227' }}></span>
                                     {it}
                                   </a>
                                 </li>
@@ -1090,14 +1127,14 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       gap: '10px', 
                       padding: '10px 12px', 
                       borderRadius: '8px', 
-                      color: activeSegment === 'solutions' ? '#0A2B5E' : '#334155', 
-                      background: activeSegment === 'solutions' ? '#EEF4FF' : 'transparent',
+                      color: activeSegment === 'solutions' ? '#0A1931' : '#F1F5F9', 
+                      background: activeSegment === 'solutions' ? '#C9A227' : 'transparent',
                       fontWeight: 700, 
                       fontSize: '14.5px', 
                       textDecoration: 'none' 
                     }}
                   >
-                    <ShieldCheck size={18} color="#0A2B5E" /> Products & API
+                    <ShieldCheck size={18} color={activeSegment === 'solutions' ? '#0A1931' : '#C9A227'} /> Products & API
                   </a>
                 </li>
                 <li>
@@ -1110,14 +1147,14 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       gap: '10px', 
                       padding: '10px 12px', 
                       borderRadius: '8px', 
-                      color: activeSegment === 'income-calculator' ? '#0A2B5E' : '#334155', 
-                      background: activeSegment === 'income-calculator' ? '#EEF4FF' : 'transparent',
+                      color: activeSegment === 'income-calculator' ? '#0A1931' : '#F1F5F9', 
+                      background: activeSegment === 'income-calculator' ? '#C9A227' : 'transparent',
                       fontWeight: 700, 
                       fontSize: '14.5px', 
                       textDecoration: 'none' 
                     }}
                   >
-                    <Calculator size={18} color="#0A2B5E" /> Income Calculator
+                    <Calculator size={18} color={activeSegment === 'income-calculator' ? '#0A1931' : '#C9A227'} /> Income Calculator
                   </a>
                 </li>
                 <li>
@@ -1130,19 +1167,19 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       gap: '10px', 
                       padding: '10px 12px', 
                       borderRadius: '8px', 
-                      color: activeSegment === 'contact-us' ? '#0A2B5E' : '#334155', 
-                      background: activeSegment === 'contact-us' ? '#EEF4FF' : 'transparent',
+                      color: activeSegment === 'contact-us' ? '#0A1931' : '#F1F5F9', 
+                      background: activeSegment === 'contact-us' ? '#C9A227' : 'transparent',
                       fontWeight: 700, 
                       fontSize: '14.5px', 
                       textDecoration: 'none' 
                     }}
                   >
-                    <Headphones size={18} color="#0A2B5E" /> Contact Us
+                    <Headphones size={18} color={activeSegment === 'contact-us' ? '#0A1931' : '#C9A227'} /> Contact Us
                   </a>
                 </li>
               </ul>
 
-              <div style={{ fontSize: '11px', fontWeight: 800, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '20px 0 8px' }}>
+              <div style={{ fontSize: '11px', fontWeight: 800, color: '#C9A227', textTransform: 'uppercase', letterSpacing: '0.8px', margin: '20px 0 8px' }}>
                 Company & Compliance
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -1156,14 +1193,14 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       gap: '10px', 
                       padding: '10px 12px', 
                       borderRadius: '8px', 
-                      color: activeSegment === 'case-studies' ? '#0A2B5E' : '#334155', 
-                      background: activeSegment === 'case-studies' ? '#EEF4FF' : 'transparent',
+                      color: activeSegment === 'case-studies' ? '#0A1931' : '#F1F5F9', 
+                      background: activeSegment === 'case-studies' ? '#C9A227' : 'transparent',
                       fontWeight: 600, 
                       fontSize: '14px', 
                       textDecoration: 'none' 
                     }}
                   >
-                    <FileCheck2 size={18} color="#0284C7" /> Legal Documents
+                    <FileCheck2 size={18} color="#38bdf8" /> Legal Documents
                   </a>
                 </li>
                 <li>
@@ -1176,14 +1213,14 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       gap: '10px', 
                       padding: '10px 12px', 
                       borderRadius: '8px', 
-                      color: activeSegment === 'corporate' ? '#0A2B5E' : '#334155', 
-                      background: activeSegment === 'corporate' ? '#EEF4FF' : 'transparent',
+                      color: activeSegment === 'corporate' ? '#0A1931' : '#F1F5F9', 
+                      background: activeSegment === 'corporate' ? '#C9A227' : 'transparent',
                       fontWeight: 600, 
                       fontSize: '14px', 
                       textDecoration: 'none' 
                     }}
                   >
-                    <Users size={18} color="#D97706" /> Directors & Staff
+                    <Users size={18} color="#C9A227" /> Directors & Staff
                   </a>
                 </li>
 
@@ -1197,14 +1234,14 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       gap: '10px', 
                       padding: '10px 12px', 
                       borderRadius: '8px', 
-                      color: activeSegment === 'about-us' ? '#0A2B5E' : '#334155', 
-                      background: activeSegment === 'about-us' ? '#EEF4FF' : 'transparent',
+                      color: activeSegment === 'about-us' ? '#0A1931' : '#F1F5F9', 
+                      background: activeSegment === 'about-us' ? '#C9A227' : 'transparent',
                       fontWeight: 600, 
                       fontSize: '14px', 
                       textDecoration: 'none' 
                     }}
                   >
-                    <Info size={18} color="#16A34A" /> About Us
+                    <Info size={18} color="#22c55e" /> About Us
                   </a>
                 </li>
               </ul>
