@@ -454,6 +454,44 @@ export default function App() {
 
   }, []);
 
+  /* =========================================================
+     SMOOTH SCROLL REVEAL OBSERVER
+  ========================================================= */
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+
+    const timer = setTimeout(() => {
+      const targets = document.querySelectorAll(
+        'main > section, .service-card-item, .partner-network-exact-card, .mdp-adv-exact-card, .distribution-card, .smart-sol-card, .stat-card-box, .retail-top-slider-box'
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      targets.forEach((el, index) => {
+        if (!el.classList.contains('reveal-init')) {
+          el.classList.add('reveal-init');
+          // Add staggered delay for child cards
+          const delayClass = `delay-${((index % 5) + 1) * 100}`;
+          el.classList.add(delayClass);
+        }
+        observer.observe(el);
+      });
+    }, 120);
+
+    return () => clearTimeout(timer);
+  }, [activeSegment]);
+
 
   /* =========================================================
      HANDLE NAVIGATION
