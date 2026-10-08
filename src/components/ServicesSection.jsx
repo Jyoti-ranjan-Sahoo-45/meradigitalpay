@@ -117,9 +117,9 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
   const currentItem = serviceList[activeTab];
 
   return (
-    <section className="services-wrap custom-services-section" id="services">
-      <div className="container--responsive">
-        <div className="services-india-image-wrapper">
+    <section className="services-wrap custom-services-section" id="services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+      <div className="container--responsive" style={{ maxWidth: '100%', margin: '0 auto', padding: 0 }}>
+        <div className="services-india-image-wrapper" style={{ margin: '0 auto 40px', width: '100%', border: 'none', boxShadow: 'none', background: 'transparent' }}>
           <video 
             src={indiaVideo} 
             autoPlay 
@@ -127,7 +127,7 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
             muted 
             playsInline 
             controls
-            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '22px' }}
+            style={{ width: '100%', height: 'auto', display: 'block', border: 'none', outline: 'none', boxShadow: 'none', borderRadius: '0' }}
           />
         </div>
 
