@@ -8,7 +8,7 @@ import travelImage from '../assets/flight-booking.jpeg';
 import offerImage from '../assets/pan-card.jpeg';
 import neoImage from '../assets/personal-loan.jpeg';
 import retailerImage from '../assets/flipkart-order.jpeg';
-import indiaImage from '../assets/indiaimg.jpeg';
+import indiaVideo from '../assets/india-reach-video.mp4';
 
 const serviceList = [
   {
@@ -120,7 +120,15 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
     <section className="services-wrap custom-services-section" id="services">
       <div className="container--responsive">
         <div className="services-india-image-wrapper">
-          <img src={indiaImage} alt="Mera Digital Pay services and reach across India" />
+          <video 
+            src={indiaVideo} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            controls
+            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '22px' }}
+          />
         </div>
 
         {/* Tabbed Interactive Carousel */}
