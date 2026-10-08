@@ -322,9 +322,7 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                     ) : (
                       <>
                         <a 
-                          href="https://www.meradigitalpay.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
+                          href="/contact-us" 
                           className="smart-btn primary"
                         >
                           Register Free
@@ -1064,9 +1062,8 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
                 ) : (
                   <>
                     <a 
-                      href="https://www.meradigitalpay.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                      href="/contact-us" 
+                      onClick={() => setSelectedTier(null)}
                       className="smart-btn primary"
                     >
                       Register Free
