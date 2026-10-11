@@ -8,7 +8,7 @@ import heroImage3 from '../assets/hero3.jpeg';
 const heroImages = [heroImage1, heroImage2, heroImage3];
 
 export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [activeHeroImage, setActiveHeroImage] = useState(0);
   const videoRef = useRef(null);
@@ -20,6 +20,100 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
 
     return () => window.clearInterval(sliderInterval);
   }, []);
+
+  const userExplicitlyToggled = useRef(false);
+
+  // Auto-replay video when it reaches the end or loops
+  const handleVideoEnded = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {});
+    }
+  }, []);
+
+  const handleTimeUpdate = useCallback(() => {
+    if (videoRef.current) {
+      const dur = videoRef.current.duration;
+      const cur = videoRef.current.currentTime;
+      // If within 0.25s of end, loop cleanly back to 0
+      if (dur > 0 && cur >= dur - 0.25) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play().catch(() => {});
+      }
+    }
+  }, []);
+
+  const handleVideoPause = useCallback(() => {
+    if (videoRef.current) {
+      const dur = videoRef.current.duration;
+      const cur = videoRef.current.currentTime;
+      if (videoRef.current.ended || (dur > 0 && cur >= dur - 0.4)) {
+        handleVideoEnded();
+      }
+    }
+  }, [handleVideoEnded]);
+
+  // Try unmuted autoplay by default; if browser blocks, start muted and auto-unmute on first user touch/click
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = false;
+    video.volume = 1.0;
+
+    const removeListeners = () => {
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('pointerdown', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
+      window.removeEventListener('keydown', handleUserInteraction);
+      window.removeEventListener('scroll', handleUserInteraction);
+    };
+
+    const handleUserInteraction = () => {
+      removeListeners();
+      // If user has already pressed Mute/Unmute, do NOT override their choice!
+      if (userExplicitlyToggled.current) return;
+      userExplicitlyToggled.current = true;
+
+      if (videoRef.current) {
+        videoRef.current.muted = false;
+        videoRef.current.volume = 1.0;
+        setIsMuted(false);
+        videoRef.current.play().catch(() => {});
+      }
+    };
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setIsMuted(false);
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          // If browser policy requires user interaction before audio plays:
+          video.muted = true;
+          setIsMuted(true);
+          video.play().catch(() => {});
+
+          window.addEventListener('click', handleUserInteraction, { passive: true });
+          window.addEventListener('pointerdown', handleUserInteraction, { passive: true });
+          window.addEventListener('touchstart', handleUserInteraction, { passive: true });
+          window.addEventListener('keydown', handleUserInteraction, { passive: true });
+          window.addEventListener('scroll', handleUserInteraction, { passive: true });
+        });
+    }
+
+    return () => removeListeners();
+  }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
 
   const handleIncomeCalcClick = useCallback((e) => {
     if (e) {
@@ -41,26 +135,46 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
     }
   }, [onOpenJoin]);
 
-  const toggleSound = (e) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
+  const toggleSound = useCallback((e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
     }
-  };
+    userExplicitlyToggled.current = true; // Mark as explicit user choice
+    if (videoRef.current) {
+      const nextMuted = !videoRef.current.muted;
+      videoRef.current.muted = nextMuted;
+      setIsMuted(nextMuted);
+      if (!nextMuted) {
+        videoRef.current.volume = 1.0;
+        videoRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(() => {});
+      }
+    }
+  }, []);
 
-  const togglePlay = (e) => {
-    e.stopPropagation();
+  const togglePlay = useCallback((e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (videoRef.current) {
       if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
+        videoRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(() => {});
       } else {
         videoRef.current.pause();
         setIsPlaying(false);
       }
     }
-  };
+  }, []);
+
+  const handleVideoClick = useCallback((e) => {
+    // Clicking anywhere on the video frame toggles mute/unmute
+    toggleSound(e);
+  }, [toggleSound]);
 
   return (
     <section className="top-wrapper retail hero-unified-wrapper" style={{ position: 'relative', overflow: 'visible' }}>
@@ -191,7 +305,23 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                 </div>
               </div>
 
-              <div className="hero-video-banner-frame" style={{ position: 'relative', overflow: 'hidden', borderRadius: '20px', border: '2px solid #C9A227', boxShadow: '0 20px 45px rgba(10, 25, 49, 0.18)' }}>
+              <div 
+                className="hero-video-banner-frame" 
+                onClick={handleVideoClick}
+              >
+                {/* Floating Top Sound Badge */}
+                <button 
+                  type="button" 
+                  className={`hero-sound-pill ${!isMuted ? 'sound-active' : ''}`}
+                  onClick={toggleSound}
+                  aria-label={isMuted ? "Unmute sound" : "Mute sound"}
+                  title={isMuted ? "Tap to unmute sound" : "Tap to mute sound"}
+                >
+                  <span className="hero-sound-pulse" />
+                  {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+                  <span>{isMuted ? "Unmute" : "Mute Sound"}</span>
+                </button>
+
                 <video 
                   ref={videoRef}
                   src={promoVideo}
@@ -199,8 +329,36 @@ export default function HeroSlider({ onOpenIncomeCalc, onOpenJoin }) {
                   loop
                   muted={isMuted}
                   playsInline
+                  onEnded={handleVideoEnded}
+                  onTimeUpdate={handleTimeUpdate}
+                  onPause={handleVideoPause}
                   className="hero-video-element"
                 />
+
+                {/* Video Bottom Control Bar */}
+                <div className="hero-video-overlay-bar" onClick={(e) => e.stopPropagation()}>
+                  <button 
+                    type="button" 
+                    className="hero-vid-ctrl-btn"
+                    onClick={togglePlay}
+                    title={isPlaying ? "Pause" : "Play"}
+                    aria-label={isPlaying ? "Pause video" : "Play video"}
+                  >
+                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                  </button>
+                  
+                  <span className="hero-vid-title-tag">Mera Digital Pay</span>
+
+                  <button 
+                    type="button" 
+                    className={`hero-vid-ctrl-btn sound ${!isMuted ? 'active-audio' : ''}`}
+                    onClick={toggleSound}
+                    title={isMuted ? "Unmute Sound" : "Mute Sound"}
+                    aria-label={isMuted ? "Unmute sound" : "Mute sound"}
+                  >
+                    {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

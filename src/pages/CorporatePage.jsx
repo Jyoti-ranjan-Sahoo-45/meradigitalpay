@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   Building2, 
   ShieldCheck, 
@@ -91,12 +91,39 @@ const departmentStaff = [
 ];
 
 export default function CorporatePage() {
+  // Scroll Zoom-in Animation Observer
+  useEffect(() => {
+    const targets = document.querySelectorAll('.scroll-zoom-in');
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('zoom-in-revealed');
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+
+    return () => {
+      targets.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <main className="staff-directors-page-main" style={{ background: '#f8fafc', paddingBottom: '90px' }}>
+    <main className="staff-directors-page-main mdp-golden-soft-bg" style={{ minHeight: '100vh', paddingBottom: '90px' }}>
       
       {/* Header Banner */}
       <section style={{ background: 'linear-gradient(135deg, #0A2B5E 0%, #0D3B7A 60%, #051937 100%)', color: '#ffffff', padding: '60px 0 50px' }}>
-        <div className="container--responsive" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
+        <div className="container--responsive scroll-zoom-in" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(217, 148, 10, 0.18)', border: '1px solid #D9940A', padding: '6px 18px', borderRadius: '30px', color: '#F5C842', fontSize: '13.5px', fontWeight: 800, marginBottom: '16px' }}>
             <Sparkles size={16} />
             <span>EXECUTIVE GOVERNANCE & LEADERSHIP</span>
@@ -114,7 +141,7 @@ export default function CorporatePage() {
         
         {/* Board of Directors Featured Card */}
         <div style={{ marginBottom: '50px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+          <div className="scroll-zoom-in" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
             <Building2 size={24} color="#0A2B5E" />
             <h2 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '26px', fontWeight: 800, color: '#0A2B5E', margin: 0 }}>
               Board of Directors
@@ -124,11 +151,8 @@ export default function CorporatePage() {
           {leadershipList.map((leader) => (
             <div 
               key={leader.id}
+              className="mdp-golden-soft-card scroll-zoom-in delay-1"
               style={{
-                background: '#ffffff',
-                borderRadius: '24px',
-                border: '1.5px solid #e2e8f0',
-                boxShadow: '0 10px 30px rgba(10, 43, 94, 0.08)',
                 padding: '36px',
                 display: 'flex',
                 gap: '36px',
@@ -209,22 +233,19 @@ export default function CorporatePage() {
 
         {/* Executive Staff & Department Details */}
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+          <div className="scroll-zoom-in" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
             <Users2 size={24} color="#0A2B5E" />
             <h2 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '26px', fontWeight: 800, color: '#0A2B5E', margin: 0 }}>
               Staff & Departmental Leadership
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '24px' }}>
             {departmentStaff.map((dept, index) => (
               <div 
                 key={index}
+                className={`mdp-golden-soft-card scroll-zoom-in delay-${(index % 3) + 1}`}
                 style={{
-                  background: '#ffffff',
-                  borderRadius: '20px',
-                  border: '1.5px solid #e2e8f0',
-                  boxShadow: '0 4px 18px rgba(0,0,0,0.05)',
                   padding: '26px',
                   display: 'flex',
                   flexDirection: 'column'

@@ -71,6 +71,48 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Scroll-triggered Alternating Even/Odd Animation Observer
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const cards = document.querySelectorAll('.smart-card-anim');
+    if (!cards || cards.length === 0) return;
+
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach((card) => card.classList.add('smart-card-revealed'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('smart-card-revealed');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    cards.forEach((card) => {
+      // Check if already in viewport on mount
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 30) {
+        card.classList.add('smart-card-revealed');
+      } else {
+        observer.observe(card);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const solutions = [
     {
       id: 'customer',
@@ -256,100 +298,108 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
 
         {/* All Solution Summary Cards Stream */}
         <div className="smart-solutions-stream">
-          {solutions.map((item) => (
-            <div className={`smart-card-item tier-${item.id}`} id={`tier-${item.id}`} key={item.id}>
-              <div className="smart-card-header-bar">
-                <div className="tier-counter-badge">
-                  <Sparkles size={15} />
-                  <span>{item.tierNumber} • {item.category}</span>
+          {solutions.map((item, index) => {
+            const isOdd = index % 2 === 0; // Tier 1, 3, 5, 7, 9 (Customer, Distributor, District, B2B, API)
+            return (
+              <div 
+                className={`smart-card-item smart-card-anim tier-${item.id} ${isOdd ? 'anim-odd' : 'anim-even'}`} 
+                id={`tier-${item.id}`} 
+                key={item.id}
+                data-index={index}
+              >
+                <div className="smart-card-header-bar">
+                  <div className="tier-counter-badge">
+                    <Sparkles size={15} />
+                    <span>{item.tierNumber} • {item.category}</span>
+                  </div>
+                  <span className={`tier-highlight-chip ${item.chipColor}`}>{item.highlightChip}</span>
                 </div>
-                <span className={`tier-highlight-chip ${item.chipColor}`}>{item.highlightChip}</span>
+
+                <div className="smart-card-body-grid">
+                  {/* Left Media Column */}
+                  <div className="smart-card-media-col">
+                    <div className={`smart-card-floating-badge ${item.badgeColor}`}>
+                      <CheckCircle2 size={15} />
+                      <span>{item.badgeText}</span>
+                    </div>
+                    <div className="smart-card-img-wrap">
+                      <img src={item.image} alt={`${item.title} Solution`} />
+                    </div>
+                  </div>
+
+                  {/* Right Summary Content & Side-by-Side Actions */}
+                  <div className="smart-card-content-col">
+                    <h3 className="smart-card-title">{item.title}</h3>
+                    <h4 className="smart-card-tagline">{item.summary}</h4>
+
+                    <div className="smart-summary-highlights-box">
+                      <span className="summary-highlights-title">Key Highlights:</span>
+                      <ul className="summary-highlights-list">
+                        {item.highlights.map((h, idx) => (
+                          <li key={idx}>
+                            <Check size={14} className="text-green-600" />
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Side-by-Side Action Buttons Row */}
+                    <div className="smart-card-side-actions">
+                      {!item.isCustomer ? (
+                        <>
+                          <button 
+                            className="smart-btn primary"
+                            onClick={() => { if (typeof onOpenJoin === 'function') onOpenJoin(); }}
+                          >
+                            Book a Demo
+                          </button>
+                          <button 
+                            className="smart-btn outline"
+                            onClick={() => { if (typeof onOpenIncomeCalc === 'function') onOpenIncomeCalc(); }}
+                          >
+                            Income Calculator
+                          </button>
+                          <button 
+                            type="button"
+                            className="smart-btn secondary"
+                            onClick={handleApplyNow}
+                          >
+                            Apply Now
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <a 
+                            href="/contact-us" 
+                            className="smart-btn primary"
+                          >
+                            Register Free
+                          </a>
+                          <button 
+                            className="smart-btn outline"
+                            onClick={() => { if (typeof onOpenIncomeCalc === 'function') onOpenIncomeCalc(); }}
+                          >
+                            Calculate Savings
+                          </button>
+                        </>
+                      )}
+
+                      {/* View Full Details Modal Trigger Button */}
+                      <button 
+                        type="button"
+                        onClick={() => setSelectedTier(item.id)}
+                        className="smart-open-modal-btn"
+                      >
+                        <span>View Full Details & Features</span>
+                        <ArrowRight size={15} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <div className="smart-card-body-grid">
-                {/* Left Media Column */}
-                <div className="smart-card-media-col">
-                  <div className={`smart-card-floating-badge ${item.badgeColor}`}>
-                    <CheckCircle2 size={15} />
-                    <span>{item.badgeText}</span>
-                  </div>
-                  <div className="smart-card-img-wrap">
-                    <img src={item.image} alt={`${item.title} Solution`} />
-                  </div>
-                </div>
-
-                {/* Right Summary Content & Side-by-Side Actions */}
-                <div className="smart-card-content-col">
-                  <h3 className="smart-card-title">{item.title}</h3>
-                  <h4 className="smart-card-tagline">{item.summary}</h4>
-
-                  <div className="smart-summary-highlights-box">
-                    <span className="summary-highlights-title">Key Highlights:</span>
-                    <ul className="summary-highlights-list">
-                      {item.highlights.map((h, idx) => (
-                        <li key={idx}>
-                          <Check size={14} className="text-green-600" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Side-by-Side Action Buttons Row */}
-                  <div className="smart-card-side-actions">
-                    {!item.isCustomer ? (
-                      <>
-                        <button 
-                          className="smart-btn primary"
-                          onClick={() => { if (typeof onOpenJoin === 'function') onOpenJoin(); }}
-                        >
-                          Book a Demo
-                        </button>
-                        <button 
-                          className="smart-btn outline"
-                          onClick={() => { if (typeof onOpenIncomeCalc === 'function') onOpenIncomeCalc(); }}
-                        >
-                          Income Calculator
-                        </button>
-                        <button 
-                          type="button"
-                          className="smart-btn secondary"
-                          onClick={handleApplyNow}
-                        >
-                          Apply Now
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <a 
-                          href="/contact-us" 
-                          className="smart-btn primary"
-                        >
-                          Register Free
-                        </a>
-                        <button 
-                          className="smart-btn outline"
-                          onClick={() => { if (typeof onOpenIncomeCalc === 'function') onOpenIncomeCalc(); }}
-                        >
-                          Calculate Savings
-                        </button>
-                      </>
-                    )}
-
-                    {/* View Full Details Modal Trigger Button */}
-                    <button 
-                      type="button"
-                      onClick={() => setSelectedTier(item.id)}
-                      className="smart-open-modal-btn"
-                    >
-                      <span>View Full Details & Features</span>
-                      <ArrowRight size={15} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

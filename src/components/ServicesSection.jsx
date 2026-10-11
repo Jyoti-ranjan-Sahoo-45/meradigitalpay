@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import digitalImage from '../assets/banking-services.jpeg';
 import bankingImage from '../assets/banking-services.jpeg';
 import accountOpen from '../assets/saving-account.jpeg';
@@ -105,21 +105,40 @@ const serviceList = [
 
 export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
   const [activeTab, setActiveTab] = useState(0);
+  const [zoomPhase, setZoomPhase] = useState('service-zoom-in');
+  const timeoutRef = useRef(null);
+
+  const switchTab = (newIdx) => {
+    if (newIdx === activeTab) return;
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    setZoomPhase('service-zoom-out');
+    timeoutRef.current = setTimeout(() => {
+      setActiveTab(newIdx);
+      setZoomPhase('service-zoom-in');
+    }, 180);
+  };
 
   const handleNext = () => {
-    setActiveTab((prev) => (prev + 1) % serviceList.length);
+    switchTab((activeTab + 1) % serviceList.length);
   };
 
   const handlePrev = () => {
-    setActiveTab((prev) => (prev - 1 + serviceList.length) % serviceList.length);
+    switchTab((activeTab - 1 + serviceList.length) % serviceList.length);
   };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const currentItem = serviceList[activeTab];
 
   return (
-    <section className="services-wrap custom-services-section" id="services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
-      <div className="container--responsive" style={{ maxWidth: '100%', margin: '0 auto', padding: 0 }}>
-        <div className="services-india-image-wrapper" style={{ margin: '0 auto 40px', width: '100%', border: 'none', boxShadow: 'none', background: 'transparent' }}>
+    <section className="services-wrap custom-services-section" id="services">
+      <div className="container--responsive">
+        <div className="services-india-image-wrapper">
           <video 
             src={indiaVideo} 
             autoPlay 
@@ -127,7 +146,7 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
             muted 
             playsInline 
             controls
-            style={{ width: '100%', height: 'auto', display: 'block', border: 'none', outline: 'none', boxShadow: 'none', borderRadius: '0' }}
+            style={{ width: '100%', height: 'auto', display: 'block', border: 'none', outline: 'none', borderRadius: '18px' }}
           />
         </div>
 
@@ -139,7 +158,7 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
               <li
                 key={item.id}
                 className={idx === activeTab ? 'active-service-tab' : ''}
-                onClick={() => setActiveTab(idx)}
+                onClick={() => switchTab(idx)}
               >
                 {item.tabName}
               </li>
@@ -148,7 +167,7 @@ export default function ServicesSection({ onOpenVideo, onOpenJoin }) {
 
           {/* Right Active Service Card */}
           <div className="service-slider-container-box">
-            <div className="service-card-active-view">
+            <div className={`service-card-active-view ${zoomPhase}`}>
               <div className="img-card service-image-card">
                 <div className="video_thumb">
                   <img src={currentItem.img} alt={currentItem.title} />

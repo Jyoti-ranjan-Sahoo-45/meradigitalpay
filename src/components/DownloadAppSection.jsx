@@ -137,6 +137,9 @@ export default function DownloadAppSection() {
                     width: 'auto',
                     maxWidth: '100%',
                     objectFit: 'contain',
+                    borderRadius: '28px',
+                    border: '2.5px solid #093774',
+                    boxShadow: '0 16px 36px rgba(9, 55, 116, 0.16), 0 0 0 1px rgba(201, 162, 39, 0.25)',
                     opacity: activeSlideIndex === idx ? 1 : 0,
                     transform: activeSlideIndex === idx 
                       ? 'scale(1) translateX(0)' 

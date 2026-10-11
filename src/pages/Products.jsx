@@ -93,15 +93,28 @@ const products = [
   }
 ];
 
-function Products() {
+function Products({ onOpenContact }) {
   return (
     <main className="products-page">
       <section className="products-section" aria-labelledby="products-heading">
-        
+        <div className="products-header">
+          <span className="products-eyebrow">
+            <span className="live-pulse-dot" style={{ marginRight: '8px' }} />
+            Official Certified Hardware
+          </span>
+          <h1 id="products-heading">Biometric Devices &amp; Smart POS Terminals</h1>
+          <p>
+            Certified banking-grade biometric authentication and high-speed POS terminals designed for seamless AEPS, Aadhaar Pay, KYC verification, and digital payment acceptance.
+          </p>
+        </div>
 
         <div className="products-grid">
           {products.map((product, index) => (
-            <article className="product-card" key={product.name}>
+            <article 
+              className="product-card" 
+              key={product.name}
+              style={{ animationDelay: `${(index + 1) * 0.1}s` }}
+            >
               <div className="product-image-wrap">
                 <img src={product.image} alt={product.brand} loading="lazy" />
               </div>
@@ -131,9 +144,32 @@ function Products() {
                   </ul>
                 </div>
 
-                <a className="product-order-button" href="#">
-                  Order Now
-                </a>
+                <button 
+                  type="button" 
+                  className="product-order-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (typeof onOpenContact === 'function') {
+                      onOpenContact();
+                    }
+                  }}
+                >
+                  <span>Order Now</span>
+                  <svg 
+                    width="15" 
+                    height="15" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    style={{ marginLeft: '8px', transition: 'transform 0.2s ease' }}
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
               </div>
             </article>
           ))}

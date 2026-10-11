@@ -14,6 +14,7 @@ import {
 import isoCertImg from '../assets/iso-certificate.jpeg';
 import gst from '../assets/gst.jpeg';
 import msme from '../assets/msme.jpeg';
+import iecCertImg from '../assets/iec-certificate.png';
 
 const legalDocsList = [
   {
@@ -49,7 +50,17 @@ const legalDocsList = [
     badge: 'MSME Registered',
     image: msme
   },
-  
+  {
+    id: 4,
+    title: 'Importer-Exporter Code (IEC) Certificate',
+    docNumber: 'IEC: FQBPR9639J',
+    issuer: 'Directorate General of Foreign Trade (DGFT), Ministry of Commerce and Industry',
+    validity: 'Active & Verified (Lifetime)',
+    category: 'Foreign Trade & Cross-Border Compliance',
+    description: 'Statutory Importer-Exporter Code (IEC) issued by the Directorate General of Foreign Trade (DGFT), Govt. of India to SHRI MATAVAISHNO DEVI TRADER. Empowers cross-border transactions, global fintech merchant rails, and international digital service integrations.',
+    badge: 'DGFT IEC Certified',
+    image: iecCertImg
+  }
 ];
 
 export default function CaseStudiesPage() {
@@ -76,7 +87,7 @@ export default function CaseStudiesPage() {
 
       {/* Documents Grid */}
       <div className="container--responsive" style={{ maxWidth: '1100px', margin: '0 auto', padding: '50px 20px 0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '26px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '26px' }}>
           {legalDocsList.map((doc) => (
             <div 
               key={doc.id}

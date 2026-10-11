@@ -16,6 +16,7 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
   }, []);
 
   const [counts, setCounts] = useState(initialCounts);
+  const [animatePop, setAnimatePop] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -26,8 +27,6 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
     }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
 
   const handleCountChange = (id, val) => {
     const num = Math.max(0, parseInt(val) || 0);
@@ -52,6 +51,14 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
   }, 0);
 
   const totalMonthlyIncome = incomePerDay * 30;
+
+  useEffect(() => {
+    setAnimatePop(true);
+    const timer = setTimeout(() => setAnimatePop(false), 350);
+    return () => clearTimeout(timer);
+  }, [incomePerDay]);
+
+  if (!isOpen) return null;
 
   const modalContent = (
     <div 
@@ -82,7 +89,7 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
         style={{
           background: '#f8fafc',
           width: '100%',
-          maxWidth: '820px',
+          maxWidth: '840px',
           borderRadius: '20px',
           padding: '24px',
           position: 'relative',
@@ -110,9 +117,18 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            zIndex: 10
+            zIndex: 10,
+            transition: 'transform 0.2s ease, background-color 0.2s ease'
           }}
           aria-label="Close"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#fee2e2';
+            e.currentTarget.style.transform = 'scale(1.1) rotate(90deg)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = '#ffffff';
+            e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+          }}
         >
           <X size={18} />
         </button>
@@ -131,12 +147,17 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
             fontSize: '22px',
             fontWeight: 800,
             color: '#ffffff',
-            margin: '0 0 4px 0'
+            margin: '0 0 4px 0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
           }}>
+            <Calculator size={22} color="#C9A227" />
             Income Calculator
           </h2>
           <p style={{ color: '#e2e8f0', fontSize: '13px', margin: 0 }}>
-            Estimate your daily & monthly earnings with Mera Digital Pay
+            Estimate your real-time daily &amp; monthly earnings with Mera Digital Pay
           </p>
         </div>
 
@@ -158,19 +179,24 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
             {calculatorCategories.map((cat, catIdx) => (
               <div 
                 key={catIdx}
+                className="calc-category-card"
                 style={{
                   background: '#ffffff',
                   borderRadius: '12px',
                   padding: '16px 18px',
-                  border: '1px solid #e2e8f0'
+                  border: '1.5px solid #e2e8f0'
                 }}
               >
                 <h4 style={{
                   fontSize: '15px',
                   fontWeight: 800,
                   color: '#0c4696',
-                  margin: '0 0 12px 0'
+                  margin: '0 0 12px 0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
                 }}>
+                  <Calculator size={15} color="#C9A227" />
                   {cat.category}
                 </h4>
 
@@ -178,19 +204,12 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
                   {cat.items.map((item) => (
                     <div 
                       key={item.id}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '8px 12px',
-                        background: '#f8fafc',
-                        borderRadius: '8px',
-                        border: '1px solid #eef2f8'
-                      }}
+                      className="calc-item-row"
+                      style={{ padding: '8px 12px' }}
                     >
-                      <span style={{ fontSize: '13px', color: '#1e293b', fontWeight: 600 }}>
+                      <span className="calc-item-name" style={{ fontSize: '13px' }}>
                         {item.name}{' '}
-                        <strong style={{ color: '#0c4696' }}>(₹{item.rate})</strong>
+                        <span className="calc-item-rate">₹{item.rate}</span>
                       </span>
 
                       <input 
@@ -199,18 +218,8 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
                         max="999"
                         value={counts[item.id] !== undefined ? counts[item.id] : item.defaultCount}
                         onChange={(e) => handleCountChange(item.id, e.target.value)}
-                        style={{
-                          width: '56px',
-                          padding: '4px 6px',
-                          textAlign: 'center',
-                          fontSize: '14px',
-                          fontWeight: 700,
-                          color: '#0c4696',
-                          border: '1px solid #cbd5e1',
-                          borderRadius: '6px',
-                          outline: 'none',
-                          background: '#ffffff'
-                        }}
+                        className="calc-number-input"
+                        style={{ width: '56px', padding: '4px 6px', fontSize: '14px' }}
                       />
                     </div>
                   ))}
@@ -220,56 +229,42 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
           </div>
 
           {/* Right: Income Summary Card */}
-          <div style={{
-            background: 'linear-gradient(180deg, #0c4696 0%, #093774 100%)',
-            borderRadius: '16px',
-            padding: '22px 18px',
-            color: '#ffffff',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '14px',
-            boxShadow: '0 8px 24px rgba(12, 70, 150, 0.25)'
-          }}>
+          <div className="calc-summary-card" style={{ padding: '22px 18px', gap: '14px' }}>
             <h4 style={{
               fontSize: '18px',
               fontWeight: 800,
               color: '#ffffff',
-              margin: 0
+              margin: 0,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
             }}>
+              <Calculator size={18} color="#C9A227" />
               Income Summary
             </h4>
 
             {/* Income Per Day */}
-            <div style={{
-              background: '#ffffff',
-              borderRadius: '10px',
-              padding: '12px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}>
+            <div className="calc-daily-box" style={{ padding: '12px 14px' }}>
               <span style={{ color: '#334155', fontSize: '13.5px', fontWeight: 700 }}>
                 Income Per Day
               </span>
-              <span style={{ color: '#0f172a', fontSize: '17px', fontWeight: 800 }}>
+              <span 
+                className={`calc-amount ${animatePop ? 'calc-amount-pop' : ''}`}
+                style={{ color: '#0f172a', fontSize: '17px', fontWeight: 800 }}
+              >
                 ₹{incomePerDay.toLocaleString('en-IN')}
               </span>
             </div>
 
             {/* Total Income / Month */}
-            <div style={{
-              background: '#ff6b00',
-              borderRadius: '10px',
-              padding: '12px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              boxShadow: '0 4px 14px rgba(255, 107, 0, 0.3)'
-            }}>
+            <div className="calc-monthly-box" style={{ padding: '12px 14px' }}>
               <span style={{ color: '#ffffff', fontSize: '13.5px', fontWeight: 700 }}>
                 Total Income / Month
               </span>
-              <span style={{ color: '#ffffff', fontSize: '18px', fontWeight: 800 }}>
+              <span 
+                className={`calc-amount ${animatePop ? 'calc-amount-pop' : ''}`}
+                style={{ color: '#ffffff', fontSize: '18px', fontWeight: 800 }}
+              >
                 ₹{totalMonthlyIncome.toLocaleString('en-IN')}
               </span>
             </div>
@@ -290,42 +285,21 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
                 onClose();
                 if (typeof onOpenJoin === 'function') onOpenJoin();
               }}
-              style={{
-                background: '#0d9488',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '24px',
-                padding: '12px 16px',
-                fontSize: '14px',
-                fontWeight: 700,
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                boxShadow: '0 4px 14px rgba(13, 148, 136, 0.35)'
-              }}
+              className="calc-apply-btn"
+              style={{ padding: '12px 16px', fontSize: '14px' }}
             >
-              Apply Now <ArrowRight size={16} />
+              <span>Apply Now</span>
+              <ArrowRight size={16} />
             </button>
 
             <button
               type="button"
               onClick={handleReset}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'rgba(255, 255, 255, 0.8)',
-                fontSize: '12px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '4px'
-              }}
+              className="calc-reset-btn"
+              style={{ padding: '4px', fontSize: '12px' }}
             >
-              <RefreshCw size={12} /> Reset
+              <RefreshCw size={12} />
+              <span>Reset</span>
             </button>
           </div>
         </div>

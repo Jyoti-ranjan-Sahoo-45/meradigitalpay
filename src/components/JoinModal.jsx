@@ -6,7 +6,8 @@ import {
   CheckCircle2, 
   Smartphone, 
   RefreshCw, 
-  ArrowLeft
+  ArrowLeft,
+  Sparkles
 } from 'lucide-react';
 
 const demoServicesList = [
@@ -205,13 +206,14 @@ export default function JoinModal({ isOpen, onClose }) {
         className="book-demo-modal-box" 
         onClick={(e) => e.stopPropagation()} 
         style={{
-          background: '#ffffff',
+          background: 'linear-gradient(150deg, #FFFDF8 0%, #FEF8E7 45%, #FDF0D0 100%)',
+          border: '2px solid #C9A227',
           width: '100%',
           maxWidth: '460px',
-          borderRadius: '20px',
+          borderRadius: '24px',
           padding: '28px 24px',
           position: 'relative',
-          boxShadow: '0 25px 60px rgba(0, 0, 0, 0.35)',
+          boxShadow: '0 25px 60px rgba(10, 25, 49, 0.4), 0 0 35px rgba(201, 162, 39, 0.25)',
           maxHeight: '90vh',
           overflowY: 'auto',
           margin: 'auto',
@@ -226,18 +228,26 @@ export default function JoinModal({ isOpen, onClose }) {
             position: 'absolute',
             top: '16px',
             right: '16px',
-            background: '#f1f5f9',
-            border: 'none',
+            background: 'rgba(10, 43, 94, 0.08)',
+            border: '1px solid rgba(201, 162, 39, 0.35)',
             borderRadius: '50%',
             width: '32px',
             height: '32px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#334155',
+            color: '#0A2B5E',
             cursor: 'pointer',
-            transition: 'background 0.2s ease',
+            transition: 'all 0.2s ease',
             zIndex: 10
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.background = '#0A2B5E';
+            e.currentTarget.style.color = '#ffffff';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.background = 'rgba(10, 43, 94, 0.08)';
+            e.currentTarget.style.color = '#0A2B5E';
           }}
         >
           <X size={18} />
@@ -247,20 +257,38 @@ export default function JoinModal({ isOpen, onClose }) {
         {step === 'form' && (
           <div>
             <div style={{ textAlign: 'center', marginBottom: '20px', paddingRight: '20px', paddingLeft: '20px' }}>
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: 'rgba(201, 162, 39, 0.16)',
+                border: '1px solid rgba(201, 162, 39, 0.45)',
+                padding: '4px 12px',
+                borderRadius: '20px',
+                color: '#926c05',
+                fontSize: '12px',
+                fontWeight: 700,
+                marginBottom: '8px'
+              }}>
+                <Sparkles size={13} color="#C9A227" />
+                <span>Live Interactive Walkthrough</span>
+              </div>
               <h2 style={{ 
                 fontFamily: "'Cera Pro', 'Outfit', sans-serif", 
                 fontSize: '24px', 
                 fontWeight: 800, 
-                color: '#0c2340', 
-                margin: '0 0 6px 0' 
+                color: '#0A1931', 
+                margin: '0 0 6px 0',
+                letterSpacing: '-0.3px'
               }}>
                 Book Live Demo
               </h2>
               <p style={{ 
-                color: '#64748b', 
+                color: '#475569', 
                 fontSize: '13px', 
                 lineHeight: 1.45, 
-                margin: 0 
+                margin: 0,
+                fontWeight: 500
               }}>
                 Fill in your details below to schedule a live walkthrough session
               </p>
@@ -385,10 +413,10 @@ export default function JoinModal({ isOpen, onClose }) {
                 type="submit"
                 disabled={isSendingOtp}
                 style={{
-                  marginTop: '8px',
-                  background: '#0d9488',
+                  marginTop: '10px',
+                  background: 'linear-gradient(135deg, #0A2B5E 0%, #093774 100%)',
                   color: '#ffffff',
-                  border: 'none',
+                  border: '1.5px solid #C9A227',
                   borderRadius: '24px',
                   padding: '13px 20px',
                   fontSize: '15px',
@@ -398,11 +426,12 @@ export default function JoinModal({ isOpen, onClose }) {
                   justifyContent: 'center',
                   gap: '8px',
                   cursor: isSendingOtp ? 'not-allowed' : 'pointer',
-                  transition: 'background 0.25s ease, transform 0.15s ease',
-                  boxShadow: '0 4px 14px rgba(13, 148, 136, 0.35)'
+                  transition: 'all 0.25s ease',
+                  boxShadow: '0 6px 20px rgba(10, 43, 94, 0.35)',
+                  letterSpacing: '0.3px'
                 }}
-                onMouseOver={(e) => !isSendingOtp && (e.currentTarget.style.background = '#0f766e')}
-                onMouseOut={(e) => !isSendingOtp && (e.currentTarget.style.background = '#0d9488')}
+                onMouseOver={(e) => !isSendingOtp && (e.currentTarget.style.background = 'linear-gradient(135deg, #061c3e 0%, #0A2B5E 100%)')}
+                onMouseOut={(e) => !isSendingOtp && (e.currentTarget.style.background = 'linear-gradient(135deg, #0A2B5E 0%, #093774 100%)')}
               >
                 <Send size={16} />
                 <span>{isSendingOtp ? 'Sending OTP...' : 'Send OTP'}</span>
@@ -422,13 +451,13 @@ export default function JoinModal({ isOpen, onClose }) {
                 left: '16px',
                 background: 'transparent',
                 border: 'none',
-                color: '#64748b',
+                color: '#0A2B5E',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '4px',
                 fontSize: '13px',
                 cursor: 'pointer',
-                fontWeight: 600
+                fontWeight: 700
               }}
             >
               <ArrowLeft size={16} /> Back
@@ -438,8 +467,9 @@ export default function JoinModal({ isOpen, onClose }) {
               width: '56px',
               height: '56px',
               borderRadius: '50%',
-              background: '#ccfbf1',
-              color: '#0d9488',
+              background: 'rgba(201, 162, 39, 0.18)',
+              border: '1.5px solid #C9A227',
+              color: '#0A2B5E',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -452,14 +482,14 @@ export default function JoinModal({ isOpen, onClose }) {
               fontFamily: "'Cera Pro', sans-serif",
               fontSize: '22px',
               fontWeight: 800,
-              color: '#0c2340',
+              color: '#0A1931',
               margin: '0 0 6px 0'
             }}>
               Verify OTP
             </h3>
-            <p style={{ color: '#64748b', fontSize: '13.5px', maxWidth: '320px', margin: '0 auto 20px', lineHeight: 1.45 }}>
+            <p style={{ color: '#475569', fontSize: '13.5px', maxWidth: '320px', margin: '0 auto 20px', lineHeight: 1.45 }}>
               Enter the 4-digit code sent to <br />
-              <strong style={{ color: '#0c2340' }}>+91 {formData.contactNumber}</strong>
+              <strong style={{ color: '#0A2B5E' }}>+91 {formData.contactNumber}</strong>
             </p>
 
             <form onSubmit={handleVerifyOtp}>
@@ -478,17 +508,25 @@ export default function JoinModal({ isOpen, onClose }) {
                       width: '52px',
                       height: '52px',
                       borderRadius: '10px',
-                      border: otpError ? '2px solid #ef4444' : '1.5px solid #cbd5e1',
+                      border: otpError ? '2px solid #ef4444' : '1.5px solid #d8cfba',
                       textAlign: 'center',
                       fontSize: '22px',
                       fontWeight: 700,
-                      color: '#0c2340',
+                      color: '#0A1931',
                       outline: 'none',
-                      background: '#f8fafc',
-                      transition: 'border-color 0.2s ease'
+                      background: '#ffffff',
+                      transition: 'border-color 0.2s ease, box-shadow 0.2s ease'
                     }}
-                    onFocus={(e) => (e.target.style.borderColor = '#0d9488')}
-                    onBlur={(e) => !otpError && (e.target.style.borderColor = '#cbd5e1')}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#0A2B5E';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(10, 43, 94, 0.15)';
+                    }}
+                    onBlur={(e) => {
+                      if (!otpError) {
+                        e.target.style.borderColor = '#d8cfba';
+                        e.target.style.boxShadow = 'none';
+                      }
+                    }}
                   />
                 ))}
               </div>
@@ -500,9 +538,9 @@ export default function JoinModal({ isOpen, onClose }) {
               )}
 
               {/* Timer / Resend */}
-              <div style={{ marginBottom: '20px', fontSize: '13.5px', color: '#64748b' }}>
+              <div style={{ marginBottom: '20px', fontSize: '13.5px', color: '#475569' }}>
                 {otpTimer > 0 ? (
-                  <span>Resend code in <strong style={{ color: '#0d9488' }}>{otpTimer}s</strong></span>
+                  <span>Resend code in <strong style={{ color: '#0A2B5E' }}>{otpTimer}s</strong></span>
                 ) : (
                   <button
                     type="button"
@@ -510,7 +548,7 @@ export default function JoinModal({ isOpen, onClose }) {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#0d9488',
+                      color: '#0A2B5E',
                       fontWeight: 700,
                       cursor: 'pointer',
                       display: 'inline-flex',
@@ -529,17 +567,20 @@ export default function JoinModal({ isOpen, onClose }) {
                 disabled={isVerifying}
                 style={{
                   width: '100%',
-                  background: '#0d9488',
+                  background: 'linear-gradient(135deg, #0A2B5E 0%, #093774 100%)',
                   color: '#ffffff',
-                  border: 'none',
+                  border: '1.5px solid #C9A227',
                   borderRadius: '24px',
                   padding: '13px 20px',
                   fontSize: '15px',
                   fontWeight: 700,
                   cursor: isVerifying ? 'not-allowed' : 'pointer',
-                  boxShadow: '0 4px 14px rgba(13, 148, 136, 0.35)',
-                  transition: 'background 0.2s ease'
+                  boxShadow: '0 6px 20px rgba(10, 43, 94, 0.35)',
+                  transition: 'all 0.2s ease',
+                  letterSpacing: '0.3px'
                 }}
+                onMouseOver={(e) => !isVerifying && (e.currentTarget.style.background = 'linear-gradient(135deg, #061c3e 0%, #0A2B5E 100%)')}
+                onMouseOut={(e) => !isVerifying && (e.currentTarget.style.background = 'linear-gradient(135deg, #0A2B5E 0%, #093774 100%)')}
               >
                 {isVerifying ? 'Verifying Code...' : 'Verify & Confirm Demo'}
               </button>
@@ -568,51 +609,52 @@ export default function JoinModal({ isOpen, onClose }) {
               fontFamily: "'Cera Pro', sans-serif",
               fontSize: '22px',
               fontWeight: 800,
-              color: '#0c2340',
+              color: '#0A1931',
               margin: '0 0 6px 0'
             }}>
               Demo Scheduled!
             </h3>
-            <p style={{ color: '#64748b', fontSize: '13.5px', margin: '0 auto 18px', maxWidth: '340px' }}>
+            <p style={{ color: '#475569', fontSize: '13.5px', margin: '0 auto 18px', maxWidth: '340px' }}>
               Thank you, <strong>{formData.name}</strong>! Your live walkthrough session has been booked.
             </p>
 
             {/* Summary Details Card */}
             <div style={{
-              background: '#f8fafc',
+              background: 'rgba(255, 255, 255, 0.85)',
               borderRadius: '12px',
-              border: '1px solid #e2e8f0',
+              border: '1.5px solid #d8cfba',
               padding: '14px 16px',
               textAlign: 'left',
               marginBottom: '20px',
               fontSize: '13px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '8px'
+              gap: '8px',
+              boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)'
             }}>
               <div>
                 <span style={{ color: '#64748b' }}>Service Requested:</span>{' '}
-                <strong style={{ color: '#0c4696' }}>{formData.service}</strong>
+                <strong style={{ color: '#0A2B5E' }}>{formData.service}</strong>
               </div>
               {formData.demoDate && (
                 <div>
                   <span style={{ color: '#64748b' }}>Slot Date & Time:</span>{' '}
-                  <strong style={{ color: '#1e293b' }}>
+                  <strong style={{ color: '#0A1931' }}>
                     {formData.demoDate} {formData.demoTime ? `@ ${formData.demoTime}` : ''}
                   </strong>
                 </div>
               )}
               <div>
                 <span style={{ color: '#64748b' }}>Contact Number:</span>{' '}
-                <strong style={{ color: '#1e293b' }}>+91 {formData.contactNumber}</strong>
+                <strong style={{ color: '#0A1931' }}>+91 {formData.contactNumber}</strong>
               </div>
               <div>
                 <span style={{ color: '#64748b' }}>City/State:</span>{' '}
-                <strong style={{ color: '#1e293b' }}>{formData.city}, {formData.state}</strong>
+                <strong style={{ color: '#0A1931' }}>{formData.city}, {formData.state}</strong>
               </div>
             </div>
 
-            <p style={{ fontSize: '12.5px', color: '#10b981', fontWeight: 600, margin: '0 0 16px 0' }}>
+            <p style={{ fontSize: '12.5px', color: '#0A2B5E', fontWeight: 600, margin: '0 0 16px 0' }}>
               ✦ Our product specialist will connect with you via WhatsApp & Call.
             </p>
 
@@ -620,15 +662,20 @@ export default function JoinModal({ isOpen, onClose }) {
               onClick={onClose}
               style={{
                 width: '100%',
-                background: '#0c4696',
+                background: 'linear-gradient(135deg, #0A2B5E 0%, #093774 100%)',
                 color: '#ffffff',
-                border: 'none',
+                border: '1.5px solid #C9A227',
                 borderRadius: '24px',
                 padding: '12px 20px',
                 fontSize: '14px',
                 fontWeight: 700,
-                cursor: 'pointer'
+                cursor: 'pointer',
+                boxShadow: '0 6px 20px rgba(10, 43, 94, 0.35)',
+                transition: 'all 0.2s ease',
+                letterSpacing: '0.3px'
               }}
+              onMouseOver={(e) => (e.currentTarget.style.background = 'linear-gradient(135deg, #061c3e 0%, #0A2B5E 100%)')}
+              onMouseOut={(e) => (e.currentTarget.style.background = 'linear-gradient(135deg, #0A2B5E 0%, #093774 100%)')}
             >
               Done
             </button>
@@ -643,13 +690,14 @@ export default function JoinModal({ isOpen, onClose }) {
 
 const inputStyle = {
   width: '100%',
-  padding: '10px 14px',
-  borderRadius: '8px',
-  border: '1.5px solid #e2e8f0',
+  padding: '11px 14px',
+  borderRadius: '10px',
+  border: '1.5px solid #d8cfba',
   fontSize: '14px',
-  color: '#1e293b',
+  color: '#0A1931',
   outline: 'none',
   background: '#ffffff',
   boxSizing: 'border-box',
-  transition: 'border-color 0.2s ease, box-shadow 0.2s ease'
+  transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.02)'
 };

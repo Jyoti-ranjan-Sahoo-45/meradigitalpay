@@ -83,6 +83,33 @@ export default function ContactUsPage() {
     return () => clearInterval(interval);
   }, [showOtpModal, otpTimer, isOtpVerified]);
 
+  // Scroll Zoom-in Animation Observer
+  useEffect(() => {
+    const targets = document.querySelectorAll('.contact-scroll-zoom');
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('zoom-in-revealed');
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+
+    return () => {
+      targets.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+    };
+  }, []);
+
   const handleRatingSubmit = (e) => {
     e.preventDefault();
     if (rating === 0) {
@@ -178,7 +205,7 @@ export default function ContactUsPage() {
           <div className="contact-hero-grid">
             
             {/* Left Content */}
-            <div className="contact-hero-content">
+            <div className="contact-hero-content contact-scroll-zoom">
               <div className="contact-hero-pill">
                 <MessageCircle size={15} color="#58b147" />
                 <span>24/7 Fast Support Response</span>
@@ -259,7 +286,7 @@ export default function ContactUsPage() {
             </div>
 
             {/* Right Video Embed */}
-            <div className="contact-hero-video-box">
+            <div className="contact-hero-video-box contact-scroll-zoom delay-1">
               <div className="contact-video-wrapper">
                 <video
                   src={contactVideo}
@@ -285,7 +312,7 @@ export default function ContactUsPage() {
       {/* 4. Interactive Forms Section: Service Rating & Send Query */}
       <section className="contact-forms-section">
         <div className="container--responsive">
-          <div className="contact-forms-header">
+          <div className="contact-forms-header contact-scroll-zoom">
             <h2 className="section-title-dashed">
               Get in Touch &amp; Rate Our Service
             </h2>
@@ -299,7 +326,7 @@ export default function ContactUsPage() {
             {/* ═════════════════════════════════════════════════════════════
                 CARD 1: SERVICE RATING
                 ═════════════════════════════════════════════════════════════ */}
-            <div className="mdp-contact-card rating-card">
+            <div className="mdp-contact-card rating-card contact-scroll-zoom delay-1">
               <h3 className="mdp-card-heading">Service Rating</h3>
 
               {ratingSubmitted ? (
@@ -387,7 +414,7 @@ export default function ContactUsPage() {
             {/* ═════════════════════════════════════════════════════════════
                 CARD 2: SEND QUERY
                 ═════════════════════════════════════════════════════════════ */}
-            <div className="mdp-contact-card query-card">
+            <div className="mdp-contact-card query-card contact-scroll-zoom delay-2">
               <h3 className="mdp-card-heading">Send Query</h3>
 
               <form onSubmit={handleQuerySubmit} className="mdp-card-form">

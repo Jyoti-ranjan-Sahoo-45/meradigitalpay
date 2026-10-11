@@ -368,6 +368,10 @@ export default function App() {
         return 'case-studies';
       }
 
+      if (path.includes('products')) {
+        return 'products';
+      }
+
       if (path.includes('solutions')) {
         return 'solutions';
       }
@@ -678,6 +682,10 @@ export default function App() {
     /* =======================================================
        EXISTING ROUTES
     ======================================================= */
+
+    if (segment === 'products') {
+      newPath = '/products';
+    }
 
     if (segment === 'corporate') {
       newPath = '/corporate';

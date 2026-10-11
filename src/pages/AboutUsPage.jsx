@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   Building2, 
   Target, 
@@ -6,19 +6,46 @@ import {
   ShieldCheck, 
   Users2, 
   Sparkles, 
-  Award,
-  HeartHandshake,
-  CheckCircle2
+  Award, 
+  HeartHandshake, 
+  CheckCircle2 
 } from 'lucide-react';
 import directorImg from '../assets/director-rohitash.png';
 
 export default function AboutUsPage() {
+  // Scroll Zoom-in Animation Observer
+  useEffect(() => {
+    const targets = document.querySelectorAll('.scroll-zoom-in');
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('zoom-in-revealed');
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+
+    return () => {
+      targets.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <main className="about-us-clean-page" style={{ background: '#f8fafc', paddingBottom: '90px' }}>
+    <main className="about-us-clean-page mdp-golden-soft-bg" style={{ minHeight: '100vh', paddingBottom: '90px' }}>
       
       {/* Header Banner */}
       <section style={{ background: 'linear-gradient(135deg, #0A2B5E 0%, #0D3B7A 60%, #051937 100%)', color: '#ffffff', padding: '60px 0 50px' }}>
-        <div className="container--responsive" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
+        <div className="container--responsive scroll-zoom-in" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(217, 148, 10, 0.18)', border: '1px solid #D9940A', padding: '6px 18px', borderRadius: '30px', color: '#F5C842', fontSize: '13.5px', fontWeight: 800, marginBottom: '16px' }}>
             <Sparkles size={16} />
             <span>ABOUT MERA DIGITAL PAY</span>
@@ -35,9 +62,9 @@ export default function AboutUsPage() {
       <div className="container--responsive" style={{ maxWidth: '1000px', margin: '0 auto', padding: '50px 20px 0' }}>
         
         {/* Core Mission & Vision 2-Column */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '40px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '24px', marginBottom: '40px' }}>
           
-          <div style={{ background: '#ffffff', padding: '32px', borderRadius: '22px', border: '1.5px solid #e2e8f0', boxShadow: '0 4px 18px rgba(0,0,0,0.05)' }}>
+          <div className="mdp-golden-soft-card scroll-zoom-in delay-1" style={{ padding: '32px' }}>
             <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: '#eff6ff', color: '#0A2B5E', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
               <Compass size={24} />
             </div>
@@ -49,7 +76,7 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          <div style={{ background: '#ffffff', padding: '32px', borderRadius: '22px', border: '1.5px solid #e2e8f0', boxShadow: '0 4px 18px rgba(0,0,0,0.05)' }}>
+          <div className="mdp-golden-soft-card scroll-zoom-in delay-2" style={{ padding: '32px' }}>
             <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: '#fef3c7', color: '#D9940A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
               <Target size={24} />
             </div>
@@ -64,18 +91,17 @@ export default function AboutUsPage() {
         </div>
 
         {/* Founder & Managing Director Note */}
-        <div style={{ 
-          background: '#ffffff', 
-          borderRadius: '24px', 
-          border: '1.5px solid #e2e8f0', 
-          boxShadow: '0 8px 30px rgba(10, 43, 94, 0.07)', 
-          padding: '36px',
-          display: 'flex',
-          gap: '30px',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          marginBottom: '40px'
-        }}>
+        <div 
+          className="mdp-golden-soft-card scroll-zoom-in delay-1"
+          style={{ 
+            padding: '36px',
+            display: 'flex',
+            gap: '30px',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            marginBottom: '40px'
+          }}
+        >
           <div style={{ flex: '0 0 180px', textAlign: 'center' }}>
             <img 
               src={directorImg} 
@@ -101,7 +127,7 @@ export default function AboutUsPage() {
 
         {/* Core Values 4-Pillar Grid */}
         <div>
-          <h3 style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '24px', fontWeight: 800, color: '#0A2B5E', textAlign: 'center', marginBottom: '24px' }}>
+          <h3 className="scroll-zoom-in" style={{ fontFamily: "'Cera Pro', sans-serif", fontSize: '24px', fontWeight: 800, color: '#0A2B5E', textAlign: 'center', marginBottom: '24px' }}>
             Our Guiding Values
           </h3>
 
@@ -114,7 +140,11 @@ export default function AboutUsPage() {
             ].map((v, i) => {
               const IconComp = v.icon;
               return (
-                <div key={i} style={{ background: '#ffffff', padding: '22px', borderRadius: '16px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
+                <div 
+                  key={i} 
+                  className={`mdp-golden-soft-card scroll-zoom-in delay-${(i % 4) + 1}`}
+                  style={{ padding: '22px', textAlign: 'center' }}
+                >
                   <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#f8fafc', color: v.color, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px', border: '1px solid #e2e8f0' }}>
                     <IconComp size={22} />
                   </div>

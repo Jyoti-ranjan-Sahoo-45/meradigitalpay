@@ -122,12 +122,39 @@ export default function PartnersSection() {
     return () => clearInterval(interval);
   }, []);
 
+  // Scroll Zoom-in Animation Observer
+  useEffect(() => {
+    const targets = document.querySelectorAll('#partners .scroll-zoom-in');
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('zoom-in-revealed');
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+
+    return () => {
+      targets.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <section className="our-partner-wraper bgcolor--white" id="partners">
       <div className="container--responsive">
         {/* Our Brands Ecosystem */}
         <div className="our-brands-section" style={{ marginBottom: '60px', paddingTop: '20px' }}>
-          <div className="center-content" style={{ textAlign: 'center', marginBottom: '35px' }}>
+          <div className="center-content scroll-zoom-in" style={{ textAlign: 'center', marginBottom: '35px' }}>
             <span style={{ display: 'inline-block', padding: '6px 16px', background: '#eff6ff', color: '#0c4696', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>
               Shri Mata Vaishno Devi Traders Ecosystem
             </span>
@@ -139,34 +166,22 @@ export default function PartnersSection() {
             </p>
           </div>
 
-          <div className="our-brands-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', padding: '0 10px' }}>
-            {ourBrandsList.map((b) => (
+          <div className="our-brands-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '22px', padding: '0 10px' }}>
+            {ourBrandsList.map((b, idx) => (
               <div 
                 key={b.id} 
-                className="brand-card-item"
-                style={{
-                  background: '#ffffff',
-                  borderRadius: '16px',
-                  padding: '24px 16px',
-                  border: b.isMain ? '2px solid #0c4696' : '1px solid #e2e8f0',
-                  boxShadow: b.isMain ? '0 10px 25px rgba(12, 70, 150, 0.12)' : '0 4px 15px rgba(0,0,0,0.04)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  position: 'relative'
-                }}
+                className={`brand-card-item scroll-zoom-in delay-${(idx % 3) + 1} ${b.isMain ? 'is-main-brand' : ''}`}
               >
                 {b.isMain && (
-                  <span style={{ position: 'absolute', top: '-11px', background: '#0c4696', color: '#ffffff', fontSize: '0.7rem', fontWeight: 800, padding: '3px 10px', borderRadius: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  <span className="brand-main-badge">
                     Main Brand
                   </span>
                 )}
-                <div style={{ width: '90px', height: '90px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px', background: '#f8fafc', borderRadius: '12px', padding: '6px' }}>
+                <div className="brand-logo-wrap">
                   <img 
                     src={b.logo} 
                     alt={b.name} 
-                    style={{ maxHeight: '78px', maxWidth: '78px', width: 'auto', height: 'auto', objectFit: 'contain' }}
+                    className="brand-logo-img"
                   />
                 </div>
                 <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: '#0c4696', margin: '0 0 6px 0', lineHeight: 1.25 }}>
@@ -200,8 +215,8 @@ export default function PartnersSection() {
 
         {/* Download App & Video Showcase Carousel Section */}
         <div className="download-app-wraper" id="download-app-sec">
-          <div className="app-wraper" style={{ alignItems: 'center' }}>
-            <div className="content-wraper" style={{ flex: '1 1 540px', maxWidth: '620px' }}>
+          <div className="app-wraper" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '32px' }}>
+            <div className="content-wraper" style={{ flex: '1 1 320px', maxWidth: '620px', width: '100%' }}>
               <h3 className="section-title-dashed margin--b30" style={{ fontSize: '1.9rem', fontWeight: 800, color: '#093774', marginBottom: '12px' }}>
                 Download Mera Digital Pay now
               </h3>
@@ -389,7 +404,8 @@ export default function PartnersSection() {
             <div 
               className="content-wraper download-phone-mockup" 
               style={{ 
-                flex: '1 1 360px', 
+                flex: '1 1 300px', 
+                width: '100%',
                 display: 'flex', 
                 flexDirection: 'column', 
                 alignItems: 'center', 
@@ -418,6 +434,9 @@ export default function PartnersSection() {
                       width: 'auto', 
                       maxWidth: '100%',
                       objectFit: 'contain',
+                      borderRadius: '28px',
+                      border: '2.5px solid #093774',
+                      boxShadow: '0 16px 36px rgba(9, 55, 116, 0.16), 0 0 0 1px rgba(201, 162, 39, 0.25)',
                       opacity: activeDownloadImgIndex === idx ? 1 : 0,
                       transform: activeDownloadImgIndex === idx 
                         ? 'scale(1) translateX(0)' 
