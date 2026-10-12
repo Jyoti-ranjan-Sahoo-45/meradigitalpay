@@ -116,14 +116,21 @@ export default function DownloadAppSection() {
               position: 'relative'
             }}
           >
-            <div 
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.aps.partners&pcampaignid=web_share"
+              target="_blank" 
+              rel="noopener noreferrer"
+              title="Download Mera Digital Pay on Google Play Store"
+              aria-label="Download Mera Digital Pay on Google Play Store"
               style={{ 
                 position: 'relative', 
                 width: '100%', 
                 display: 'flex', 
                 justifyContent: 'center', 
                 alignItems: 'center',
-                minHeight: '440px' 
+                minHeight: '440px',
+                cursor: 'pointer',
+                textDecoration: 'none'
               }}
             >
               {downloadAppSlides.map((imgSrc, idx) => (
@@ -145,11 +152,11 @@ export default function DownloadAppSection() {
                       ? 'scale(1) translateX(0)' 
                       : (idx > activeSlideIndex ? 'scale(0.94) translateX(40px)' : 'scale(0.94) translateX(-40px)'),
                     transition: 'all 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
-                    pointerEvents: activeSlideIndex === idx ? 'auto' : 'none'
+                    cursor: 'pointer'
                   }}
                 />
               ))}
-            </div>
+            </a>
 
             {/* Slider dots */}
             <div style={{ display: 'flex', gap: '8px', marginTop: '14px', alignItems: 'center' }}>
