@@ -3,7 +3,6 @@ import {
   Building2, 
   ShieldCheck, 
   UserCheck, 
-  Mail, 
   Phone, 
   Award, 
   Briefcase, 
@@ -21,7 +20,6 @@ const leadershipList = [
     category: 'Board of Directors',
     bio: 'Visionary fintech entrepreneur dedicated to building inclusive branchless banking and digital financial infrastructure across Bharat. Leading strategic growth, national expansion, and corporate governance at Mera Digital Pay.',
     din: 'DIN: 09845120',
-    email: 'director@meradigitalpay.com',
     phone: '+91 7088898725',
     experience: '12+ Years in Banking & FinTech Services',
     image: directorImg,
@@ -38,14 +36,12 @@ const departmentStaff = [
         name: 'Executive Director Office',
         role: 'Chief Operating Officer (COO)',
         responsibilities: 'Overall company operations, field network scaling & operational compliance.',
-        email: 'coo@meradigitalpay.com',
         phone: '+91 7088898725'
       },
       {
         name: 'General Management & Compliance',
         role: 'Chief Compliance Officer (CCO)',
         responsibilities: 'Regulatory liaison, RBI/NPCI guidelines adherence & legal compliance.',
-        email: 'compliance@meradigitalpay.com',
         phone: '+91 9675695450'
       }
     ]
@@ -57,14 +53,12 @@ const departmentStaff = [
         name: 'FinTech Engineering Cell',
         role: 'Head of Technology & Systems (CTO)',
         responsibilities: 'Core banking API gateway, high-uptime server infrastructure & cyber security.',
-        email: 'tech@meradigitalpay.com',
         phone: '+91 7088898725'
       },
       {
         name: 'API & Panel Integration Team',
         role: 'Lead Integration Engineer',
         responsibilities: 'B2B whitelabel portal deployments, REST API integrations & partner onboarding.',
-        email: 'api@meradigitalpay.com',
         phone: '+91 9675695450'
       }
     ]
@@ -76,14 +70,12 @@ const departmentStaff = [
         name: 'Adhikari Care & Helpdesk',
         role: 'Customer Support Lead',
         responsibilities: '24/7 retailer helpline, ticket resolution, settlement verification & Adhikari queries.',
-        email: 'help@meradigitalpay.com',
         phone: '+91 7088898725'
       },
       {
         name: 'Channel Sales & Distribution',
         role: 'National Channel Head',
         responsibilities: 'Distributor, Franchise and District Master Partner network management across states.',
-        email: 'sales@meradigitalpay.com',
         phone: '+91 9675695450'
       }
     ]
@@ -214,10 +206,6 @@ export default function CorporatePage() {
                   borderRadius: '16px'
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Mail size={16} color="#0A2B5E" />
-                    <span style={{ fontSize: '14px', color: '#1e293b', fontWeight: 600 }}>{leader.email}</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Phone size={16} color="#15803d" />
                     <span style={{ fontSize: '14px', color: '#1e293b', fontWeight: 600 }}>{leader.phone}</span>
                   </div>
@@ -284,10 +272,6 @@ export default function CorporatePage() {
                         {m.responsibilities}
                       </p>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '12.5px', color: '#334155' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <Mail size={14} color="#0A2B5E" />
-                          <span>{m.email}</span>
-                        </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                           <Phone size={14} color="#15803d" />
                           <span>{m.phone}</span>
