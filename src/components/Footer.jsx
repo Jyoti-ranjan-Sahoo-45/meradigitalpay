@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   MapPin, Phone, MessageCircle, Mail, Globe, 
-  Send, ShieldCheck, Award, Smartphone, CheckCircle, ArrowRight
+  Send, ShieldCheck, Award, Smartphone, CheckCircle, ArrowRight,
+  Wrench, Headphones, HelpCircle, X, ChevronRight
 } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import meraDigitalApsImg from '../assets/brands/mera-digital-aps.png';
@@ -18,6 +19,56 @@ const ourBrands = [
 ];
 
 export default function Footer({ onSelectSegment }) {
+  const [isWaMenuOpen, setIsWaMenuOpen] = useState(false);
+  const waMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (waMenuRef.current && !waMenuRef.current.contains(e.target)) {
+        setIsWaMenuOpen(false);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsWaMenuOpen(false);
+    };
+
+    if (isWaMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isWaMenuOpen]);
+
+  const waOptions = [
+    {
+      id: 'service',
+      title: 'Service',
+      desc: 'Banking, AEPS, Recharge & BBPS Services',
+      icon: <Wrench size={18} color="#ffffff" />,
+      iconBg: '#0284c7', // vibrant blue
+      url: 'https://wa.me/919675695450?text=Hello%20Mera%20Digital%20Pay%20Team,%20I%20need%20support%20regarding%20Services.'
+    },
+    {
+      id: 'help',
+      title: 'Help',
+      desc: '24x7 Customer Support & Assistance',
+      icon: <Headphones size={18} color="#ffffff" />,
+      iconBg: '#16a34a', // green
+      url: 'https://wa.me/919675695450?text=Hello%20Mera%20Digital%20Pay%20Team,%20I%20need%20Help%20and%20Support.'
+    },
+    {
+      id: 'enquiry',
+      title: 'Enquiry',
+      desc: 'New Partnership, Retailer & Business Enquiry',
+      icon: <HelpCircle size={18} color="#ffffff" />,
+      iconBg: '#C9A227', // gold
+      url: 'https://wa.me/919675695450?text=Hello%20Mera%20Digital%20Pay%20Team,%20I%20have%20a%20new%20Business%20Enquiry.'
+    }
+  ];
+
   const handlePolicyClick = (policyId, e) => {
     e.preventDefault();
     if (onSelectSegment) {
@@ -321,16 +372,70 @@ export default function Footer({ onSelectSegment }) {
         </div>
       </div>
 
-      {/* Floating WhatsApp Quick Action */}
-      <a 
-        href="https://wa.me/919675695450" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="mdp-floating-whatsapp"
-        title="Chat on WhatsApp with Support"
-      >
-        <MessageCircle size={28} color="#ffffff" />
-      </a>
+      {/* Floating WhatsApp Speed-Dial & Quick Actions */}
+      <div className="mdp-floating-whatsapp-container" ref={waMenuRef}>
+        {/* Expandable 3-Option Popup Menu */}
+        {isWaMenuOpen && (
+          <div className="mdp-wa-popup-menu" role="dialog" aria-label="WhatsApp Quick Connect Options">
+            <div className="mdp-wa-popup-header">
+              <div className="mdp-wa-popup-brand">
+                <span className="mdp-wa-online-dot"></span>
+                <div>
+                  <h4 className="mdp-wa-popup-title">WhatsApp Support</h4>
+                  <p className="mdp-wa-popup-sub">Usually replies within minutes</p>
+                </div>
+              </div>
+              <button 
+                type="button" 
+                className="mdp-wa-close-btn" 
+                onClick={() => setIsWaMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div className="mdp-wa-options-list">
+              {waOptions.map((opt) => (
+                <a
+                  key={opt.id}
+                  href={opt.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mdp-wa-option-card"
+                  onClick={() => setIsWaMenuOpen(false)}
+                >
+                  <div className="mdp-wa-option-icon" style={{ background: opt.iconBg }}>
+                    {opt.icon}
+                  </div>
+                  <div className="mdp-wa-option-text">
+                    <span className="mdp-wa-option-title">{opt.title}</span>
+                    <span className="mdp-wa-option-desc">{opt.desc}</span>
+                  </div>
+                  <ChevronRight size={16} className="mdp-wa-option-arrow" />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Floating WhatsApp Trigger Button */}
+        <button
+          type="button"
+          onClick={() => setIsWaMenuOpen((prev) => !prev)}
+          className={`mdp-floating-whatsapp ${isWaMenuOpen ? 'active' : ''}`}
+          title={isWaMenuOpen ? 'Close WhatsApp menu' : 'Chat on WhatsApp with Support'}
+          aria-expanded={isWaMenuOpen}
+          aria-label="Open WhatsApp options"
+        >
+          {isWaMenuOpen ? (
+            <X size={26} color="#ffffff" />
+          ) : (
+            <MessageCircle size={28} color="#ffffff" />
+          )}
+          {!isWaMenuOpen && <span className="mdp-wa-badge-pulse"></span>}
+        </button>
+      </div>
     </footer>
   );
 }
