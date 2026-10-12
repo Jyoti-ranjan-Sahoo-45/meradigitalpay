@@ -196,22 +196,46 @@ export default function CorporatePage() {
                   {leader.bio}
                 </p>
 
-                <div style={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-                  gap: '14px',
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  padding: '16px 20px',
-                  borderRadius: '16px'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Phone size={16} color="#15803d" />
-                    <span style={{ fontSize: '14px', color: '#1e293b', fontWeight: 600 }}>{leader.phone}</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Award size={16} color="#D9940A" />
-                    <span style={{ fontSize: '14px', color: '#1e293b', fontWeight: 600 }}>{leader.experience}</span>
+                <div className="leader-contact-info-grid">
+                  <a 
+                    href={`tel:${leader.phone.replace(/\s+/g, '')}`}
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '10px',
+                      textDecoration: 'none',
+                      color: 'inherit'
+                    }}
+                  >
+                    <div style={{
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '8px',
+                      background: 'rgba(21, 128, 61, 0.12)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      <Phone size={16} color="#15803d" />
+                    </div>
+                    <span style={{ fontSize: '14.5px', color: '#1e293b', fontWeight: 600 }}>{leader.phone}</span>
+                  </a>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '8px',
+                      background: 'rgba(217, 148, 10, 0.14)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}>
+                      <Award size={16} color="#D9940A" />
+                    </div>
+                    <span style={{ fontSize: '14.5px', color: '#1e293b', fontWeight: 600 }}>{leader.experience}</span>
                   </div>
                 </div>
               </div>

@@ -9702,5 +9702,22 @@ a.btn-active-press:active {
   }
 }
 
+/* Corporate Page: Director Contact Info Grid */
+.leader-contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 16px 22px;
+  border-radius: 16px;
+  align-items: center;
+}
 
-
+@media (max-width: 640px) {
+  .leader-contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+}
