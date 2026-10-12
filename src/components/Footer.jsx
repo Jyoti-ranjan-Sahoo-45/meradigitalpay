@@ -52,8 +52,9 @@ export default function Footer({ onSelectSegment }) {
       </div>
 
       {/* 2. MAIN FOOTER CONTENT GRID */}
-      <div className="mdp-container mdp-footer-main">
-        <div className="mdp-footer-grid">
+      <div className="mdp-footer-main">
+        <div className="mdp-container">
+          <div className="mdp-footer-grid">
           
           {/* COLUMN 1: Logo, Offices, Follow Us, Download App */}
           <div className="mdp-col mdp-col-about">
@@ -287,6 +288,7 @@ export default function Footer({ onSelectSegment }) {
 
         </div>
       </div>
+    </div>
 
       {/* 3. CERTIFICATION STRIP */}
       <div className="mdp-cert-strip">

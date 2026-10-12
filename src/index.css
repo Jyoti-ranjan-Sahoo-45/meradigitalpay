@@ -228,7 +228,8 @@ html, body {
 .mdp-container {
   max-width: 1360px !important;
   margin: 0 auto !important;
-  padding: 0 24px !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
   width: 100% !important;
   box-sizing: border-box !important;
 }
@@ -304,13 +305,17 @@ html, body {
 
 /* Main Grid */
 .mdp-footer-main {
-  padding: 48px 24px !important;
+  padding: 48px 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .mdp-footer-grid {
   display: grid !important;
   grid-template-columns: 1.4fr 1.1fr 1.1fr 1fr 1.1fr !important;
   gap: 32px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .mdp-col {
@@ -410,6 +415,7 @@ html, body {
   align-items: center !important;
   gap: 8px !important;
   margin-top: 8px !important;
+  flex-wrap: wrap !important;
 }
 
 .mdp-soc-btn {
@@ -445,6 +451,7 @@ html, body {
   align-items: center !important;
   gap: 10px !important;
   margin-top: 8px !important;
+  flex-wrap: wrap !important;
 }
 
 .mdp-app-btn {
@@ -4825,9 +4832,14 @@ html, body {
     grid-template-columns: 1fr !important;
   }
 
-  /* Footer Mobile */
+  /* Footer Mobile Responsive */
+  .mdp-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
   .mdp-footer-main {
-    padding: 40px 0 0 !important;
+    padding: 36px 0 24px !important;
   }
 
   .mdp-footer-grid {
@@ -4835,23 +4847,67 @@ html, body {
     gap: 28px !important;
   }
 
-  .mdp-footer-brand-col {
-    text-align: center !important;
+  .mdp-col {
+    padding-bottom: 24px !important;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.16) !important;
+  }
+
+  .mdp-col:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .mdp-footer-brands-bar {
+    padding: 14px 0 !important;
+  }
+
+  .mdp-brands-inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .mdp-brands-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .mdp-cert-strip {
+    padding: 16px 0 !important;
+  }
+
+  .mdp-cert-inner {
+    flex-direction: column !important;
     align-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
   }
 
-  .mdp-footer-desc {
-    margin: 0 auto 16px !important;
-  }
-
-  .mdp-footer-social-row {
+  .mdp-cert-badge {
     justify-content: center !important;
+    font-size: 0.82rem !important;
+  }
+
+  .mdp-cert-divider {
+    display: none !important;
+  }
+
+  .mdp-copyright-bar {
+    padding: 18px 0 96px 0 !important;
   }
 
   .mdp-copyright-inner {
     flex-direction: column !important;
     text-align: center !important;
     gap: 8px !important;
+  }
+
+  .mdp-copyright-text,
+  .mdp-disclaimer-text {
+    text-align: center !important;
+    line-height: 1.5 !important;
   }
 
   /* Modals Mobile */
@@ -4901,6 +4957,29 @@ html, body {
 
   .mobile-drawer-panel {
     width: 90% !important;
+  }
+
+  /* Footer Small Mobile */
+  .mdp-container {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .mdp-footer-main {
+    padding: 28px 0 20px !important;
+  }
+
+  .mdp-logo-box {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .mdp-brand-badge {
+    padding: 5px 10px !important;
+  }
+
+  .mdp-brand-badge-name {
+    font-size: 0.76rem !important;
   }
 }
 
@@ -9050,6 +9129,31 @@ a.btn-active-press:active {
   justify-content: center;
   flex-shrink: 0;
   animation: livePulseGreen 2s infinite;
+}
+
+@media (max-width: 640px) {
+  .mdp-floating-whatsapp {
+    bottom: 20px !important;
+    right: 18px !important;
+    width: 48px !important;
+    height: 48px !important;
+    z-index: 1000 !important;
+  }
+
+  .floating-adhikari-fab {
+    bottom: 78px !important;
+    right: 18px !important;
+    padding: 10px 16px !important;
+    font-size: 12px !important;
+    gap: 8px !important;
+    z-index: 999 !important;
+    box-shadow: 0 8px 24px rgba(10, 25, 49, 0.45) !important;
+  }
+
+  .floating-adhikari-fab-icon {
+    width: 26px !important;
+    height: 26px !important;
+  }
 }
 
 /* ═════════════════════════════════════════════════════════════════════
