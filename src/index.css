@@ -5288,26 +5288,16 @@ html, body {
   border-color: #cbd5e1;
 }
 
-/* Mobile Screens: subtle slide to prevent any viewport crowding */
-@media (max-width: 640px) {
-  .smart-card-item.smart-card-anim.anim-odd {
-    transform: translate3d(-35px, 10px, 0) scale(0.98);
-    filter: blur(3px);
-  }
-
-  .smart-card-item.smart-card-anim.anim-even {
-    transform: translate3d(35px, 10px, 0) scale(0.98);
-    filter: blur(3px);
-  }
-
+/* Mobile Screens: cards must always be fully visible on mobile, never hidden while scrolling */
+@media (max-width: 768px) {
+  .smart-card-item.smart-card-anim,
+  .smart-card-item.smart-card-anim.anim-odd,
+  .smart-card-item.smart-card-anim.anim-even,
   .smart-card-item.smart-card-anim.smart-card-revealed {
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: blur(0px);
-  }
-
-  .smart-card-item.smart-card-anim.smart-card-revealed:hover,
-  .smart-card-item:hover {
-    transform: translate3d(0, -2px, 0);
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    visibility: visible !important;
   }
 }
 
@@ -9112,6 +9102,21 @@ a.btn-active-press:active {
 .reveal-init.delay-300 { transition-delay: 0.24s !important; }
 .reveal-init.delay-400 { transition-delay: 0.32s !important; }
 .reveal-init.delay-500 { transition-delay: 0.40s !important; }
+
+/* Mobile Screens: Reveal classes must NEVER hide content on mobile */
+@media (max-width: 768px) {
+  .reveal-init,
+  .reveal-fade,
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    visibility: visible !important;
+    transition: none !important;
+  }
+}
 
 /* 2. Floating Chips for Hero Section */
 @keyframes floatBadge1 {

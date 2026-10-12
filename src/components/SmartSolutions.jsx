@@ -78,7 +78,8 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
     const cards = document.querySelectorAll('.smart-card-anim');
     if (!cards || cards.length === 0) return;
 
-    if (!('IntersectionObserver' in window)) {
+    // On mobile screens, immediately reveal all cards so they never stay hidden
+    if (window.innerWidth <= 768 || !('IntersectionObserver' in window)) {
       cards.forEach((card) => card.classList.add('smart-card-revealed'));
       return;
     }
@@ -93,15 +94,15 @@ export default function SmartSolutions({ onOpenIncomeCalc, onOpenJoin }) {
         });
       },
       {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.01,
+        rootMargin: '150px 0px 150px 0px'
       }
     );
 
     cards.forEach((card) => {
-      // Check if already in viewport on mount
+      // Check if already near viewport on mount
       const rect = card.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 30) {
+      if (rect.top < window.innerHeight + 150) {
         card.classList.add('smart-card-revealed');
       } else {
         observer.observe(card);

@@ -467,8 +467,9 @@ export default function App() {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
 
     const timer = setTimeout(() => {
+      const isMobile = window.innerWidth <= 768;
       const targets = document.querySelectorAll(
-        'main > section, .service-card-item, .partner-network-exact-card, .mdp-adv-exact-card, .distribution-card, .smart-sol-card, .stat-card-box, .retail-top-slider-box'
+        '.service-card-item, .partner-network-exact-card, .mdp-adv-exact-card, .distribution-card, .smart-sol-card, .stat-card-box, .retail-top-slider-box'
       );
 
       const observer = new IntersectionObserver(
@@ -480,19 +481,23 @@ export default function App() {
             }
           });
         },
-        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+        { threshold: 0.01, rootMargin: '120px 0px 120px 0px' }
       );
 
       targets.forEach((el, index) => {
-        if (!el.classList.contains('reveal-init')) {
-          el.classList.add('reveal-init');
-          // Add staggered delay for child cards
-          const delayClass = `delay-${((index % 5) + 1) * 100}`;
-          el.classList.add(delayClass);
+        const rect = el.getBoundingClientRect();
+        if (isMobile || rect.top < window.innerHeight + 100) {
+          el.classList.add('in-view');
+        } else {
+          if (!el.classList.contains('reveal-init')) {
+            el.classList.add('reveal-init');
+            const delayClass = `delay-${((index % 5) + 1) * 100}`;
+            el.classList.add(delayClass);
+          }
+          observer.observe(el);
         }
-        observer.observe(el);
       });
-    }, 120);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [activeSegment]);
