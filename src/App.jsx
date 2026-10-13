@@ -887,7 +887,7 @@ export default function App() {
 
       ) : activeSegment === 'events' ? (
 
-        <EventsPage />
+        <EventsPage onNavigate={handleSelectSegment} />
 
       ) : activeSegment === 'faqs' ? (
 

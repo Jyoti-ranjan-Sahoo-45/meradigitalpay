@@ -5,7 +5,7 @@ import {
   FileCheck2, Users, Image, Info, Calculator, 
   Layers, Home, ArrowUpRight, ShieldCheck, Sparkles,
   Landmark, CreditCard, Zap, Shield, FileText, UserCheck, Plane, Briefcase,
-  Headphones
+  Headphones, Calendar
 } from 'lucide-react';
 
 const serviceLinks = [
@@ -139,7 +139,7 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
     }
   };
 
-  const isCompanyActive = ['corporate', 'case-studies', 'media', 'about-us'].includes(activeSegment);
+  const isCompanyActive = ['corporate', 'case-studies', 'media', 'about-us', 'events'].includes(activeSegment);
 
   // Exact 8 Category Columns as requested
   const serviceColumns = [
@@ -669,9 +669,31 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                       </div>
                     </a>
 
-
-
-                    {/* About Us */}
+                    {/* Events */}
+                    <a
+                      href="/events"
+                      onClick={(e) => handleNavClick('events', e)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '12px',
+                        padding: '10px 12px',
+                        borderRadius: '10px',
+                        textDecoration: 'none',
+                        background: activeSegment === 'events' ? '#FEF9C3' : 'transparent',
+                        transition: 'background 0.15s'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = activeSegment === 'events' ? '#FEF9C3' : 'transparent'}
+                    >
+                      <div style={{ background: '#F3E8FF', color: '#9333EA', padding: '8px', borderRadius: '8px', display: 'flex' }}>
+                        <Calendar size={18} />
+                      </div>
+                      <div>
+                        <div style={{ color: '#0A1931', fontWeight: 700, fontSize: '13.5px' }}>Events</div>
+                        <div style={{ color: '#64748B', fontSize: '11.5px', marginTop: '2px' }}>Company Meets, Summits &amp; Highlights</div>
+                      </div>
+                    </a>
                     <a
                       href="/about-us"
                       onClick={(e) => handleNavClick('about-us', e)}
@@ -1233,6 +1255,28 @@ export default function Header({ activeSegment = 'retailer', onSelectSegment, on
                     }}
                   >
                     <Users size={18} color="#C9A227" /> Directors & Staff
+                  </a>
+                </li>
+
+                <li>
+                  <a 
+                    href="/events" 
+                    onClick={(e) => handleNavClick('events', e)} 
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '10px', 
+                      padding: '10px 12px', 
+                      borderRadius: '8px', 
+                      color: activeSegment === 'events' ? '#FEE78A' : '#F1F5F9', 
+                      background: activeSegment === 'events' ? 'rgba(201, 162, 39, 0.18)' : 'transparent',
+                      borderLeft: activeSegment === 'events' ? '3.5px solid #C9A227' : '3.5px solid transparent',
+                      fontWeight: 700, 
+                      fontSize: '14.5px', 
+                      textDecoration: 'none' 
+                    }}
+                  >
+                    <Calendar size={18} color="#c084fc" /> Events
                   </a>
                 </li>
 
