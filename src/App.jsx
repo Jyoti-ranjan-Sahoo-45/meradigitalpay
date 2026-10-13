@@ -401,6 +401,9 @@ export default function App() {
   const [isJoinOpen, setIsJoinOpen] =
     useState(false);
 
+  const [joinRoleService, setJoinRoleService] =
+    useState('');
+
   const [isContactExpertOpen, setIsContactExpertOpen] =
     useState(false);
 
@@ -872,9 +875,10 @@ export default function App() {
       ) : activeSegment === 'income-calculator' ? (
 
         <IncomeCalculatorPage
-          onOpenJoin={() =>
-            setIsJoinOpen(true)
-          }
+          onOpenJoin={(role) => {
+            setJoinRoleService(role || '');
+            setIsJoinOpen(true);
+          }}
         />
 
       ) : activeSegment === 'gff' ? (
@@ -1159,9 +1163,10 @@ export default function App() {
         onClose={() =>
           setIsIncomeCalcOpen(false)
         }
-        onOpenJoin={() =>
-          setIsJoinOpen(true)
-        }
+        onOpenJoin={(role) => {
+          setJoinRoleService(role || '');
+          setIsJoinOpen(true);
+        }}
       />
 
 
@@ -1171,9 +1176,11 @@ export default function App() {
 
       <JoinModal
         isOpen={isJoinOpen}
-        onClose={() =>
-          setIsJoinOpen(false)
-        }
+        initialService={joinRoleService}
+        onClose={() => {
+          setIsJoinOpen(false);
+          setJoinRoleService('');
+        }}
       />
 
 

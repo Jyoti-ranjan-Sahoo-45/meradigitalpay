@@ -12,9 +12,15 @@ import {
 
 const demoServicesList = [
   'Retailer',
-  'State Franchise',
+  'Distributor',
+  'Franchise',
   'District Franchise',
+  'Reseller Partner',
+  'B2B Partner',
+  'White Label Partner',
+  'API Partner',
   'Master Distributor',
+  'State Franchise',
   'B2B Admin Panel',
   'B2C Admin Panel',
   'API Panel',
@@ -56,7 +62,7 @@ const demoServicesList = [
   'Other Query'
 ];
 
-export default function JoinModal({ isOpen, onClose }) {
+export default function JoinModal({ isOpen, onClose, initialService = '' }) {
   const [step, setStep] = useState('form'); // 'form' | 'otp' | 'success'
   const [formData, setFormData] = useState({
     name: '',
@@ -67,7 +73,7 @@ export default function JoinModal({ isOpen, onClose }) {
     city: '',
     demoDate: '',
     demoTime: '',
-    service: ''
+    service: initialService || ''
   });
 
   const [otp, setOtp] = useState(['', '', '', '']);
@@ -85,8 +91,11 @@ export default function JoinModal({ isOpen, onClose }) {
       setOtp(['', '', '', '']);
       setOtpError('');
       setOtpTimer(45);
+      if (initialService) {
+        setFormData((prev) => ({ ...prev, service: initialService }));
+      }
     }
-  }, [isOpen]);
+  }, [isOpen, initialService]);
 
   // Handle escape key
   useEffect(() => {

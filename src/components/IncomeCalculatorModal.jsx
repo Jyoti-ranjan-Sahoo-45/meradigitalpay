@@ -1,21 +1,25 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, ArrowRight, RefreshCw, Calculator } from 'lucide-react';
-import { calculatorCategories } from '../pages/IncomeCalculatorPage';
+import { X, ArrowRight, RefreshCw, Calculator, Sparkles } from 'lucide-react';
+import { calculatorCategories, PARTNER_ROLES } from '../pages/IncomeCalculatorPage';
 
 export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
-  // Initialize counts
-  const initialCounts = useMemo(() => {
-    const counts = {};
-    calculatorCategories.forEach((cat) => {
-      cat.items.forEach((item) => {
-        counts[item.id] = item.defaultCount;
+  const [activeRole, setActiveRole] = useState('retailer');
+
+  // Initialize counts for each role
+  const [roleCounts, setRoleCounts] = useState(() => {
+    const init = {};
+    PARTNER_ROLES.forEach((role) => {
+      init[role.id] = {};
+      calculatorCategories.forEach((cat) => {
+        cat.items.forEach((item) => {
+          init[role.id][item.id] = role.defaultCount;
+        });
       });
     });
-    return counts;
-  }, []);
+    return init;
+  });
 
-  const [counts, setCounts] = useState(initialCounts);
   const [animatePop, setAnimatePop] = useState(false);
 
   useEffect(() => {
@@ -28,29 +32,53 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
+  const currentRole = useMemo(() => {
+    return PARTNER_ROLES.find((r) => r.id === activeRole) || PARTNER_ROLES[0];
+  }, [activeRole]);
+
+  const CurrentRoleIcon = currentRole.icon;
+  const currentCounts = roleCounts[activeRole] || {};
+
   const handleCountChange = (id, val) => {
     const num = Math.max(0, parseInt(val) || 0);
-    setCounts((prev) => ({ ...prev, [id]: num }));
+    setRoleCounts((prev) => ({
+      ...prev,
+      [activeRole]: {
+        ...prev[activeRole],
+        [id]: num
+      }
+    }));
   };
 
-  const handleReset = () => {
-    setCounts(initialCounts);
+  const handleResetRole = () => {
+    setRoleCounts((prev) => {
+      const reset = {};
+      calculatorCategories.forEach((cat) => {
+        cat.items.forEach((item) => {
+          reset[item.id] = currentRole.defaultCount;
+        });
+      });
+      return {
+        ...prev,
+        [activeRole]: reset
+      };
+    });
   };
 
   // Calculate totals
-  const incomePerDay = Object.keys(counts).reduce((total, id) => {
-    let rate = 0;
-    for (const cat of calculatorCategories) {
-      const found = cat.items.find((i) => i.id === id);
-      if (found) {
-        rate = found.rate;
-        break;
-      }
-    }
-    return total + (counts[id] || 0) * rate;
-  }, 0);
+  const incomePerDay = useMemo(() => {
+    let total = 0;
+    calculatorCategories.forEach((cat) => {
+      cat.items.forEach((item) => {
+        const qty = currentCounts[item.id] !== undefined ? currentCounts[item.id] : currentRole.defaultCount;
+        total += qty * item.rate;
+      });
+    });
+    return total;
+  }, [currentCounts, currentRole]);
 
   const totalMonthlyIncome = incomePerDay * 30;
+  const totalYearlyIncome = totalMonthlyIncome * 12;
 
   useEffect(() => {
     setAnimatePop(true);
@@ -89,7 +117,7 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
         style={{
           background: '#f8fafc',
           width: '100%',
-          maxWidth: '840px',
+          maxWidth: '920px',
           borderRadius: '20px',
           padding: '24px',
           position: 'relative',
@@ -136,12 +164,29 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
         {/* Modal Header */}
         <div style={{
           background: 'linear-gradient(135deg, #093774 0%, #0c4696 100%)',
-          borderRadius: '14px',
-          padding: '18px 20px',
+          borderRadius: '16px',
+          padding: '20px 22px',
           color: '#ffffff',
           marginBottom: '20px',
           textAlign: 'center'
         }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '3px 12px',
+            borderRadius: '100px',
+            background: 'rgba(201, 162, 39, 0.15)',
+            border: '1px solid #C9A227',
+            color: '#fef08a',
+            fontSize: '11.5px',
+            fontWeight: 800,
+            marginBottom: '8px'
+          }}>
+            <Sparkles size={12} color="#C9A227" />
+            <span>{currentRole.badge}</span>
+          </div>
+
           <h2 style={{
             fontFamily: "'Cera Pro', sans-serif",
             fontSize: '22px',
@@ -153,17 +198,41 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
             justifyContent: 'center',
             gap: '8px'
           }}>
-            <Calculator size={22} color="#C9A227" />
-            Income Calculator
+            <CurrentRoleIcon size={22} color="#C9A227" />
+            {currentRole.label} Income Calculator
           </h2>
-          <p style={{ color: '#e2e8f0', fontSize: '13px', margin: 0 }}>
-            Estimate your real-time daily &amp; monthly earnings with Mera Digital Pay
+          <p style={{ color: '#e2e8f0', fontSize: '13px', margin: '0 0 14px 0' }}>
+            {currentRole.tagline}
           </p>
+
+          {/* Partner Role Pills Bar inside Modal */}
+          <div className="calc-role-tab-bar-wrap" style={{ marginTop: '6px' }}>
+            <div className="calc-role-tab-bar" role="tablist">
+              {PARTNER_ROLES.map((role) => {
+                const isActive = activeRole === role.id;
+                const RoleIcon = role.icon;
+                return (
+                  <button
+                    key={role.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActiveRole(role.id)}
+                    className={`calc-role-tab-btn ${isActive ? 'active' : ''}`}
+                    style={{ padding: '8px 14px', fontSize: '12.5px' }}
+                  >
+                    <RoleIcon size={14} />
+                    <span>{role.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1fr) 280px',
+          gridTemplateColumns: 'minmax(0, 1fr) 290px',
           gap: '20px',
           alignItems: 'start'
         }} className="calc-modal-inner-grid">
@@ -212,15 +281,18 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
                         <span className="calc-item-rate">₹{item.rate}</span>
                       </span>
 
-                      <input 
-                        type="number"
-                        min="0"
-                        max="999"
-                        value={counts[item.id] !== undefined ? counts[item.id] : item.defaultCount}
-                        onChange={(e) => handleCountChange(item.id, e.target.value)}
-                        className="calc-number-input"
-                        style={{ width: '56px', padding: '4px 6px', fontSize: '14px' }}
-                      />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span style={{ fontSize: '11px', color: '#94a3b8' }}>txns/day</span>
+                        <input 
+                          type="number"
+                          min="0"
+                          max="99999"
+                          value={currentCounts[item.id] !== undefined ? currentCounts[item.id] : currentRole.defaultCount}
+                          onChange={(e) => handleCountChange(item.id, e.target.value)}
+                          className="calc-number-input"
+                          style={{ width: '56px', padding: '4px 6px', fontSize: '14px' }}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -230,18 +302,32 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
 
           {/* Right: Income Summary Card */}
           <div className="calc-summary-card" style={{ padding: '22px 18px', gap: '14px' }}>
-            <h4 style={{
-              fontSize: '18px',
-              fontWeight: 800,
-              color: '#ffffff',
-              margin: 0,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px'
-            }}>
-              <Calculator size={18} color="#C9A227" />
-              Income Summary
-            </h4>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.15)', paddingBottom: '8px' }}>
+              <h4 style={{
+                fontSize: '17px',
+                fontWeight: 800,
+                color: '#ffffff',
+                margin: 0,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <Calculator size={18} color="#C9A227" />
+                Income Summary
+              </h4>
+              <span style={{
+                background: 'rgba(201, 162, 39, 0.22)',
+                border: '1px solid #C9A227',
+                color: '#fef08a',
+                fontSize: '10.5px',
+                fontWeight: 800,
+                padding: '2px 8px',
+                borderRadius: '12px',
+                textTransform: 'uppercase'
+              }}>
+                {currentRole.label}
+              </span>
+            </div>
 
             {/* Income Per Day */}
             <div className="calc-daily-box" style={{ padding: '12px 14px' }}>
@@ -269,13 +355,31 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
               </span>
             </div>
 
+            {/* Annual Run-rate */}
+            <div style={{
+              background: 'rgba(201, 162, 39, 0.15)',
+              border: '1px solid rgba(201, 162, 39, 0.35)',
+              borderRadius: '10px',
+              padding: '8px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}>
+              <span style={{ color: '#fef08a', fontSize: '11.5px', fontWeight: 700 }}>
+                Annual Run-rate
+              </span>
+              <span style={{ color: '#ffffff', fontSize: '14px', fontWeight: 800 }}>
+                ₹{totalYearlyIncome.toLocaleString('en-IN')}
+              </span>
+            </div>
+
             <p style={{
               fontSize: '11px',
               color: 'rgba(255, 255, 255, 0.75)',
               margin: 0,
               textAlign: 'center'
             }}>
-              * Monthly income calculated on 30 working days.
+              * Monthly income calculated on 30 working days for {currentRole.label}.
             </p>
 
             {/* Apply Now Button */}
@@ -283,23 +387,23 @@ export default function IncomeCalculatorModal({ isOpen, onClose, onOpenJoin }) {
               type="button"
               onClick={() => {
                 onClose();
-                if (typeof onOpenJoin === 'function') onOpenJoin();
+                if (typeof onOpenJoin === 'function') onOpenJoin(currentRole.label);
               }}
               className="calc-apply-btn"
               style={{ padding: '12px 16px', fontSize: '14px' }}
             >
-              <span>Apply Now</span>
+              <span>Apply as {currentRole.label}</span>
               <ArrowRight size={16} />
             </button>
 
             <button
               type="button"
-              onClick={handleReset}
+              onClick={handleResetRole}
               className="calc-reset-btn"
               style={{ padding: '4px', fontSize: '12px' }}
             >
               <RefreshCw size={12} />
-              <span>Reset</span>
+              <span>Reset {currentRole.label}</span>
             </button>
           </div>
         </div>
