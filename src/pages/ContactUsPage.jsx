@@ -218,15 +218,17 @@ export default function ContactUsPage() {
               </p>
 
               <div className="contact-hero-cards">
-                {/* Head Office Card */}
+                {/* Registered & Branch Office Card */}
                 <div className="contact-office-card">
                   <div className="contact-office-icon">
                     <Building2 size={20} color="#0c4696" />
                   </div>
                   <div>
-                    <h4>Head &amp; Corporate Office</h4>
-                    <p>Office No. 82, Aonla, Bareilly, UP - 243301</p>
-                    <p style={{ marginTop: '4px', color: '#64748b', fontSize: '13.5px' }}>Branch: 1/2, Ekta Nagar, Bareilly, UP - 243122</p>
+                    <h4>Registered Office</h4>
+                    <p>Aonla, Bareilly, Uttar Pradesh – 243301, India</p>
+                    <p style={{ marginTop: '6px', color: '#475569', fontSize: '13.5px', fontWeight: 600 }}>
+                      <strong style={{ color: '#0c4696' }}>Branch Office:</strong> Jeypore, Koraput, Odisha – 764002, India
+                    </p>
                   </div>
                 </div>
 
@@ -235,8 +237,8 @@ export default function ContactUsPage() {
                   <a href="tel:+917088898725" className="contact-quick-badge call-badge">
                     <Phone size={18} />
                     <div>
-                      <span className="badge-label">Call Support</span>
-                      <strong className="badge-val">+91 7088898725</strong>
+                      <span className="badge-label">Contact</span>
+                      <strong className="badge-val">+91 70888 98725</strong>
                     </div>
                   </a>
 
@@ -248,8 +250,27 @@ export default function ContactUsPage() {
                   >
                     <MessageCircle size={18} />
                     <div>
-                      <span className="badge-label">WhatsApp Direct</span>
-                      <strong className="badge-val">+91 9675695450</strong>
+                      <span className="badge-label">WhatsApp &amp; Emergency</span>
+                      <strong className="badge-val">+91 96756 95450</strong>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Email Contacts */}
+                <div className="contact-helpline-row" style={{ marginTop: '10px' }}>
+                  <a href="mailto:help.meradigitalpay@gmail.com" className="contact-quick-badge call-badge" style={{ background: '#f8fafc' }}>
+                    <Mail size={18} color="#0c4696" />
+                    <div>
+                      <span className="badge-label">Email</span>
+                      <strong className="badge-val" style={{ fontSize: '13px' }}>help.meradigitalpay@gmail.com</strong>
+                    </div>
+                  </a>
+
+                  <a href="mailto:help.meradigitalaps@gmail.com" className="contact-quick-badge wa-badge" style={{ background: '#f8fafc' }}>
+                    <Mail size={18} color="#15803d" />
+                    <div>
+                      <span className="badge-label">Support</span>
+                      <strong className="badge-val" style={{ fontSize: '13px' }}>help.meradigitalaps@gmail.com</strong>
                     </div>
                   </a>
                 </div>

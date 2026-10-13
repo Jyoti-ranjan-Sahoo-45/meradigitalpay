@@ -144,11 +144,11 @@ function Login({ onNavigate }) {
               <h2>Need a hand?</h2>
               <p>Our support team is ready to help with your account and partner services.</p>
 
-              <a className="adhikari-support-contact" href="mailto:help.com@meradigitalpay.com">
+              <a className="adhikari-support-contact" href="mailto:help.meradigitalpay@gmail.com">
                 <span className="adhikari-support-icon"><FaEnvelope aria-hidden="true" /></span>
                 <span>
                   <small>Email our team</small>
-                  <strong>help.com@meradigitalpay.com</strong>
+                  <strong>help.meradigitalpay@gmail.com</strong>
                 </span>
               </a>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { policies } from '../data/policiesData';
 import { 
   ShieldCheck, FileText, RefreshCw, Scale, Briefcase, 
-  Search, CheckCircle2, AlertTriangle, ArrowUp, Mail, Phone, ExternalLink 
+  Search, CheckCircle2, AlertTriangle, ArrowUp, Mail, Phone, MessageCircle, ExternalLink 
 } from 'lucide-react';
 
 const policyIcons = {
@@ -305,9 +305,15 @@ export default function PolicyPage({ initialPolicy = 'terms', onSelectPolicy }) 
                     </a>
                   </div>
                   <div className="policy-grievance-col">
-                    <span className="policy-g-label">Direct Helpline:</span>
+                    <span className="policy-g-label">Contact:</span>
                     <a href="tel:+917088898725" className="policy-g-link">
-                      <Phone size={14} /> +91 7088898725
+                      <Phone size={14} /> +91 70888 98725
+                    </a>
+                  </div>
+                  <div className="policy-grievance-col">
+                    <span className="policy-g-label">WhatsApp &amp; Emergency:</span>
+                    <a href="https://wa.me/919675695450?text=Hello%20Mera%20Digital%20Pay%20Team" target="_blank" rel="noopener noreferrer" className="policy-g-link">
+                      <MessageCircle size={14} /> +91 96756 95450
                     </a>
                   </div>
                   <div className="policy-grievance-col">

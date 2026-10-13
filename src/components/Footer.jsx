@@ -117,10 +117,10 @@ export default function Footer({ onSelectSegment }) {
             </div>
 
             <div className="mdp-office-box">
-              <h5 className="mdp-subheading-orange">HEAD OFFICE</h5>
+              <h5 className="mdp-subheading-orange">REGISTERED OFFICE</h5>
               <p className="mdp-address-line">
                 <MapPin size={14} className="mdp-icon-orange" />
-                <span>Office No. 82, Aonla, Bareilly, UP - 243301</span>
+                <span>Aonla, Bareilly, Uttar Pradesh – 243301, India</span>
               </p>
             </div>
 
@@ -128,15 +128,15 @@ export default function Footer({ onSelectSegment }) {
               <h5 className="mdp-subheading-orange">BRANCH OFFICE</h5>
               <p className="mdp-address-line">
                 <MapPin size={14} className="mdp-icon-orange" />
-                <span>1/2, Ekta Nagar, Bareilly, UP - 243122</span>
+                <span>Jeypore, Koraput, Odisha – 764002, India</span>
               </p>
               <p className="mdp-phone-line">
                 <Phone size={14} className="mdp-icon-orange" />
-                <a href="tel:+917088898725">+91 7088898725</a>
+                <a href="tel:+917088898725">+91 70888 98725</a>
               </p>
               <p className="mdp-phone-line">
                 <MessageCircle size={14} className="mdp-icon-green" />
-                <a href="https://wa.me/919675695450?text=Hello%20Mera%20Digital%20Pay%20Team,%20I%20need%20help" target="_blank" rel="noopener noreferrer">+91 9675695450</a>
+                <a href="https://wa.me/919675695450?text=Hello%20Mera%20Digital%20Pay%20Team,%20I%20need%20help" target="_blank" rel="noopener noreferrer">+91 96756 95450</a>
               </p>
             </div>
 
@@ -216,24 +216,20 @@ export default function Footer({ onSelectSegment }) {
             <h4 className="mdp-col-title">CONTACT &amp; INFO</h4>
             <div className="mdp-info-list">
               <div className="mdp-info-item">
-                <span className="mdp-info-label">Helpdesk:</span>
-                <a href="mailto:help@meradigitalpay.com">help@meradigitalpay.com</a>
+                <span className="mdp-info-label">Email:</span>
+                <a href="mailto:help.meradigitalpay@gmail.com">help.meradigitalpay@gmail.com</a>
               </div>
               <div className="mdp-info-item">
-                <span className="mdp-info-label">Accounts:</span>
-                <a href="mailto:account@meradigitalpay.com">account@meradigitalpay.com</a>
+                <span className="mdp-info-label">Support:</span>
+                <a href="mailto:help.meradigitalaps@gmail.com">help.meradigitalaps@gmail.com</a>
               </div>
               <div className="mdp-info-item">
-                <span className="mdp-info-label">Director:</span>
-                <a href="mailto:director@meradigitalpay.com">director@meradigitalpay.com</a>
+                <span className="mdp-info-label">Contact:</span>
+                <a href="tel:+917088898725">+91 70888 98725</a>
               </div>
               <div className="mdp-info-item">
-                <span className="mdp-info-label">B2B:</span>
-                <a href="mailto:B2B@meradigitalpay.com">B2B@meradigitalpay.com</a>
-              </div>
-              <div className="mdp-info-item">
-                <span className="mdp-info-label">API:</span>
-                <a href="mailto:Api@meradigitalpay.com">Api@meradigitalpay.com</a>
+                <span className="mdp-info-label">WhatsApp:</span>
+                <a href="https://wa.me/919675695450?text=Hello%20Mera%20Digital%20Pay%20Team" target="_blank" rel="noopener noreferrer">+91 96756 95450</a>
               </div>
             </div>
 

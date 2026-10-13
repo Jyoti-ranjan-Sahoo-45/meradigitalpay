@@ -666,7 +666,7 @@ export const policies = [
       {
         "number": 44,
         "title": "OFFICIAL CONTACT INFORMATION",
-        "body": "Mera Digital Pay\r\n\r\nRegistered / Principal Office:\r\nGround Floor, Office No. 82, Aonla, Bareilly, Uttar Pradesh – 243301, India\r\n\r\nBranch Office:\r\nJeypore, Koraput, Odisha – 764002, India\r\n\r\nEmail:\r\nhelp.meradigitalaps@gmail.com\r\nhelp.meradigitalpay@gmail.com\r\n\r\nContact:\r\n7088898725\r\n\r\nWhatsApp / Emergency Contact:\r\n[Insert verified complete number before publication]\r\n\r\n---"
+        "body": "Mera Digital Pay\r\n\r\nRegistered Office:\r\nAonla, Bareilly, Uttar Pradesh – 243301, India\r\n\r\nBranch Office:\r\nJeypore, Koraput, Odisha – 764002, India\r\n\r\nEmail:\r\nhelp.meradigitalpay@gmail.com\r\n\r\nSupport:\r\nhelp.meradigitalaps@gmail.com\r\n\r\nContact:\r\n+91 70888 98725\r\n\r\nWhatsApp & Emergency Contact:\r\n+91 96756 95450\r\n\r\n---"
       },
       {
         "number": 45,

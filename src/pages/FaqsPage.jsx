@@ -170,7 +170,7 @@ const allFaqs = [
     category: 'support',
     categoryName: 'Support & Devices',
     question: 'How can I raise a dispute ticket or get customer care support?',
-    answer: 'You can raise a support ticket directly from the app transaction history or contact our support team. Helpline: +91 7088898725, WhatsApp Support: +91 9675695450, Email: help@meradigitalpay.com.'
+    answer: 'You can raise a support ticket directly from the app transaction history or contact our support team. Helpline: +91 70888 98725, WhatsApp & Emergency: +91 96756 95450, Email: help.meradigitalpay@gmail.com, Support: help.meradigitalaps@gmail.com.'
   },
   {
     id: 21,
@@ -370,10 +370,10 @@ export default function FaqsPage() {
               </div>
               <div style={{ minWidth: 0, flex: 1 }}>
                 <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.4px', display: 'block' }}>
-                  Phone Helpline
+                  Contact Helpline
                 </span>
                 <a href="tel:+917088898725" style={{ display: 'block', fontSize: '14.5px', fontWeight: 800, color: '#0c4696', textDecoration: 'none', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  +91 7088898725
+                  +91 70888 98725
                 </a>
               </div>
             </div>
@@ -395,10 +395,10 @@ export default function FaqsPage() {
               </div>
               <div style={{ minWidth: 0, flex: 1 }}>
                 <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.4px', display: 'block' }}>
-                  WhatsApp Desk
+                  WhatsApp &amp; Emergency
                 </span>
                 <a href="https://wa.me/919675695450?text=Hello%20Mera%20Digital%20Pay%20Team,%20I%20need%20assistance" target="_blank" rel="noopener noreferrer" style={{ display: 'block', fontSize: '14.5px', fontWeight: 800, color: '#16a34a', textDecoration: 'none', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  +91 9675695450
+                  +91 96756 95450
                 </a>
               </div>
             </div>
@@ -423,8 +423,8 @@ export default function FaqsPage() {
                   Email Support
                 </span>
                 <a 
-                  href="mailto:help@meradigitalpay.com" 
-                  title="help@meradigitalpay.com"
+                  href="mailto:help.meradigitalpay@gmail.com" 
+                  title="help.meradigitalpay@gmail.com"
                   style={{ 
                     display: 'block', 
                     fontSize: '13px', 
@@ -436,7 +436,7 @@ export default function FaqsPage() {
                     lineHeight: 1.3
                   }}
                 >
-                  help@meradigitalpay.com
+                  help.meradigitalpay@gmail.com
                 </a>
               </div>
             </div>
